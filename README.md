@@ -15,6 +15,7 @@ Entities:
 --equipment (user chooses)
 --weather (randomly generated)
 --environment (randomly generated)
+--images (should it be its own table or just with the monster?)
 
 Learning objective: 
 --Goal is to use both SVG-enhanced UI and using some kind of Animations (greensock possibly). If we have to choose one due to time constraints, we will do the enhanced UI. 
@@ -22,3 +23,6 @@ Learning objective:
 
 Stretch goal for ourselves:
 --Give the monster a personalized name 
+--Have user create an account to track history 
+--Allow user to choose both monsters in a battle 
+--Tournaments/leagues to track winners 
