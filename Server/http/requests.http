@@ -1,0 +1,28 @@
+GET http://localhost:8080/api/monsters
+
+###
+//shouldn't work
+GET http://localhost:8080/api/monsters/viewAll
+
+###
+GET http://localhost:8080/api/monsters/viewAll
+Authorization: Bearer
+
+###
+//user login
+POST http://localhost:8080/api/security/login
+Content-Type: application/json
+
+{
+    "username": "bmadrell0",
+    "password": "MrvxYAfFx"
+}
+
+###
+POST http://localhost:8080/api/security/login
+Content-Type: application/json
+
+{
+    "username":    ,
+    "password": 
+}
