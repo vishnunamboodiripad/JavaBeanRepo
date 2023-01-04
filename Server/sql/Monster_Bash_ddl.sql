@@ -22,20 +22,20 @@ create table App_Role_User (
     constraint foreign key (role_id) references App_Role(role_id),
     constraint primary key (user_id, role_id)
 );
+##password for all users is 'password'
+insert into App_User (user_id, username, password, enabled) values (1, 'bmadrell0', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (2, 'uomannion1', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (3, 'rcollinwood2', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (4, 'bbeange3', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (5, 'hsturzaker4', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (6, 'dchave5', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (7, 'sdhennin6', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (8, 'orown7', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (9, 'bkellie8', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (10, 'rbart9', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
 
-insert into App_User (user_id, username, password, enabled) values (1, 'bmadrell0', 'MrvxYAfFx', false);
-insert into App_User (user_id, username, password, enabled) values (2, 'uomannion1', '619VkMuG', true);
-insert into App_User (user_id, username, password, enabled) values (3, 'rcollinwood2', 'JCHD514H7z8', false);
-insert into App_User (user_id, username, password, enabled) values (4, 'bbeange3', 'ETDxxA3Oj', false);
-insert into App_User (user_id, username, password, enabled) values (5, 'hsturzaker4', 'JrUyQhIrTh2', true);
-insert into App_User (user_id, username, password, enabled) values (6, 'dchave5', 'rWXAV8eQ', true);
-insert into App_User (user_id, username, password, enabled) values (7, 'sdhennin6', 'cx0Oi7', false);
-insert into App_User (user_id, username, password, enabled) values (8, 'orown7', 'ixliMEd2yUE6', false);
-insert into App_User (user_id, username, password, enabled) values (9, 'bkellie8', 'XlIXJAg8', true);
-insert into App_User (user_id, username, password, enabled) values (10, 'rbart9', 'Tz7r9Ba18', true);
-
-insert into App_Role (role_id, role) values (1, admin);
-insert into App_Role (role_id, role) values (2, `user`);
+insert into App_Role (role_id, role_name) values (1, 'admin');
+insert into App_Role (role_id, role_name) values (2, 'user');
 
 insert into App_Role_User(role_id, user_id) values (1,1);
 insert into App_Role_User(role_id, user_id) values (2,2);

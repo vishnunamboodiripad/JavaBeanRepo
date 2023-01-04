@@ -21,7 +21,7 @@ public class AppUserMapper implements RowMapper<AppUser> {
         toReturn.setAppUserId( rs.getInt("user_id") );
         toReturn.setUsername( rs.getString("username"));
         toReturn.setEnabled(rs.getBoolean("enabled"));
-        toReturn.setPassHash(rs.getString("passHash"));
+        toReturn.setPassHash(rs.getString("password"));
 
         toReturn.setRoles(userRoles);
 

@@ -6,7 +6,7 @@ GET http://localhost:8080/api/monsters/viewAll
 
 ###
 GET http://localhost:8080/api/monsters/viewAll
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNb25zdGVyQmFzaCIsInN1YiI6ImJtYWRyZWxsMCIsInJvbGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX2JtYWRyZWxsMCJ9XSwidXNlcklkIjoxLCJleHAiOjE2NzI4NDg4NzZ9.3OnOeUIpt1HRV_ohlDT13-2eA8LV1jIgF0L3jaGuTjc
 
 ###
 //user login
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
     "username": "bmadrell0",
-    "password": "MrvxYAfFx"
+    "password": "password"
 }
 
 ###
