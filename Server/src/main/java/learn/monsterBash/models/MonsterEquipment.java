@@ -1,4 +1,4 @@
-package learn.MonsterBash.models;
+package learn.monsterBash.models;
 
 
 public class MonsterEquipment {
@@ -24,19 +24,19 @@ public class MonsterEquipment {
         this.monsterEquipmentId = monsterEquipmentId;
     }
 
-    public learn.MonsterBash.models.Monster getMonster() {
+    public Monster getMonster() {
         return monster;
     }
 
-    public void setMonster(learn.MonsterBash.models.Monster monster) {
+    public void setMonster(Monster monster) {
         this.monster = monster;
     }
 
-    public learn.MonsterBash.models.Equipment getEquipment() {
+    public Equipment getEquipment() {
         return equipment;
     }
 
-    public void setEquipment(learn.MonsterBash.models.Equipment equipment) {
+    public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
 }

@@ -1,7 +1,7 @@
-package monsterBash.domain;
+package learn.monsterBash.domain;
 
-import monsterBash.data.UserRepo;
-import monsterBash.model.AppUser;
+import learn.monsterBash.data.UserRepo;
+import learn.monsterBash.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

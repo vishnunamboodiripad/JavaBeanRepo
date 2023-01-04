@@ -1,6 +1,6 @@
-package monsterBash.data;
+package learn.monsterBash.data;
 
-import monsterBash.model.AppUser;
+import learn.monsterBash.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
-package monsterBash.data;
+package learn.monsterBash.data;
 
-import monsterBash.model.AppUser;
+import learn.monsterBash.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

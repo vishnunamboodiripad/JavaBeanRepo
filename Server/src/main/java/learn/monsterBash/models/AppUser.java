@@ -1,4 +1,4 @@
-package monsterBash.model;
+package learn.monsterBash.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
