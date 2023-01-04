@@ -1,4 +1,4 @@
-package MonsterBash.models;
+package learn.MonsterBash.models;
 
 public class Location {
 
