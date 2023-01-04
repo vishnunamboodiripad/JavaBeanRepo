@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 export default function LoginPage({setLoggedInUserData}) {
 
     const[loginData, setLoginData] = useState({username: "", password: ""});
+    const[errors,setErrors] = useState([]);
 
     const history = useHistory();
 
@@ -24,7 +25,7 @@ export default function LoginPage({setLoggedInUserData}) {
                 return response.json();
             }
             else if (response.status === 403) {
-                alert("Invalid Username/Password!")
+                alert("Invalid username/password combo");
             }
             else {
                 //errors happened. handle it later
@@ -61,6 +62,9 @@ export default function LoginPage({setLoggedInUserData}) {
 
     }
     return (
+        <div>
+        <h1>Monster Bash Login page</h1>
+        <h2>Please enter your login information below</h2>
         <form onSubmit={handleSubmit}>
             <label htmlFor = "username">Username: </label>
                 <input id = "username" value ={loginData.username} onChange ={handleInputChange}/>
@@ -68,5 +72,6 @@ export default function LoginPage({setLoggedInUserData}) {
                 <input type = "password" id = "password" value ={loginData.password} onChange ={handleInputChange}/>
             <button >Log in </button>
         </form>
+        </div>
     )
 }
