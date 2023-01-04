@@ -1,7 +1,8 @@
-package monsterBash.controller;
+package learn.monsterBash.controller;
 
 
-import monsterBash.domain.UserService;
+import learn.monsterBash.domain.UserService;
+import learn.monsterBash.security.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import monsterBash.security.JwtConverter;
-import monsterBash.security.LoginRequest;
+import learn.monsterBash.security.JwtConverter;
 
 import java.util.HashMap;
 import java.util.Map;

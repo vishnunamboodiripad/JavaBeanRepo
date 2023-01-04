@@ -1,4 +1,4 @@
-package monsterBash;
+package learn.monsterBash;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

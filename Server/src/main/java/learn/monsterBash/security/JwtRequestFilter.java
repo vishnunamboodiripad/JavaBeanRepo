@@ -1,4 +1,4 @@
-package monsterBash.security;
+package learn.monsterBash.security;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -6,11 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="1ab25989-59b1-4958-a429-b79afdb79bce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http/requests.http" beforeDir="false" afterPath="$PROJECT_DIR$/http/requests.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/Monster_Bash_ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/Monster_Bash_ddl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/AppUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/monsterBash/data/AppUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/UserDatabaseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/monsterBash/data/UserDatabaseRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/domain/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/monsterBash/domain/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Affinity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Battle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Element.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Equipment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Monster.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/MonsterEquipment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Weather.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/AppUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/AppUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/UserDatabaseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/UserDatabaseRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/domain/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/domain/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/model/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/models/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/JwtConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/JwtConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,12 +155,12 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/monsterBash/controller/AuthController.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/learn/monsterBash/controller/AuthController.java</url>
           <line>38</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/monsterBash/security/JwtRequestFilter.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/learn/monsterBash/security/JwtRequestFilter.java</url>
           <line>28</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>

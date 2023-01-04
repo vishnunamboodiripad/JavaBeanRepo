@@ -1,11 +1,11 @@
-package monsterBash.security;
+package learn.monsterBash.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import monsterBash.model.AppUser;
+import learn.monsterBash.models.AppUser;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 

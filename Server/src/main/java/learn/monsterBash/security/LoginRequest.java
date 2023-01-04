@@ -1,4 +1,4 @@
-package monsterBash.security;
+package learn.monsterBash.security;
 
 public class LoginRequest {
     String username;

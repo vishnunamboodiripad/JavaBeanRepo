@@ -1,4 +1,4 @@
-package monsterBash;
+package learn.monsterBash;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
