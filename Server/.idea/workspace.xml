@@ -6,26 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1ab25989-59b1-4958-a429-b79afdb79bce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Affinity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Battle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Element.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Equipment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Location.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Monster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/MonsterEquipment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/MonsterBash/models/Weather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/AppUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/AppUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/UserDatabaseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/UserDatabaseRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/data/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/domain/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/domain/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/model/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/models/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/JwtConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/JwtConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/JwtRequestFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/monsterBash/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/LoginPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -52,17 +36,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": ""
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="data" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="learn.monsterBash.data" />
     </key>
   </component>
   <component name="RunManager">
