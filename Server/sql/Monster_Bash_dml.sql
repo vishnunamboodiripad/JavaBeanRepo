@@ -1,15 +1,15 @@
 use monster_bash;
 
-insert into monster (monster_name, power, element, monster_image) values ('Lén', 47, 'fire', 'ucla.edu');
-insert into monster (monster_name, power, element, monster_image) values ('Naëlle', 5, 'water', 'ca.gov');
-insert into monster (monster_name, power, element, monster_image) values ('Loïca', 58, 'air', 'jimdo.com');
-insert into monster (monster_name, power, element, monster_image) values ('Pål', 61, 'earth', 'privacy.gov.au');
-insert into monster (monster_name, power, element, monster_image) values ('Estève', 19, 'fire', 'icio.us');
-insert into monster (monster_name, power, element, monster_image) values ('Maéna', 41, 'water', 'shareasale.com');
-insert into monster (monster_name, power, element, monster_image) values ('Mélina', 12, 'air', 'amazon.com');
-insert into monster (monster_name, power, element, monster_image) values ('Judicaël', 82, 'earth', 'netscape.com');
-insert into monster (monster_name, power, element, monster_image) values ('Dorothée', 75, 'fire', 'dailymail.co.uk');
-insert into monster (monster_name, power, element, monster_image) values ('Vishnu', 29, 'water', 'nasa.gov');
+insert into monster (monster_name, power, element, monster_image) values ('Lén', 47, 'fire', '/monsters_images/monster1');
+insert into monster (monster_name, power, element, monster_image) values ('Naëlle', 5, 'water', '/monsters_images/monster2');
+insert into monster (monster_name, power, element, monster_image) values ('Loïca', 58, 'air', '/monsters_images/monster3');
+insert into monster (monster_name, power, element, monster_image) values ('Pål', 61, 'earth', '/monsters_images/monster4');
+insert into monster (monster_name, power, element, monster_image) values ('Estève', 19, 'fire', '/monsters_images/monster5');
+insert into monster (monster_name, power, element, monster_image) values ('Maéna', 41, 'water', '/monsters_images/monster6');
+insert into monster (monster_name, power, element, monster_image) values ('Mélina', 12, 'air', '/monsters_images/monster7');
+insert into monster (monster_name, power, element, monster_image) values ('Judicaël', 82, 'earth', '/monsters_images/monster8');
+insert into monster (monster_name, power, element, monster_image) values ('Dorothée', 75, 'fire', '/monsters_images/monster9');
+insert into monster (monster_name, power, element, monster_image) values ('Vishnu', 29, 'water', '/monsters_images/monster10');
 
 
 insert into element (element_name, element_id) values ('Fire', 1);
