@@ -2,6 +2,77 @@ drop database if exists monster_bash;
 create database monster_bash;
 use monster_bash;
 
+drop table if exists monster;
+drop table if exists equipment;
+drop table if exists location;
+drop table if exists weather;
+drop table if exists affinity;
+drop table if exists monster_equipment;
+drop table if exists element;
+drop table if exists battle;
+
+
+create table element (
+    element_id int primary key auto_increment,
+    element_name varchar(10) not null
+    );
+    
+create table location (
+    location_id int primary key auto_increment,
+    location_name varchar (50) not null,
+    location_image varchar(1636) not null,
+    element_id int not null,
+        constraint fk_element_location_id
+        foreign key (element_id)
+        references element(element_id)
+    );
+    
+create table affinity (
+    affinity_id int primary key,
+    affinity_name varchar(15) not null
+    );
+
+create table weather (
+    weather_id int primary key auto_increment,
+    weather_name varchar(15) unique not null,
+    weather_image varchar(1636) not null,
+    affinity_id int null,
+        constraint fk_affinity_weather_id
+        foreign key (affinity_id)
+        references affinity(affinity_id)
+        );
+
+
+
+create table equipment (
+    equipment_id int primary key auto_increment,
+    equipment_name varchar(500) not null,
+    equipment_image varchar(1636) not null,
+    strength int not null,
+    affinity_id int not null,
+    constraint fk_affinity_equipment_id
+        foreign key (affinity_id)
+        references affinity(affinity_id)
+        );
+        
+create table monster_equipment (
+    monster_equipment_id int primary key,
+    monster_id int not null,
+    equipment_id int not null
+    );
+    
+create table monster (
+    monster_id int primary key auto_increment,
+    monster_name varchar(25) unique not null,
+    monster_image varchar(1636) not null,
+    power int not null ,
+    element varchar(10) not null,
+    equipment_id int null,
+    constraint fk_equipment_monsters_id
+        foreign key (equipment_id)
+        references equipment(equipment_id)
+        );
+        
 create table App_User (
 	user_id int auto_increment primary key,
 	username varchar(120) not null unique,
@@ -22,29 +93,26 @@ create table App_Role_User (
     constraint foreign key (role_id) references App_Role(role_id),
     constraint primary key (user_id, role_id)
 );
-##password for all users is 'password'
-insert into App_User (user_id, username, password, enabled) values (1, 'bmadrell0', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (2, 'uomannion1', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (3, 'rcollinwood2', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (4, 'bbeange3', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (5, 'hsturzaker4', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (6, 'dchave5', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (7, 'sdhennin6', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (8, 'orown7', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (9, 'bkellie8', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
-insert into App_User (user_id, username, password, enabled) values (10, 'rbart9', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
 
-insert into App_Role (role_id, role_name) values (1, 'admin');
-insert into App_Role (role_id, role_name) values (2, 'user');
 
-insert into App_Role_User(role_id, user_id) values (1,1);
-insert into App_Role_User(role_id, user_id) values (2,2);
-insert into App_Role_User(role_id, user_id) values (2,3);
-insert into App_Role_User(role_id, user_id) values (2,4);
-insert into App_Role_User(role_id, user_id) values (2,5);
-insert into App_Role_User(role_id, user_id) values (2,6);
-insert into App_Role_User(role_id, user_id) values (2,7);
-insert into App_Role_User(role_id, user_id) values (2,8);
-insert into App_Role_User(role_id, user_id) values (2,9);
-insert into App_Role_User(role_id, user_id) values (2,10);
-
+        
+create table battle (
+	battle_id int primary key auto_increment,
+	monster_equipment_id int not null,
+	constraint fk_monster_equipment_battle_id
+	foreign key (monster_equipment_id)
+	references monster_equipment(monster_equipment_id),
+	monster_equipment2_id int not null,
+	constraint fk_monster_equipment2_battle_id
+	foreign key (monster_equipment2_id)
+	references monster_equipment(monster_equipment_id),
+	weather_id int not null,
+	constraint fk_weather_battle_id
+	foreign key (weather_id)
+	references weather(weather_id),
+	location_id int not null,
+	constraint fk_location_battle_id
+	foreign key (location_id)
+	references location(location_id)
+    );
+    
