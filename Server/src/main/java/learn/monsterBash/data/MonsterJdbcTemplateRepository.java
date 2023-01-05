@@ -2,9 +2,13 @@ package learn.monsterBash.data;
 import learn.monsterBash.data.mappers.MonsterMapper;
 import learn.monsterBash.models.Monster;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 @Repository
@@ -62,5 +66,33 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
         monster.setMonsterId(keyHolder.getKey().intValue());
         return monster;
     }
+
+    @Override
+    public boolean update(Monster monster) {
+
+        final String sql = "update agent set "
+                + "monster_name = ?, "
+                + "monster_image = ?, "
+                + "power = ?, "
+                + "element = ?, "
+                + "equipment_id = ? "
+                + "where monster_id = ?;";
+
+        return jdbcTemplate.update(sql,
+                monster.getMonsterName(),
+                monster.getMonsterImage(),
+                monster.getPower(),
+                monster.getElement(),
+                monster.getEquipmentId(),
+                monster.getMonsterId()) > 0;
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteById(int agentId) {
+        jdbcTemplate.update("delete from agency_agent where agent_id = ?;", agentId);
+        return jdbcTemplate.update("delete from agent where agent_id = ?;", agentId) > 0;
+    }
+
 }
 
