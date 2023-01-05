@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/JavaBeanRepo.iml" filepath="$PROJECT_DIR$/.idea/JavaBeanRepo.iml" />
       <module fileurl="file://$PROJECT_DIR$/Server/Server.iml" filepath="$PROJECT_DIR$/Server/Server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/JavaBeanRepo/Server/Server (1).iml" filepath="$PROJECT_DIR$/JavaBeanRepo/Server/Server (1).iml" />
     </modules>
   </component>
 </project>

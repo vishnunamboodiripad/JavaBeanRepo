@@ -13,4 +13,8 @@ public interface MonsterRepository {
     @Transactional
     Monster findById(int monsterId);
 
+    boolean update(Monster monster);
+
+    @Transactional
+    boolean deleteById(int monsterId);
 }

@@ -1,5 +1,6 @@
 package learn.monsterBash.data;
 
+import learn.monsterBash.data.mappers.AppUserMapper;
 import learn.monsterBash.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
