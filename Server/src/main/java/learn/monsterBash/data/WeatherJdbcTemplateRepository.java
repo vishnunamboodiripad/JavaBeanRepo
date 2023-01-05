@@ -23,8 +23,8 @@ public class WeatherJdbcTemplateRepository implements WeatherRepo {
     }
 
     public List<Weather> findAll() {
-        final String sql = "select weather_id, weather_name, weather_image, affinity_id" +
-                "from weather" +
+        final String sql = "select weather_id, weather_name, weather_image, affinity_id\n" +
+                "from weather\n" +
                 "order by weather_id;";
 
         return jdbcTemplate.query(sql, new WeatherMapper());
@@ -32,8 +32,8 @@ public class WeatherJdbcTemplateRepository implements WeatherRepo {
 
     @Transactional
     public Weather findById(int weatherId) {
-        final String sql = "select weather_id, weather_name, weather_image, affinity_id" +
-                "from weather" +
+        final String sql = "select weather_id, weather_name, weather_image, affinity_id\n" +
+                "from weather\n" +
                 "where weather_id = ?;";
 
         Weather weather = jdbcTemplate.query(sql, new WeatherMapper(), weatherId).stream()
