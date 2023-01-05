@@ -1,4 +1,4 @@
-package learn.monsterBash.data;
+package learn.monsterBash.data.mappers;
 
 import learn.monsterBash.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;

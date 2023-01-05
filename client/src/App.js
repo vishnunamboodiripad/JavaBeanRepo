@@ -24,6 +24,7 @@ function App() {
 
   const [loggedInUserData, setLoggedInUserData] = useState(currentUserData);
 
+  const [monster,SetMonster] = useState({monsterId: 0, monsterName: "", monsterImage: "" });
 
   return (
     <div className="App">
