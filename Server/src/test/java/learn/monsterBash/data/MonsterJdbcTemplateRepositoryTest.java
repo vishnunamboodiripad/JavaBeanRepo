@@ -30,10 +30,6 @@ class MonsterJdbcTemplateRepositoryTest {
     void shouldFindAll() {
         List<Monster> Monsters = repository.findAll();
         assertNotNull(Monsters);
-
-        // can't predict order
-        // if delete is first, we're down to 7
-        // if add is first, we may go as high as 10
         assertTrue(Monsters.size() >= 7 && Monsters.size() <= 10);
     }
 
