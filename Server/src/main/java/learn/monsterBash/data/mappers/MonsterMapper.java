@@ -18,7 +18,7 @@ public class MonsterMapper implements RowMapper<Monster> {
         Monster.setMonsterId(resultSet.getInt("monster_id"));
         Monster.setMonsterName(resultSet.getString("monster_name"));
         Monster.setPower(resultSet.getInt("power"));
-        Monster.setElement(resultSet.getString(Element.valueOf(input));
+        //Monster.setElement(resultSet.getString(Element.valueOf(input));
         Monster.setEquipmentId(resultSet.getInt("equipment_id"));
         Monster.setMonsterImage(resultSet.getString("monster_image"));
         return Monster;
