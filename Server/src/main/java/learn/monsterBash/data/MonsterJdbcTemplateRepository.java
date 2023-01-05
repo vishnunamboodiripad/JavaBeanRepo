@@ -66,5 +66,33 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
         monster.setMonsterId(keyHolder.getKey().intValue());
         return monster;
     }
+
+    @Override
+    public boolean update(Monster monster) {
+
+        final String sql = "update agent set "
+                + "monster_name = ?, "
+                + "monster_image = ?, "
+                + "power = ?, "
+                + "element = ?, "
+                + "equipment_id = ? "
+                + "where monster_id = ?;";
+
+        return jdbcTemplate.update(sql,
+                monster.getMonsterName(),
+                monster.getMonsterImage(),
+                monster.getPower(),
+                monster.getElement(),
+                monster.getEquipmentId(),
+                monster.getMonsterId()) > 0;
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteById(int monsterId) {
+        jdbcTemplate.update("delete from monster where monster_id = ?;", monsterId);
+        return jdbcTemplate.update("delete from monster where monster_id = ?;", monsterId) > 0;
+    }
+
 }
 
