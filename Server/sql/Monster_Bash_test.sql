@@ -128,7 +128,7 @@ delete from affinity;
 alter table affinity auto_increment = 1;
 delete from weather;
 alter table weather auto_increment = 1;
-delete from equpiment;
+delete from equipment;
 alter table equipment auto_increment = 1;
 delete from monster_equipment;
 alter table monster_equipment auto_increment = 1;
