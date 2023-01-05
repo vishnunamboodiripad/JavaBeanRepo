@@ -1,3 +1,5 @@
+*.idea
+
 # Logs
 logs
 *.log
@@ -129,7 +131,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-target/
+./target
+.DS_Store
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
