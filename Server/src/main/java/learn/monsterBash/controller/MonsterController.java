@@ -20,7 +20,7 @@ public class MonsterController {
     public MonsterController(MonsterService service) {
         this.service = service;
     }
-
+    /*
     @GetMapping("/monsters/viewAll")
     public List<Monster> findAll(){
         return service.findAll();
@@ -33,7 +33,7 @@ public class MonsterController {
 
     @PostMapping("/add/monster")
     public ResponseEntity<?> add(@RequestBody(required = false) Monster monster) {
-        Result<Monster> result = service.create(Monster);
+        Result<Monster> result = service.create(monster);
         if (result.getType() == ResultType.INVALID) {
             ValidationErrorResult validationErrorResult = new ValidationErrorResult();
             result.getMessages().forEach(validationErrorResult::addMessage);
@@ -66,5 +66,5 @@ public class MonsterController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
+*/
 }
