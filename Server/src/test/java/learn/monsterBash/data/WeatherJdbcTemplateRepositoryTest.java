@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @SpringBootTest
 class WeatherJdbcTemplateRepositoryTest {
     final static int NEXT_ID = 7;
