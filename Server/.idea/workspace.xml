@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ab25989-59b1-4958-a429-b79afdb79bce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/MonsterRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/MonsterJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/monsterBash/data/MonsterJdbcTemplateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/learn/monsterBash/data/MonsterJdbcTemplateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/monsterBash/data/MonsterJdbcTemplateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/LoginPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -41,12 +42,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/vishnunamboodiripad/Desktop/Capstone repo-Monster Bash/JavaBeanRepo/Server"
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": ""
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="data" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="learn.monsterBash.data" />
     </key>
   </component>
   <component name="RunManager">
@@ -81,6 +89,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="--es composable " />
       <option name="MODE" value="specific_activity" />
@@ -103,6 +112,17 @@
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="true" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <compose-preview-run-configuration composable-fqn="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
