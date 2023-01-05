@@ -89,9 +89,9 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
 
     @Override
     @Transactional
-    public boolean deleteById(int agentId) {
-        jdbcTemplate.update("delete from agency_agent where agent_id = ?;", agentId);
-        return jdbcTemplate.update("delete from agent where agent_id = ?;", agentId) > 0;
+    public boolean deleteById(int monsterId) {
+        jdbcTemplate.update("delete from monster where monster_id = ?;", monsterId);
+        return jdbcTemplate.update("delete from monster where monster_id = ?;", monsterId) > 0;
     }
 
 }

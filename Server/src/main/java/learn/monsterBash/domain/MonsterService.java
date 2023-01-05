@@ -4,7 +4,9 @@ import learn.monsterBash.data.MonsterRepository;
 import learn.monsterBash.models.Monster;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,7 +49,7 @@ public class MonsterService {
         }
 
         if (monster.getMonsterId() <= 0) {
-            result.addMessage("monsterId must be set for `update` operation", ResultType.INVALID);
+            result.addMessage("monsterId must be set for update", ResultType.INVALID);
             return result;
         }
 
@@ -66,25 +68,27 @@ public class MonsterService {
     private Result<Monster> validate(Monster monster) {
         Result<Monster> result = new Result<>();
         if (monster == null) {
-            result.addMessage("monster cannot be null", ResultType.INVALID);
+            result.addMessage("Monster cannot be null.", ResultType.INVALID);
             return result;
         }
 
-        if (Validations.isNullOrBlank(monster.getFirstName())) {
-            result.addMessage("firstName is required", ResultType.INVALID);
+        if (monster.getMonsterName() == null || monster.getMonsterName().isBlank()) {
+            result.addMessage("A name is required", ResultType.INVALID);
         }
 
-        if (Validations.isNullOrBlank(monster.getLastName())) {
-            result.addMessage("lastName is required", ResultType.INVALID);
+        if (monster.getPower() == 0) {
+            result.addMessage("All monsters are powerful. A power must be added.", ResultType.INVALID);
+        }
+        List<Monster> monsters = repository.findAll();
+        if (monsters==null) {
+            monsters = new ArrayList<Monster>();
+        }
+        for (Monster m: monsters) {
+            if(monster.getMonsterId() == m.getMonsterId() && monster.getMonsterName() == m.getMonsterName()) {
+                result.addMessage("You have summoned a monster who is familiar to this arena.", ResultType.INVALID);
+            }
         }
 
-        if (monster.getDob() != null && monster.getDob().isAfter(LocalDate.now().minusYears(12))) {
-            result.addMessage("monsters younger than 12 are not allowed", ResultType.INVALID);
-        }
-
-        if (monster.getHeightInInches() < 36 || monster.getHeightInInches() > 96) {
-            result.addMessage("height must be between 36 and 96 inches", ResultType.INVALID);
-        }
 
         return result;
     }
