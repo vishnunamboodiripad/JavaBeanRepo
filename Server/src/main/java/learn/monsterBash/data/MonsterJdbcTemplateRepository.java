@@ -20,7 +20,7 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
 
     @Override
     public List<Monster> findAll() {
-        final String sql = "select Monster_id, first_name, middle_name, last_name, dob, height_in_inches "
+        final String sql = "select monster_id, monster_name, monster_image, power, element, equipment_id "
                 + "from Monster limit 1000;";
         return jdbcTemplate.query(sql, new MonsterMapper());
     }
@@ -29,23 +29,23 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
     @Transactional
     public Monster findById(int MonsterId) {
 
-        final String sql = "select Monster_id, first_name, middle_name, last_name, dob, height_in_inches "
+        final String sql = "select monster_id, monster_name, monster_image, power, element, equipment_id "
                 + "from Monster "
-                + "where Monster_id = ?;";
+                + "where monster_id = ?;";
 
         Monster monster = jdbcTemplate.query(sql, new MonsterMapper(), MonsterId).stream()
                 .findFirst().orElse(null);
 
         return monster;
     }
-    
+
      @Override
     public Monster add(Monster monster) {
 
 
         final String sql = """
-                insert into monster (monster_name, monster_image, equipment_id, power, element_id) "
-                 values (?,?,?,?,?);
+                insert into monster (monster_name, monster_image, power, element)
+                 values (?,?,?,?);
                  """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -53,9 +53,9 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, monster.getMonsterName());
             ps.setString(2, monster.getMonsterImage());
-            ps.setInt(3, monster.getEquipmentId());
-            ps.setInt(4, monster.getPower());
-            ps.setString(5, monster.getElement());
+            ps.setInt(3, monster.getPower());
+            ps.setString(4, monster.getElement());
+            ps.setInt(5, monster.getEquipmentId());
             return ps;
         }, keyHolder);
 
@@ -70,12 +70,11 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
     @Override
     public boolean update(Monster monster) {
 
-        final String sql = "update agent set "
+        final String sql = "update monster set "
                 + "monster_name = ?, "
                 + "monster_image = ?, "
                 + "power = ?, "
-                + "element = ?, "
-                + "equipment_id = ? "
+                + "element = ? "
                 + "where monster_id = ?;";
 
         return jdbcTemplate.update(sql,
@@ -83,14 +82,12 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
                 monster.getMonsterImage(),
                 monster.getPower(),
                 monster.getElement(),
-                monster.getEquipmentId(),
                 monster.getMonsterId()) > 0;
     }
 
     @Override
     @Transactional
     public boolean deleteById(int monsterId) {
-        jdbcTemplate.update("delete from monster where monster_id = ?;", monsterId);
         return jdbcTemplate.update("delete from monster where monster_id = ?;", monsterId) > 0;
     }
 

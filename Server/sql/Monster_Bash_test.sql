@@ -66,8 +66,8 @@ create table monster (
     monster_name varchar(25) unique not null,
     monster_image varchar(1636) not null,
     power int not null ,
-    element varchar(10) not null,
-    equipment_id int null,
+    element varchar(10),
+    equipment_id int,
     constraint fk_equipment_monsters_id
         foreign key (equipment_id)
         references equipment(equipment_id)
@@ -134,6 +134,7 @@ delete from equipment;
 alter table equipment auto_increment = 1;
 delete from affinity;
 alter table affinity auto_increment = 1;
+
 
 insert into monster (monster_name, power, element, monster_image) values ('Lén', 47, 'fire', '/monsters_images/monster1');
 insert into monster (monster_name, power, element, monster_image) values ('Naëlle', 5, 'water', '/monsters_images/monster2');
