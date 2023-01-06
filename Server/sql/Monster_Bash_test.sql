@@ -66,8 +66,8 @@ create table monster (
     monster_name varchar(25) unique not null,
     monster_image varchar(1636) not null,
     power int not null ,
-    element varchar(10) not null,
-    equipment_id int null,
+    element varchar(10),
+    equipment_id int,
     constraint fk_equipment_monsters_id
         foreign key (equipment_id)
         references equipment(equipment_id)
@@ -126,15 +126,14 @@ delete from element;
 alter table element auto_increment = 1;
 delete from weather;
 alter table weather auto_increment = 1;
-
-delete from affinity;
-alter table affinity auto_increment = 1;
 delete from monster_equipment;
 alter table monster_equipment auto_increment = 1;
 delete from monster;
 alter table monster auto_increment = 1;
 delete from equipment;
 alter table equipment auto_increment = 1;
+delete from affinity;
+alter table affinity auto_increment = 1;
 
 
 
