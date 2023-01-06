@@ -126,17 +126,14 @@ delete from element;
 alter table element auto_increment = 1;
 delete from weather;
 alter table weather auto_increment = 1;
-
-delete from affinity;
-alter table affinity auto_increment = 1;
 delete from monster_equipment;
 alter table monster_equipment auto_increment = 1;
 delete from monster;
 alter table monster auto_increment = 1;
 delete from equipment;
 alter table equipment auto_increment = 1;
-
-
+delete from affinity;
+alter table affinity auto_increment = 1;
 
 insert into monster (monster_name, power, element, monster_image) values ('Lén', 47, 'fire', '/monsters_images/monster1');
 insert into monster (monster_name, power, element, monster_image) values ('Naëlle', 5, 'water', '/monsters_images/monster2');
@@ -195,4 +192,3 @@ insert into location (location_name, location_id, element_id, location_image) va
 
 end //
 delimiter ;
-    
