@@ -47,7 +47,7 @@ class EquipmentJdbcTemplateRepositoryTest {
         Equipment equipment = makeEquipment();
         Equipment actual = repository.add(equipment);
         assertNotNull(actual);
-        assertEquals(11, actual.getEquipmentId());
+        assertEquals(7, actual.getEquipmentId());
     }
 
 
@@ -69,7 +69,7 @@ class EquipmentJdbcTemplateRepositoryTest {
 
     private Equipment makeEquipment() {
         Equipment equipment = new Equipment();
-        equipment.setEquipmentImage("Test");
+        equipment.setEquipmentName("Test");
         equipment.setEquipmentId(1);
         equipment.setEquipmentImage("google.com");
         equipment.setStrength(10);
