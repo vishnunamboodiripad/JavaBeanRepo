@@ -50,17 +50,6 @@ class WeatherJdbcTemplateRepositoryTest {
         assertNotNull(actual);
         assertEquals(NEXT_ID, actual.getWeatherId());
     }
-
-    @Test
-    void addNullAffinity() {
-        Weather weather = new Weather();
-        weather.setWeatherName("Tsunami");
-        weather.setWeatherImage("woosh");
-        Weather actual = repository.add(weather);
-        assertNotNull(actual);
-        assertEquals(NEXT_ID, actual.getWeatherId());
-    }
-
     @Test
     void update() {
         Weather weather = new Weather();

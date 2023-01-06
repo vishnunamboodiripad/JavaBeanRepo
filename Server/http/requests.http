@@ -26,3 +26,35 @@ Content-Type: application/json
     "username":    ,
     "password": 
 }
+
+###
+GET http://localhost:8080/api/weather/viewAll
+
+###
+GET http://localhost:8080/api/weather/2
+
+###
+POST http://localhost:8080/api/add/weather 
+Content-Type: application/json
+
+{
+    "weatherName": "Wind",
+    "weatherImage": "blow",
+    "affinityId": "4"
+}
+
+###
+PUT http://localhost:8080/api/edit/weather/2
+Content-Type: application/json
+
+{
+    "weatherId": "2",
+    "weatherName": "sand",
+    "weatherImage": "sandy",
+    "affinityId": "4"
+}
+
+###
+DELETE http://localhost:8080/api/delete/weather/7
+
+
