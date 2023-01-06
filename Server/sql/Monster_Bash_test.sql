@@ -126,6 +126,7 @@ delete from element;
 alter table element auto_increment = 1;
 delete from weather;
 alter table weather auto_increment = 1;
+
 delete from affinity;
 alter table affinity auto_increment = 1;
 delete from monster_equipment;
