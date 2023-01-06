@@ -136,7 +136,6 @@ delete from affinity;
 alter table affinity auto_increment = 1;
 
 
-
 insert into monster (monster_name, power, element, monster_image) values ('Lén', 47, 'fire', '/monsters_images/monster1');
 insert into monster (monster_name, power, element, monster_image) values ('Naëlle', 5, 'water', '/monsters_images/monster2');
 insert into monster (monster_name, power, element, monster_image) values ('Loïca', 58, 'air', '/monsters_images/monster3');
@@ -194,4 +193,3 @@ insert into location (location_name, location_id, element_id, location_image) va
 
 end //
 delimiter ;
-    

@@ -21,12 +21,12 @@ public class MonsterController {
         this.service = service;
     }
     /*
-    @GetMapping("/monsters/viewAll")
+    @GetMapping("/monster/viewAll")
     public List<Monster> findAll(){
         return service.findAll();
     }
 
-    @GetMapping("/monsters/{monsterId}")
+    @GetMapping("/monster/{monsterId}")
     public Monster findMonsterById(@PathVariable int monsterId) {
         return service.findById(monsterId);
     }
