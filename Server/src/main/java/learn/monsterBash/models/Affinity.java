@@ -1,10 +1,22 @@
 package learn.monsterBash.models;
 
-public enum Affinity {
-    ELECTRIC,
-    LIQUID,
-    STONE,
-    FLARE,
-    SNOW,
-    BREEZE
+public class Affinity {
+    int affinityId;
+    String affinityName;
+
+    public int getAffinityId() {
+        return affinityId;
+    }
+
+    public void setAffinityId(int affinityId) {
+        this.affinityId = affinityId;
+    }
+
+    public String getAffinityName() {
+        return affinityName;
+    }
+
+    public void setAffinityName(String affinityName) {
+        this.affinityName = affinityName;
+    }
 }
