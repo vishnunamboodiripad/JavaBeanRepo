@@ -54,24 +54,16 @@ create table equipment (
         foreign key (affinity_id)
         references affinity(affinity_id)
         );
-        
-create table monster_equipment (
-    monster_equipment_id int primary key,
-    monster_id int not null,
-    equipment_id int not null
-    );
-    
 create table monster (
     monster_id int primary key auto_increment,
     monster_name varchar(25) unique not null,
     monster_image varchar(1636) not null,
     power int not null ,
-    element varchar(10),
-    equipment_id int,
-    constraint fk_equipment_monsters_id
-        foreign key (equipment_id)
-        references equipment(equipment_id)
-        );
+    element_id int not null,
+        constraint fk_element_monster_id
+        foreign key (element_id)
+        references element(element_id)
+);
         
 create table App_User (
 	user_id int auto_increment primary key,
@@ -98,22 +90,35 @@ create table App_Role_User (
         
 create table battle (
 	battle_id int primary key auto_increment,
-	monster_equipment_id int not null,
-	constraint fk_monster_equipment_battle_id
-	foreign key (monster_equipment_id)
-	references monster_equipment(monster_equipment_id),
-	monster_equipment2_id int not null,
-	constraint fk_monster_equipment2_battle_id
-	foreign key (monster_equipment2_id)
-	references monster_equipment(monster_equipment_id),
+	monster_id_1 int not null,
+		constraint fk_monster_battle_id_1
+		foreign key (monster_id_1)
+		references monster(monster_id),
+	monster_id_2 int not null,
+		constraint fk_monster_battle_id_2
+		foreign key (monster_id_2)
+		references monster(monster_id),
+	equipment_id_1 int not null,
+		constraint fk_equipment_battle_id_1
+		foreign key (equipment_id_1)
+		references equipment(equipment_id),
+	equipment_id_2 int not null,
+		constraint fk_equipment_battle_id_2
+		foreign key (equipment_id_2)
+		references equipment(equipment_id),
 	weather_id int not null,
-	constraint fk_weather_battle_id
-	foreign key (weather_id)
-	references weather(weather_id),
+		constraint fk_weather_battle_id
+		foreign key (weather_id)
+		references weather(weather_id),
 	location_id int not null,
-	constraint fk_location_battle_id
-	foreign key (location_id)
-	references location(location_id)
+		constraint fk_location_battle_id
+		foreign key (location_id)
+		references location(location_id),
+	app_user_id int not null,
+		constraint fk_app_user_battle_id
+		foreign key (app_user_id)
+        references App_User(user_id),
+	result varchar(24) null
     );
     
 delimiter // 
@@ -126,8 +131,6 @@ delete from element;
 alter table element auto_increment = 1;
 delete from weather;
 alter table weather auto_increment = 1;
-delete from monster_equipment;
-alter table monster_equipment auto_increment = 1;
 delete from monster;
 alter table monster auto_increment = 1;
 delete from equipment;
@@ -136,24 +139,10 @@ delete from affinity;
 alter table affinity auto_increment = 1;
 
 
-
-insert into monster (monster_name, power, element, monster_image) values ('Lén', 47, 'fire', '/monsters_images/monster1');
-insert into monster (monster_name, power, element, monster_image) values ('Naëlle', 5, 'water', '/monsters_images/monster2');
-insert into monster (monster_name, power, element, monster_image) values ('Loïca', 58, 'air', '/monsters_images/monster3');
-insert into monster (monster_name, power, element, monster_image) values ('Pål', 61, 'earth', '/monsters_images/monster4');
-insert into monster (monster_name, power, element, monster_image) values ('Estève', 19, 'fire', '/monsters_images/monster5');
-insert into monster (monster_name, power, element, monster_image) values ('Maéna', 41, 'water', '/monsters_images/monster6');
-insert into monster (monster_name, power, element, monster_image) values ('Mélina', 12, 'air', '/monsters_images/monster7');
-insert into monster (monster_name, power, element, monster_image) values ('Judicaël', 82, 'earth', '/monsters_images/monster8');
-insert into monster (monster_name, power, element, monster_image) values ('Dorothée', 75, 'fire', '/monsters_images/monster9');
-insert into monster (monster_name, power, element, monster_image) values ('Vishnu', 29, 'water', '/monsters_images/monster10');
-
-
 insert into element (element_name, element_id) values ('Fire', 1);
 insert into element (element_name, element_id) values ('Water', 2);
 insert into element (element_name, element_id) values ('Earth', 3);
 insert into element (element_name, element_id) values ('Wind', 4);
-
 
 insert into affinity (affinity_name, affinity_id) values ('Electric', 1);
 insert into affinity (affinity_name, affinity_id) values ('Liquid', 2);
@@ -162,20 +151,23 @@ insert into affinity (affinity_name, affinity_id) values ('Flame', 4);
 insert into affinity (affinity_name, affinity_id) values ('Snow', 5);
 insert into affinity (affinity_name, affinity_id) values ('Breeze', 6);
 
+insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, '/monsters_images/monster1');
+insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 5, 2, '/monsters_images/monster2');
+insert into monster (monster_name, power, element_id, monster_image) values ('Loïca', 58, 3, '/monsters_images/monster3');
+insert into monster (monster_name, power, element_id, monster_image) values ('Pål', 61, 4, '/monsters_images/monster4');
+insert into monster (monster_name, power, element_id, monster_image) values ('Estève', 19, 1, '/monsters_images/monster5');
+insert into monster (monster_name, power, element_id, monster_image) values ('Maéna', 41, 2, '/monsters_images/monster6');
+insert into monster (monster_name, power, element_id, monster_image) values ('Mélina', 12, 3, '/monsters_images/monster7');
+insert into monster (monster_name, power, element_id, monster_image) values ('Judicaël', 82, 4, '/monsters_images/monster8');
+insert into monster (monster_name, power, element_id, monster_image) values ('Dorothée', 75, 1, '/monsters_images/monster9');
+insert into monster (monster_name, power, element_id, monster_image) values ('Vishnu', 29, 2, '/monsters_images/monster10');
+
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Sword of Minor Static Electricity', 'desdev.cn', 65, 1, 1);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Staff of Soggyness', 'tripod.com', 60, 2, 2);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Mace of Too Many Rocks', 'yellowpages.com', 68, 3, 3);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spear of Second Degree Burns','google.com', 70, 4, 4);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Bow and Arrow of Dangerously Icy Road Conditions', 'networksolutions.com', 58, 5, 5);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spikey Shield of Wind Protection & Cowardice', 't.co', 17, 6, 6);
-
-insert into monster_equipment (monster_equipment_id, monster_id, equipment_id) values(1,1,1);
-insert into monster_equipment (monster_equipment_id, monster_id, equipment_id) values(2,2,2);
-insert into monster_equipment (monster_equipment_id, monster_id, equipment_id) values(3,3,3);
-insert into monster_equipment (monster_equipment_id, monster_id, equipment_id) values(4,4,4);
-insert into monster_equipment (monster_equipment_id, monster_id, equipment_id) values(5,5,5);
-
-
 
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Blizzard', 1, 5, 'intel.com');
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sandstorm', 2, 3, 'java.com');
@@ -191,7 +183,10 @@ insert into location (location_name, location_id, element_id, location_image) va
 insert into location (location_name, location_id, element_id, location_image) values ('Seattle', 4, 4, 'ameblo.jp');
 insert into location (location_name, location_id, element_id, location_image) values ('Houston', 5, 1, 'sfgate.com');
 insert into location (location_name, location_id, element_id, location_image) values ('Miami', 6, 2, 'delicious.com');
-
+/*
+insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('1', '2', '1', '2', '1', '1', '1', 'WIN');
+insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('3', '4', '3', '4', '2', '2', '1', 'WIN');
+insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('5', '6', '5', '6', '3', '3', '1', 'LOSS');
+*/
 end //
 delimiter ;
-    

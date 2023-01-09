@@ -10,7 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest
 class WeatherServiceTest {
 
     @Autowired
@@ -28,6 +28,13 @@ class WeatherServiceTest {
         when(repo.findById(1)).thenReturn(expected);
         Weather actual = service.findByID(1);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldNotFindById() {
+        when(repo.findById(10)).thenReturn(null);
+        Weather actual = service.findByID(10);
+        assertEquals(null, actual);
     }
 
     @Test
@@ -67,6 +74,8 @@ class WeatherServiceTest {
         Weather test = new Weather();
         test.setWeatherName("Test weather");
         test.setWeatherImage("Test image");
+        test.setAffinityId(4);
+        test.setWeatherId(1);
 
         when(repo.update(test)).thenReturn(true);
 
@@ -78,12 +87,17 @@ class WeatherServiceTest {
     void shouldNotUpdate(){
         Weather duplicate = new Weather();
         duplicate.setWeatherName("Blizzard");
-        duplicate.setWeatherName("intel.com");
+        duplicate.setWeatherImage("intel.com");
+        duplicate.setAffinityId(4);
+        duplicate.setWeatherId(1);
         Result<Weather> result = service.update(duplicate);
         assertEquals(ResultType.INVALID, result.getType());
 
         Weather blank = new Weather();
         blank.setWeatherName("");
+        blank.setWeatherImage("woosh");
+        blank.setAffinityId(2);
+        blank.setWeatherId(1);
         Result<Weather> result2 = service.update(blank);
         assertEquals(ResultType.INVALID, result2.getType());
     }
