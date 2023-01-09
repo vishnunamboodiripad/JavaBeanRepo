@@ -33,9 +33,8 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/api/monsters/viewAll").authenticated()
                 .antMatchers(HttpMethod.POST, "/api/add**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/edit**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/api/edit**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/delete**").hasRole("ADMIN")
                 .and()
-              //  .addFilter(new JwtRequestFilter(authenticationManager(config), converter))
                 .addFilter(new JwtRequestFilter(this.authenticationManager, converter))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

@@ -55,6 +55,41 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/api/delete/weather/7
+DELETE http://localhost:8080/api/delete/weather/3
+
+###
+
+GET http://localhost:8080/api/equipment/viewAll
+
+###
+GET http://localhost:8080/api/equipment/4
+
+###
+POST http://localhost:8080/api/add/equipment
+Content-Type: application/json
+
+{
+  "equipmentName": "Murder ball",
+  "equipmentImage": "google2.com",
+  "strength": "85",
+  "affinityId": "5"
+
+}
+
+###
+PUT http://localhost:8080/api/edit/equipment/7
+Content-Type: application/json
+
+{
+  "equipmentId": "7",
+  "equipmentName": "Murder sphere",
+  "equipmentImage": "google3.com",
+  "strength": "70",
+  "affinityId": "2"
+
+}
+
+###
+DELETE http://localhost:8080/api/delete/equipment/7
 
 
