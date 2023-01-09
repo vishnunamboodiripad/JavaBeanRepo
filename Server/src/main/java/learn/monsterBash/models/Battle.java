@@ -4,21 +4,19 @@ public class Battle {
 
     private int battleId;
 
-    private Monster playerMonster;
+    private int playerMonsterId; //Monster playerMonster;
 
-    private Monster computerMonster;
+    private int computerMonsterId; //Monster computerMonster
 
-    private Equipment playerEquipment;
+    private int playerEquipmentId; // Equipment playerEquipment
 
-    private Equipment computerEquipment;
+    private int computerEquipmentId; // Equipment computerEquipment
 
-    private Weather weather;
+    private int weatherId; //Weather weather
 
-    private Location location;
+    private int locationId; //Location location
 
-    private String result;
-
-    private int AppUser;
+    private int appUserId;
 
     private Boolean playerWin;
 
@@ -30,68 +28,13 @@ public class Battle {
         this.battleId = battleId;
     }
 
-    public Monster getPlayerMonster() {
-        return playerMonster;
-    }
 
-    public void setPlayerMonster(Monster playerMonster) {
-        this.playerMonster = playerMonster;
-    }
 
-    public Monster getComputerMonster() {
-        return computerMonster;
-    }
-
-    public void setComputerMonster(Monster computerMonster) {
-        this.computerMonster = computerMonster;
-    }
-
-    public Equipment getPlayerEquipment() {
-        return playerEquipment;
-    }
-
-    public void setPlayerEquipment(Equipment playerEquipment) {
-        this.playerEquipment = playerEquipment;
-    }
-
-    public Equipment getComputerEquipment() {
-        return computerEquipment;
-    }
-
-    public void setComputerEquipment(Equipment computerEquipment) {
-        this.computerEquipment = computerEquipment;
-    }
-
-    public Weather getWeather() {
-        return weather;
-    }
-
-    public void setWeather(Weather weather) {
-        this.weather = weather;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public int getAppUser() {
+    public int getAppUserId() {
         return AppUser;
     }
 
-    public void setAppUser(int appUser) {
-        AppUser = appUser;
+    public void setAppUserId(int appUser) {appUserId = appUserId;
     }
 
     public Boolean getPlayerWin() {
@@ -104,7 +47,51 @@ public class Battle {
 
     public Battle() {
     }
+    public int getPlayerMonsterId() {
+        return playerMonsterId;
+    }
 
+    public void setPlayerMonsterId(int playerMonster) {
+        this.playerMonsterId = playerMonsterId;
+    }
 
+    public int getComputerMonsterId() {
+        return computerMonsterId;
+    }
 
+    public void setComputerMonsterId(int computerMonster) {
+        this.computerMonsterId = computerMonster;
+    }
+
+    public int getPlayerEquipmentId() {
+        return playerEquipmentId;
+    }
+
+    public void setPlayerEquipmentId(int playerEquipmentId) {
+        this.playerEquipmentId = playerEquipmentId;
+    }
+
+    public int getComputerEquipmentId() {
+        return computerEquipmentId;
+    }
+
+    public void setComputerEquipmentId(int computerEquipmentId) {
+        this.computerEquipmentId = computerEquipmentId;
+    }
+
+    public int getWeatherId() {
+        return weatherId;
+    }
+
+    public void setWeatherId(int weather) {
+        this.weatherId = weatherId;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int location) {
+        this.locationId = locationId;
+    }
 }

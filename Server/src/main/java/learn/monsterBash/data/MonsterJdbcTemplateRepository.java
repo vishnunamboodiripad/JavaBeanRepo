@@ -20,8 +20,8 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
 
     @Override
     public List<Monster> findAll() {
-        final String sql = "select monster_id, monster_name, monster_image, power, element, equipment_id "
-                + "from Monster limit 1000;";
+        final String sql = "select monster_id, monster_name, monster_image, power, element_id "
+                + "from monster limit 1000;";
         return jdbcTemplate.query(sql, new MonsterMapper());
     }
 
@@ -29,8 +29,8 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
     @Transactional
     public Monster findById(int MonsterId) {
 
-        final String sql = "select monster_id, monster_name, monster_image, power, element, equipment_id "
-                + "from Monster "
+        final String sql = "select monster_id, monster_name, monster_image, power, element_id "
+                + "from monster "
                 + "where monster_id = ?;";
 
         Monster monster = jdbcTemplate.query(sql, new MonsterMapper(), MonsterId).stream()
@@ -44,7 +44,7 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
 
 
         final String sql = """
-                insert into monster (monster_name, monster_image, power, element)
+                insert into monster (monster_name, monster_image, power, element_id)
                  values (?,?,?,?);
                  """;
 
@@ -54,8 +54,7 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
             ps.setString(1, monster.getMonsterName());
             ps.setString(2, monster.getMonsterImage());
             ps.setInt(3, monster.getPower());
-            ps.setString(4, monster.getElement());
-            ps.setInt(5, monster.getEquipmentId());
+            ps.setInt(4, monster.getElementId());
             return ps;
         }, keyHolder);
 
@@ -74,14 +73,14 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
                 + "monster_name = ?, "
                 + "monster_image = ?, "
                 + "power = ?, "
-                + "element = ? "
+                + "element_id = ? "
                 + "where monster_id = ?;";
 
         return jdbcTemplate.update(sql,
                 monster.getMonsterName(),
                 monster.getMonsterImage(),
                 monster.getPower(),
-                monster.getElement(),
+                monster.getElementId(),
                 monster.getMonsterId()) > 0;
     }
 

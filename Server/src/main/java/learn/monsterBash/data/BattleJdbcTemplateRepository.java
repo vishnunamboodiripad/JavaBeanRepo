@@ -1,24 +1,23 @@
 package learn.monsterBash.data;
 
 import learn.monsterBash.data.mappers.BattleMapper;
-import learn.monsterBash.data.mappers.WeatherMapper;
 import learn.monsterBash.models.*;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
-import java.util.Random;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.List;
+
 
 public class BattleJdbcTemplateRepository implements BattleRepo {
-    private Location location;
-    private final Random random = new Random();
-    private Monster playerMonster;
-    private Monster computerMonster;
-    private Equipment playerEquipment;
-    private Equipment computerEquipment;
-    private Weather weather;
-
     private final WeatherRepo weatherRepo;
     private final LocationRepo locationRepo;
     private final MonsterRepository monsterRepo;
     private final EquipmentRepo equipmentRepo;
+
+    private JdbcTemplate jdbcTemplate;
 
 
     public BattleJdbcTemplateRepository(WeatherRepo weatherRepo, LocationRepo locationRepo, MonsterRepository monsterRepo, EquipmentRepo equipmentRepo) {
@@ -62,7 +61,7 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
 
     private int setElementEffects(Location location, Monster monster) {
         int monsterPower = 0;
-        if (location.getElementName().equals(monster.getElementName())) {
+        if (location.getElementId() == monster.getElementId()) {
             monsterPower = (monster.getPower() + 15);
         } else monsterPower = monster.getPower();
 
@@ -71,7 +70,7 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
 
     private int setAffinityEffects(Weather weather, Equipment equipment) {
         int equipmentPower = 0;
-        if (equipment.getAffinityName().equals(weather.getAffinityName())) {
+        if (equipment.getAffinityId() == weather.getAffinityId()) {
             equipmentPower = (equipment.getStrength() + 15);
         } else equipmentPower = equipment.getStrength();
 
@@ -88,14 +87,6 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         Monster computerMonster = getComputerMonster();
         Equipment computerEquipment = getComputerEquipment();
 
-        battle.setWeather(battleWeather);
-        battle.setLocation(battleLocation);
-        battle.setComputerMonster(computerMonster);
-        battle.setComputerEquipment(computerEquipment);
-        battle.setPlayerMonster(playerMonster);
-        battle.setPlayerEquipment(playerEquipment);
-        battle.setAppUserId(appUserId);
-
         computerMonster.setPower(calcTotalMonsterPower(battleLocation, computerMonster, computerEquipment, battleWeather));
         playerMonster.setPower(calcTotalMonsterPower(battleLocation, playerMonster, playerEquipment, battleWeather));
 
@@ -103,10 +94,20 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
             battle.setPlayerWin(true);
         else battle.setPlayerWin(false);
 
+        battle.setWeatherId(battleWeather.getWeatherId());
+        battle.setLocationId(battleLocation.getLocationId());
+        battle.setComputerMonsterId(computerMonster.getMonsterId());
+        battle.setComputerEquipmentId(computerEquipment.getEquipmentId());
+        battle.setPlayerMonsterId(playerMonster.getMonsterId());
+        battle.setPlayerEquipmentId(playerEquipment.getEquipmentId());
+        battle.setAppUserId(appUserId);
+
+
+
         return battle;
     }
 
-    public Battle findbyId(int battleId){
+    public Battle findById(int battleId){
         final String sql = """
                 select battle_id, app_user_id, player_win
                 from battle
@@ -116,8 +117,46 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         Battle battle = jdbcTemplate.query(sql, new BattleMapper(), battleId).stream()
                 .findFirst().orElse(null);
 
-        return weather;
+        return battle;
+    }
 
+    public List<Battle> findBattlesByUser(int user_id) {
+        final String sql = """
+                select battle_id, app_user_id, player_win
+                from battle
+                where app_user_id = ?;
+                """;
+
+        List<Battle> battles = jdbcTemplate.query(sql, new BattleMapper(), user_id);
+        return battles;
+    }
+
+    public Battle add(Battle battle){
+        final String sql = """
+                insert into battle (player_monster_id, computer_monster_id, player_equipment_id, computer_equipment_id, weather_id, location_id, app_user_id, player_win)
+                values (?, ?, ?, ?, ?, ?, ?, ?);
+                """;
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, battle.getPlayerMonsterId());
+            ps.setInt(2, battle.getComputerMonsterId());
+            ps.setInt(3, battle.getPlayerEquipmentId());
+            ps.setInt(4, battle.getComputerEquipmentId());
+            ps.setInt(5, battle.getWeatherId());
+            ps.setInt(6, battle.getLocationId());
+            ps.setInt(7, battle.getAppUserId());
+            ps.setBoolean(8, battle.getPlayerWin());
+
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+
+        battle.setBattleId(keyHolder.getKey().intValue());
+        return battle;
     }
 
 }
