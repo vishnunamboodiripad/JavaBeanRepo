@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api")
 public class MonsterController {
 
@@ -20,7 +21,7 @@ public class MonsterController {
     public MonsterController(MonsterService service) {
         this.service = service;
     }
-    /*
+
     @GetMapping("/monster/viewAll")
     public List<Monster> findAll(){
         return service.findAll();
@@ -33,7 +34,7 @@ public class MonsterController {
 
     @PostMapping("/add/monster")
     public ResponseEntity<?> add(@RequestBody(required = false) Monster monster) {
-        Result<Monster> result = service.create(monster);
+        Result<Monster> result = service.add(monster);
         if (result.getType() == ResultType.INVALID) {
             ValidationErrorResult validationErrorResult = new ValidationErrorResult();
             result.getMessages().forEach(validationErrorResult::addMessage);
@@ -60,11 +61,11 @@ public class MonsterController {
 
     @DeleteMapping("/delete/monster/{monsterId}")
     public ResponseEntity<Void> delete(@PathVariable int monsterId) {
-        Result<Monster> result = service.delete(monsterId);
+        Result<Monster> result = service.deleteById(monsterId);
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-*/
+
 }

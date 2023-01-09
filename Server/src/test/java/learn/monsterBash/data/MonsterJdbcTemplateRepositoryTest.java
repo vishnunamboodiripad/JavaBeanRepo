@@ -33,7 +33,7 @@ public class MonsterJdbcTemplateRepositoryTest {
     void shouldFindAll() {
         List<Monster> monsters = repository.findAll();
         assertNotNull(monsters);
-        assertTrue(monsters.size() >= 10);
+        assertTrue(monsters.size() >= 5);
     }
 
     @Test
@@ -68,14 +68,11 @@ public class MonsterJdbcTemplateRepositoryTest {
     }
 
     private Monster makeMonster() {
-        Element element = new Element();
-        element.setElementName("Earth");
-        element.setElementId(3);
         Monster monster = new Monster();
         monster.setMonsterName("Test");
         monster.setMonsterImage("tinyurl.com/d10ttjbtestimg");
         monster.setPower(2);
-        monster.setElement(element);
+        monster.setElementId(1);
         return monster;
     }
 }

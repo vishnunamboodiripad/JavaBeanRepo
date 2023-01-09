@@ -6,19 +6,19 @@ public class Equipment {
     public String equipmentName;
     public String equipmentImage;
     public int strength;
-    public Affinity affinity;
+    public int affinityId;
 
     public Equipment() {
     }
 
 
 
-    public Equipment(int equipmentId, String equipmentName, String equipmentImage, int strength, Affinity affinity) {
+    public Equipment(int equipmentId, String equipmentName, String equipmentImage, int strength, int affinityId) {
         this.equipmentId = equipmentId;
         this.equipmentName = equipmentName;
         this.equipmentImage = equipmentImage;
         this.strength = strength;
-        this.affinity = affinity;
+        this.affinityId = affinityId;
     }
 
     public int getEquipmentId() {
@@ -53,26 +53,8 @@ public class Equipment {
         this.strength = strength;
     }
 
-    public Affinity getAffinity() {
-        return affinity;
-    }
-
-    public String getAffinityName(){ return affinity.getAffinityName();}
-
-    public int getAffinityId(){return affinity.getAffinityId();}
-
-    public void setAffinity(Affinity affinity) {
-        this.affinity = affinity;
-    }
-
-    @Override
-    public String toString() {
-        return "Equipment{" +
-                "equipmentId=" + equipmentId +
-                ", equipmentName='" + equipmentName + '\'' +
-                ", equipmentImage='" + equipmentImage + '\'' +
-                ", strength=" + strength +
-                ", affinity=" + affinity +
-                '}';
+    public int getAffinityId(){return affinityId;}
+    public void setAffinityId(int affinityId) {
+        this.affinityId = affinityId;
     }
 }

@@ -5,12 +5,14 @@ import learn.monsterBash.models.Element;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
+@Repository
 public class ElementJdbcTemplateRepository implements ElementRepo {
 
     private final JdbcTemplate jdbcTemplate;

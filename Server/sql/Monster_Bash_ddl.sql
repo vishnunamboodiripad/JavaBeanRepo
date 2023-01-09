@@ -90,21 +90,21 @@ create table App_Role_User (
         
 create table battle (
 	battle_id int primary key auto_increment,
-	monster_id_1 int not null,
+	player_monster int not null,
 		constraint fk_monster_battle_id_1
-		foreign key (monster_id_1)
+		foreign key (player_monster)
 		references monster(monster_id),
-	monster_id_2 int not null,
+	computer_monster int not null,
 		constraint fk_monster_battle_id_2
-		foreign key (monster_id_2)
+		foreign key (computer_monster)
 		references monster(monster_id),
-	equipment_id_1 int not null,
+	player_equipment int not null,
 		constraint fk_equipment_battle_id_1
-		foreign key (equipment_id_1)
+		foreign key (player_equipment)
 		references equipment(equipment_id),
-	equipment_id_2 int not null,
+	computer_equipment int not null,
 		constraint fk_equipment_battle_id_2
-		foreign key (equipment_id_2)
+		foreign key (computer_equipment)
 		references equipment(equipment_id),
 	weather_id int not null,
 		constraint fk_weather_battle_id
@@ -118,5 +118,5 @@ create table battle (
 		constraint fk_app_user_battle_id
 		foreign key (app_user_id)
         references App_User(user_id),
-	result varchar(24) null
+	player_win boolean not null
     );

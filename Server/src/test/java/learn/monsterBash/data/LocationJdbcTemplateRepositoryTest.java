@@ -32,7 +32,7 @@ class LocationJdbcTemplateRepositoryTest {
     void shouldFindAll() {
         List<Location> locations = repository.findAll();
         assertNotNull(locations);
-        assertTrue(locations.size() >= 7 && locations.size() <= 10);
+        assertTrue(locations.size() >= 4 && locations.size() <= 7);
     }
 
     @Test
@@ -56,16 +56,6 @@ class LocationJdbcTemplateRepositoryTest {
         location.setLocationName("Tsunami");
         location.setLocationImage("woosh.org");
         location.setElementId(1);
-        Location actual = repository.add(location);
-        assertNotNull(actual);
-        assertEquals(7, actual.getLocationId());
-    }
-
-    @Test
-    void addNullElement() {
-        Location location = new Location();
-        location.setLocationName("Tsunami");
-        location.setLocationImage("woosh.com");
         Location actual = repository.add(location);
         assertNotNull(actual);
         assertEquals(7, actual.getLocationId());

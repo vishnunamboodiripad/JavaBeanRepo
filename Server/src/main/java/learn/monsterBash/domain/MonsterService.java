@@ -3,6 +3,7 @@ package learn.monsterBash.domain;
 
 import learn.monsterBash.data.MonsterRepository;
 import learn.monsterBash.models.Monster;
+import learn.monsterBash.models.Weather;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
@@ -63,10 +64,15 @@ public class MonsterService {
         return result;
     }
 
-    public boolean deleteById(int monsterId) {
-        return repository.deleteById(monsterId);
+    public Result<Monster> deleteById(int monsterId){
+        Result<Monster> result = new Result<>();
+        boolean delete = repository.deleteById(monsterId);
+        if (!delete) {
+            String message = String.format("Monster with Id: %s was not found", monsterId);
+            result.addMessage(message, ResultType.NOT_FOUND);
+        }
+        return result;
     }
-
     private Result<Monster> validate(Monster monster) {
         Result<Monster> result = new Result<>();
         if (monster == null) {

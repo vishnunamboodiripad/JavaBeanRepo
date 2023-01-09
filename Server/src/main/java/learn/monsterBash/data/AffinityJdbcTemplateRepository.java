@@ -9,12 +9,14 @@ import learn.monsterBash.models.Weather;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
+@Repository
 public class AffinityJdbcTemplateRepository implements AffinityRepo {
     private final JdbcTemplate jdbcTemplate;
 
@@ -37,7 +39,7 @@ public class AffinityJdbcTemplateRepository implements AffinityRepo {
     public Affinity add(Affinity affinity) {
 
         final String sql = """
-                insert into affinity (affinity_name)
+                insert into affinity(affinity_name)
                 values (?);
                  """;
 
@@ -76,7 +78,7 @@ public class AffinityJdbcTemplateRepository implements AffinityRepo {
     public boolean update(Affinity affinity) {
         final String sql = """
                 update affinity set
-                affinity_name = ?,
+                affinity_name = ?
                 where affinity_id = ?
                 """;
 
@@ -88,7 +90,7 @@ public class AffinityJdbcTemplateRepository implements AffinityRepo {
 
     @Override
     public boolean deleteById(int affinityId) {
-            return jdbcTemplate.update("delete from equipment where affinity_id = ?;", affinityId) > 0;
+            return jdbcTemplate.update("delete from affinity where affinity_id = ?;", affinityId) > 0;
         }
     }
 

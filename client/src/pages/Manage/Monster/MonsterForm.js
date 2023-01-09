@@ -4,10 +4,8 @@ import { useHistory, useParams } from "react-router-dom";
 export default function MonsterForm(props){
     const [monsterName, setMonsterName] = useState("");
     const [monsterImage, setMonsterImage] = useState("");
-    const [element, setElement] = useState("");
-    
-    
-
+    const [elementId, setElementId] = useState("");
+    const [monsterPower, setMonsterPower] = useState(0);
 
     const params = useParams();
     const history = useHistory();
@@ -18,7 +16,8 @@ export default function MonsterForm(props){
             const targetMonster = props.monsterList.find((monster) => {return monster.monsterId.toString() === params.id.toString()});
             setMonsterName(targetMonster.monsterName);
             setMonsterImage(targetMonster.monsterImage);
-            setElement(targetMonster.element);
+            setElementId(targetMonster.elementId);
+            setMonsterPower(targetMonster.power)
         }
     }
 
@@ -38,7 +37,8 @@ export default function MonsterForm(props){
         const newMonster = {
             monsterName,
             monsterImage,
-            element,
+            elementId,
+            monsterPower,
             
         }
         debugger
@@ -71,7 +71,8 @@ export default function MonsterForm(props){
         const updatedMonster = {
             monsterName,
             monsterImage,
-            element,
+            elementId,
+            monsterPower,
             monsterId: params.id
         }
         fetch (`http://localhost:8080/api/edit/monster/${params.id}`, {
@@ -101,7 +102,8 @@ export default function MonsterForm(props){
     const clearForm = () => {
         setMonsterName("")
         setMonsterImage("")
-        setElement("")
+        setElementId("")
+        setMonsterPower(0)
         
     }
     const cancelEdit = () => {
@@ -124,12 +126,17 @@ export default function MonsterForm(props){
                 <input type = "text" id = "monsterImage-input" value = {monsterImage} onChange = {(event) => {setMonsterImage(event.target.value)}}/>
             </div>
             <div>
+                <label htmlFor = "monsterPower-input">Enter the power level of your monster: </label>
+                <input type = "number" id = "monsterPower-input" value = {monsterPower} onChange = {(event) => {setMonsterPower(event.target.value)}}/>
+
+            </div>
+            <div>
                 <label htmlFor = "element">Element:</label>
-                <select id = "element-input" value = {element} onChange = {(event) => {setElement(event.target.value)}}>
-                    <option  value = "Fire">Fire</option>
-                    <option  value = "Water">Water</option>
-                    <option  value = "Earth">Earth</option>
-                    <option  value = "Wind">Wind</option>
+                <select id = "element-input" value = {elementId} onChange = {(event) => {setElementId(parseInt(event.target.value))}}>
+                    <option  value = "1">Fire</option>
+                    <option  value = "2">Water</option>
+                    <option  value = "3">Earth</option>
+                    <option  value = "4">Wind</option>
                 </select>
             </div>
             <input type = "submit" value = {params.id ? "Update!" : "Create!"}/>

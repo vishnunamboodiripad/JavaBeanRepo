@@ -92,4 +92,73 @@ Content-Type: application/json
 ###
 DELETE http://localhost:8080/api/delete/equipment/7
 
+###
+GET http://localhost:8080/api/monster/viewAll
+
+###
+
+GET http://localhost:8080/api/monster/12
+
+###
+
+POST http://localhost:8080/api/add/monster 
+Content-Type: application/json
+
+{
+    "monsterName": "Test",
+    "monsterImage": "tester",
+    "power": "42",
+    "elementId": "3"
+}
+
+###
+PUT http://localhost:8080/api/edit/monster/12
+Content-Type: application/json
+
+{
+  
+    "monsterId": "12",
+    "monsterName": "Test-updated",
+    "monsterImage": "tester-put working",
+    "power": "42",
+    "elementId": "3"
+
+}
+
+###
+DELETE http://localhost:8080/api/delete/monster/12
+
+###
+GET http://localhost:8080/api/location/viewAll
+
+###
+
+GET http://localhost:8080/api/location/2
+
+###
+
+POST http://localhost:8080/api/add/location 
+Content-Type: application/json
+
+{
+    "locationName": "Test",
+    "locationImage": "tester.com",
+    "elementId": "3"
+}
+
+###
+PUT http://localhost:8080/api/edit/location/7
+Content-Type: application/json
+
+{
+  
+    "locationId": "7",
+    "locationName": "Test-updated",
+    "locationImage": "tester-put working.com",
+    "elementId": "3"
+
+}
+
+###
+DELETE http://localhost:8080/api/delete/location/7
 

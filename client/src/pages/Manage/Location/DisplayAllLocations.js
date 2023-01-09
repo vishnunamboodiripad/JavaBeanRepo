@@ -22,16 +22,16 @@ export default function DisplayAllLocation(props){
         let elementName = "";
             switch(elementId) {
                 case 1:
-                    affinityName = "Fire";
+                    elementName = "Fire";
                     break;
                 case 2:
-                    affinityName = "Water";
+                    elementName = "Water";
                     break;
                 case 3:
-                    affinityName = "Earth";
+                    elementName = "Earth";
                     break;
                 case 4:
-                    affinityName = "Wind";
+                    elementName = "Wind";
                     break;
             }
         return elementName;

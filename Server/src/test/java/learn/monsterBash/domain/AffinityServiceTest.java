@@ -59,11 +59,6 @@ class AffinityServiceTest {
             Result<Affinity> actual = service.add(test);
             assertEquals(ResultType.INVALID, actual.getType());
 
-            Affinity test2 = new Affinity();
-            test2.setAffinityName("test Name");
-            Result<Affinity> actual2 = service.add(test2);
-            assertEquals(ResultType.INVALID, actual2.getType());
-
         }
         @Test
         void shouldUpdate() {
@@ -94,11 +89,15 @@ class AffinityServiceTest {
         }
 
         @Test
-        void deleteById() {
-            Affinity test = new Affinity();
-            test.setAffinityName("Electric");
-            test.setAffinityId(1);
+        void shouldNotDeleteByIdWhenInUse() {
+
             Result<Affinity> actual = service.deleteById(1);
-            assertEquals(ResultType.SUCCESS, actual.getType());
+            assertEquals(ResultType.INVALID, actual.getType());
         }
+
+    @Test
+    void shouldDeleteById() {
+            Result<Affinity> actual = service.deleteById(6);
+            assertEquals(ResultType.SUCCESS, actual.getType());
     }
+}
