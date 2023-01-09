@@ -54,24 +54,16 @@ create table equipment (
         foreign key (affinity_id)
         references affinity(affinity_id)
         );
-        
-create table monster_equipment (
-    monster_equipment_id int primary key,
-    monster_id int not null,
-    equipment_id int not null
-    );
-    
 create table monster (
     monster_id int primary key auto_increment,
     monster_name varchar(25) unique not null,
     monster_image varchar(1636) not null,
     power int not null ,
-    element varchar(10) not null,
-    equipment_id int null,
-    constraint fk_equipment_monsters_id
-        foreign key (equipment_id)
-        references equipment(equipment_id)
-        );
+    element_id int not null,
+        constraint fk_element_monster_id
+        foreign key (element_id)
+        references element(element_id)
+);
         
 create table App_User (
 	user_id int auto_increment primary key,
@@ -98,21 +90,33 @@ create table App_Role_User (
         
 create table battle (
 	battle_id int primary key auto_increment,
-	monster_equipment_id int not null,
-	constraint fk_monster_equipment_battle_id
-	foreign key (monster_equipment_id)
-	references monster_equipment(monster_equipment_id),
-	monster_equipment2_id int not null,
-	constraint fk_monster_equipment2_battle_id
-	foreign key (monster_equipment2_id)
-	references monster_equipment(monster_equipment_id),
+	monster_id_1 int not null,
+		constraint fk_monster_battle_id_1
+		foreign key (monster_id_1)
+		references monster(monster_id),
+	monster_id_2 int not null,
+		constraint fk_monster_battle_id_2
+		foreign key (monster_id_2)
+		references monster(monster_id),
+	equipment_id_1 int not null,
+		constraint fk_equipment_battle_id_1
+		foreign key (equipment_id_1)
+		references equipment(equipment_id),
+	equipment_id_2 int not null,
+		constraint fk_equipment_battle_id_2
+		foreign key (equipment_id_2)
+		references equipment(equipment_id),
 	weather_id int not null,
-	constraint fk_weather_battle_id
-	foreign key (weather_id)
-	references weather(weather_id),
+		constraint fk_weather_battle_id
+		foreign key (weather_id)
+		references weather(weather_id),
 	location_id int not null,
-	constraint fk_location_battle_id
-	foreign key (location_id)
-	references location(location_id)
+		constraint fk_location_battle_id
+		foreign key (location_id)
+		references location(location_id),
+	app_user_id int not null,
+		constraint fk_app_user_battle_id
+		foreign key (app_user_id)
+        references App_User(user_id),
+	result varchar(24) null
     );
-    

@@ -7,7 +7,7 @@ export default function HomePage() {
         <a className = "btn btn-success" href = "/manage/monster" >Manage monster database</a>
         <a className = "btn btn-success" href = "/manage/equipment" >Manage equipment database</a>
         <a className = "btn btn-success" href = "/manage/weather" >Manage weather database</a>
-        <a className = "btn btn-success" href = "/manage/environment" >Manage environment database</a>
+        <a className = "btn btn-success" href = "/manage/location" >Manage location database</a>
         </div>
         
     )

@@ -46,7 +46,7 @@ public class WeatherJdbcTemplateRepository implements WeatherRepo {
 
 
         final String sql = """
-                insert into weather (weather_name, weather_image, affinity_id) "
+                insert into weather (weather_name, weather_image, affinity_id) 
                  values (?,?,?);
                  """;
 
@@ -55,7 +55,7 @@ public class WeatherJdbcTemplateRepository implements WeatherRepo {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, weather.getWeatherName());
             ps.setString(2, weather.getWeatherImage());
-            ps.setInt(3, weather.getWeatherId());
+            ps.setInt(3, weather.getAffinityId());
             return ps;
         }, keyHolder);
 
@@ -68,19 +68,22 @@ public class WeatherJdbcTemplateRepository implements WeatherRepo {
     }
 
     public boolean update(Weather weather){
-        final String sql = "update weather set " +
-                "weather_name = ?" +
-                "weather_image = ?" +
-                "affinity_id = ?;";
+        final String sql = "update weather set \n" +
+                "weather_name = ?,\n" +
+                "weather_image = ?,\n" +
+                "affinity_id = ?\n" +
+                "where weather_id = ?;";
 
-        int rowsUpdated = jdbcTemplate.update(sql, weather.getWeatherName(),
+        int rowsUpdated = jdbcTemplate.update(sql,
+                weather.getWeatherName(),
                 weather.getWeatherImage(),
-                weather.getAffinityId());
+                weather.getAffinityId(),
+                weather.getWeatherId());
 
         return rowsUpdated > 0;
     }
     public boolean deleteById(int id) {
-        final String sql = "delete from weather where weather_id;";
+        final String sql = "delete from weather where weather_id = ?;";
         return jdbcTemplate.update(sql, id) > 0;
     }
 }

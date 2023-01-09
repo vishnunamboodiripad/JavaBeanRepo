@@ -81,7 +81,7 @@ public class EquipmentJdbcTemplateRepository implements EquipmentRepo {
                 equipment_image = ?,
                 strength = ?,
                 affinity_id = ?
-                where agent_id = ?
+                where equipment_id = ?
                 """;
 
         return jdbcTemplate.update(sql,

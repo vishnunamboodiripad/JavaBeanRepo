@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 export default function LoginPage({setLoggedInUserData}) {
 
     const[loginData, setLoginData] = useState({username: "", password: ""});
-    const[errors,setErrors] = useState([]);
 
     const history = useHistory();
 
