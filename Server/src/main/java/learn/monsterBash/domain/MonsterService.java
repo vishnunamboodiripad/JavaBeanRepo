@@ -78,16 +78,17 @@ public class MonsterService {
             result.addMessage("A name is required", ResultType.INVALID);
         }
 
-        if (monster.getPower() == 0) {
-            result.addMessage("All monsters are powerful. A power must be added.", ResultType.INVALID);
+        if (monster.getPower() <= 0 || monster.getPower() >=100) {
+            result.addMessage("Monster's power must be between 0 & 100.", ResultType.INVALID);
         }
+
         List<Monster> monsters = repository.findAll();
         if (monsters==null) {
             monsters = new ArrayList<Monster>();
         }
         for (Monster m: monsters) {
-            if(monster.getMonsterId() == m.getMonsterId() && monster.getMonsterName() == m.getMonsterName()) {
-                result.addMessage("You have summoned a monster who is familiar to this arena.", ResultType.INVALID);
+            if(monster.getMonsterName() == m.getMonsterName()) {
+                result.addMessage("Monster is a duplicate.", ResultType.INVALID);
             }
         }
 
