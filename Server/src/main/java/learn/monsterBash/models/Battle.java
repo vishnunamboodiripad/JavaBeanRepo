@@ -31,7 +31,7 @@ public class Battle {
 
 
     public int getAppUserId() {
-        return AppUser;
+        return appUserId;
     }
 
     public void setAppUserId(int appUser) {appUserId = appUserId;
@@ -51,7 +51,7 @@ public class Battle {
         return playerMonsterId;
     }
 
-    public void setPlayerMonsterId(int playerMonster) {
+    public void setPlayerMonsterId(int playerMonsterId) {
         this.playerMonsterId = playerMonsterId;
     }
 
@@ -59,8 +59,8 @@ public class Battle {
         return computerMonsterId;
     }
 
-    public void setComputerMonsterId(int computerMonster) {
-        this.computerMonsterId = computerMonster;
+    public void setComputerMonsterId(int computerMonsterId) {
+        this.computerMonsterId = computerMonsterId;
     }
 
     public int getPlayerEquipmentId() {
@@ -83,7 +83,7 @@ public class Battle {
         return weatherId;
     }
 
-    public void setWeatherId(int weather) {
+    public void setWeatherId(int weatherId) {
         this.weatherId = weatherId;
     }
 
@@ -91,7 +91,7 @@ public class Battle {
         return locationId;
     }
 
-    public void setLocationId(int location) {
+    public void setLocationId(int locationId) {
         this.locationId = locationId;
     }
 }
