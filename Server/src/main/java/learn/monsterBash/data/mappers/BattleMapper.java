@@ -10,15 +10,26 @@ public class BattleMapper implements RowMapper<Battle> {
     @Override
     public Battle mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         Battle battle = new Battle();
+        battle.setPlayerMonsterId(resultSet.getInt("player_monster"));
+        battle.setComputerMonsterId(resultSet.getInt("computer_monster"));
+        battle.setPlayerEquipmentId(resultSet.getInt("player_equipment"));
+        battle.setComputerEquipmentId(resultSet.getInt("computer_equipment"));
+        battle.setWeatherId(resultSet.getInt("weather_id"));
+        battle.setLocationId(resultSet.getInt("location_id"));
+        battle.setAppUserId(resultSet.getInt("app_user_id"));
 
+        return battle;
+
+
+    /*
         WeatherMapper weatherMapper = new WeatherMapper();
-        battle.setWeather(weatherMapper.mapRow(resultSet, rowNum));
+        battle.setWeather(resultSet.getInt("weather_id"));
 
         LocationMapper locationMapper = new LocationMapper();
         battle.setLocation(locationMapper.mapRow(resultSet, rowNum));
 
         battle.setPlayerWin(resultSet.getBoolean("player_win"));
-        battle.setAppUserId(resultSet.getInt("app_user_id"));
+        battle.setAppUser(resultSet.getInt("app_user_id"));
 
 
         Monster playerMonster = new Monster();
@@ -59,6 +70,8 @@ public class BattleMapper implements RowMapper<Battle> {
 
 
         return battle;
+
+     */
     }
 
 
