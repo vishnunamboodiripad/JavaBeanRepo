@@ -74,27 +74,4 @@ public class MonsterJdbcTemplateRepositoryTest {
         monster.setElement("earth");
         return monster;
     }
-    @Test
-    void shouldAdd() {
-        Monster monster = makeMonster();
-        Monster actual = repository.add(monster);
-        assertNotNull(actual);
-        assertEquals(11, actual.getMonsterId());
-
-        // null name
-        monster = makeMonster();
-        monster.setMonsterName(null);
-        actual = repository.add(monster);
-        assertNull(actual);
-    }
-
-    private Monster makeMonster() {
-        Monster monster = new Monster();
-        monster.setMonsterName("Test");
-        monster.setMonsterImage("tinyurl.com/d10ttjbtestimg");
-        monster.setPower(2);
-        monster.setElement("earth");
-        monster.setEquipmentId(0);
-        return monster;
-    }
 }

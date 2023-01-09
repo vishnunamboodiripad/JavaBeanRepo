@@ -5,6 +5,7 @@ public class Monster {
     public String monsterName;
     public String monsterImage;
     public int power;
+
     public String element;
 
     public Monster() {

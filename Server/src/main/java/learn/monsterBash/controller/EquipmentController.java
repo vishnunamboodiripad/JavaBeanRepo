@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000"})
-@RequestMapping("/equipment")
+@RequestMapping("/api")
 public class EquipmentController {
 
     private final EquipmentService service;
@@ -20,17 +20,17 @@ public class EquipmentController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/equipment/viewAll")
     public List<Equipment> findAll() {
         return service.findAll();
     }
 
-    @GetMapping("/{equipmentId}")
+    @GetMapping("/equipment/{equipmentId}")
     public Equipment findById(@PathVariable int equipmentId) {
         return service.findById(equipmentId);
     }
 
-    @PostMapping
+    @PostMapping("/add/equipment")
     public ResponseEntity<Object> add(@RequestBody Equipment equipment) {
         Result<Equipment> result = service.add(equipment);
         if (result.isSuccess()) {
@@ -39,7 +39,7 @@ public class EquipmentController {
         return ErrorResponse.build(result);
     }
 
-    @PutMapping("/{equipmentId}")
+    @PutMapping("edit/equipment/{equipmentId}")
     public ResponseEntity<Object> update(@PathVariable int equipmentId, @RequestBody Equipment equipment) {
         if (equipmentId != equipment.getEquipmentId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -53,7 +53,7 @@ public class EquipmentController {
         return ErrorResponse.build(result);
     }
 
-    @DeleteMapping("/{equipmentId}")
+    @DeleteMapping("/delete/equipment/{equipmentId}")
     public ResponseEntity<Void> deleteById(@PathVariable int equipmentId) {
         if (service.deleteById(equipmentId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
