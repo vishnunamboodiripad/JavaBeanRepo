@@ -4,26 +4,18 @@ public class Weather {
     private int weatherId;
     public String weatherName;
     public String weatherImage;
-    public int affinityId;
+    public Affinity affinity;
 
     public Weather() {
     }
 
-    @Override
-    public String toString() {
-        return "Weather{" +
-                "weatherId=" + weatherId +
-                ", weatherName='" + weatherName + '\'' +
-                ", weatherImage='" + weatherImage + '\'' +
-                ", affinityId=" + affinityId +
-                '}';
-    }
 
-    public Weather(int weatherId, String weatherName, String weatherImage, int affinityId) {
+
+    public Weather(int weatherId, String weatherName, String weatherImage, Affinity affinity) {
         this.weatherId = weatherId;
         this.weatherName = weatherName;
         this.weatherImage = weatherImage;
-        this.affinityId = affinityId;
+        this.affinity = affinity;
     }
 
     public int getWeatherId() {
@@ -50,11 +42,25 @@ public class Weather {
         this.weatherImage = weatherImage;
     }
 
+    public Affinity getAffinity(){return affinity;}
+
+    public String getAffinityName(){return affinity.getAffinityName();}
+
     public int getAffinityId() {
-        return affinityId;
+        return affinity.getAffinityId();
     }
 
-    public void setAffinityId(int affinityId) {
-        this.affinityId = affinityId;
+    public void setAffinity(Affinity affinity) {
+        this.affinity = affinity;
+    }
+
+    @Override
+    public String toString() {
+        return "Weather{" +
+                "weatherId=" + weatherId +
+                ", weatherName='" + weatherName + '\'' +
+                ", weatherImage='" + weatherImage + '\'' +
+                ", affinity=" + affinity +
+                '}';
     }
 }

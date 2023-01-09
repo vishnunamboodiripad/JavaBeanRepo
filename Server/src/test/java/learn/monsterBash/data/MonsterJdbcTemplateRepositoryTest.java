@@ -1,5 +1,6 @@
 package learn.monsterBash.data;
 
+import learn.monsterBash.models.Element;
 import learn.monsterBash.models.Monster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -67,11 +68,14 @@ public class MonsterJdbcTemplateRepositoryTest {
     }
 
     private Monster makeMonster() {
+        Element element = new Element();
+        element.setElementName("Earth");
+        element.setElementId(3);
         Monster monster = new Monster();
         monster.setMonsterName("Test");
         monster.setMonsterImage("tinyurl.com/d10ttjbtestimg");
         monster.setPower(2);
-        monster.setElement("earth");
+        monster.setElement(element);
         return monster;
     }
 }

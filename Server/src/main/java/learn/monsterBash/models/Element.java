@@ -5,14 +5,6 @@ public class Element {
 
     public String elementName;
 
-    @Override
-    public String toString() {
-        return "Element{" +
-                "elementId=" + elementId +
-                ", elementName='" + elementName + '\'' +
-                '}';
-    }
-
     public Element() {
     }
 
@@ -35,5 +27,13 @@ public class Element {
 
     public void setElementName(String elementName) {
         this.elementName = elementName;
+    }
+
+    @Override
+    public String toString() {
+        return "Element{" +
+                "elementId=" + elementId +
+                ", elementName='" + elementName + '\'' +
+                '}';
     }
 }

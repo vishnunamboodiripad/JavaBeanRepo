@@ -6,12 +6,12 @@ public class Monster {
     public String monsterImage;
     public int power;
 
-    public String element;
+    public Element element;
 
     public Monster() {
     }
 
-    public Monster(int monsterId, String monsterName, String monsterImage, int power, String element, int equipmentId) {
+    public Monster(int monsterId, String monsterName, String monsterImage, int power, Element element, int equipmentId) {
         this.monsterId = monsterId;
         this.monsterName = monsterName;
         this.monsterImage = monsterImage;
@@ -52,11 +52,15 @@ public class Monster {
         this.power = power;
     }
 
-    public String getElement() {
+    public Element getElement() {
         return element;
     }
 
-    public void setElement(String element) {
+    public String getElementName(){return element.getElementName();}
+
+    public int getElementId(){return element.getElementId();}
+
+    public void setElement(Element element) {
         this.element = element;
     }
 
