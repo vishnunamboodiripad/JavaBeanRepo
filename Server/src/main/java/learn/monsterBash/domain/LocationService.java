@@ -76,7 +76,7 @@ public class LocationService {
         }
 
         if (location.getLocationName() == null || location.getLocationName().isBlank()) {
-            result.addMessage("equipment name is required", ResultType.INVALID);
+            result.addMessage("location name is required", ResultType.INVALID);
         }
 
         if (!location.getLocationImage().contains(".")){

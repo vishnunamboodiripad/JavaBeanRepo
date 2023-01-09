@@ -5,26 +5,18 @@ public class Location {
     private int locationId;
     public String locationName;
     public String locationImage;
-    private int elementId;
+    private Element element;
 
     public Location() {
     }
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "locationId=" + locationId +
-                ", locationName='" + locationName + '\'' +
-                ", locationImage='" + locationImage + '\'' +
-                ", elementId=" + elementId +
-                '}';
-    }
 
-    public Location(int locationId, String locationName, String locationImage, int elementId) {
+
+    public Location(int locationId, String locationName, String locationImage, Element element) {
         this.locationId = locationId;
         this.locationName = locationName;
         this.locationImage = locationImage;
-        this.elementId = elementId;
+        this.element = element;
     }
 
     public int getLocationId() {
@@ -51,11 +43,28 @@ public class Location {
         this.locationImage = locationImage;
     }
 
-    public int getElementId() {
-        return elementId;
+    public Element getElement(){
+        return element;
+    }
+    public String getElementName() {
+        return element.getElementName();
     }
 
-    public void setElementId(int elementId) {
-        this.elementId = elementId;
+    public int getElementId(){
+        return element.getElementId();
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "locationId=" + locationId +
+                ", locationName='" + locationName + '\'' +
+                ", locationImage='" + locationImage + '\'' +
+                ", element" + element +
+                '}';
     }
 }

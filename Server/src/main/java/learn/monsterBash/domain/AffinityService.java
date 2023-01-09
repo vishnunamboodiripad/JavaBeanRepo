@@ -1,9 +1,9 @@
 package learn.monsterBash.domain;
 
 import learn.monsterBash.data.AffinityRepo;
+import learn.monsterBash.data.EquipmentRepo;
 import learn.monsterBash.data.WeatherRepo;
-import learn.monsterBash.models.Affinity;
-import learn.monsterBash.models.Weather;
+import learn.monsterBash.models.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,9 +11,15 @@ import java.util.Optional;
 public class AffinityService {
     private final AffinityRepo repo;
 
+    private final EquipmentRepo equipmentRepo;
 
-    public AffinityService(AffinityRepo repo) {
+    private final WeatherRepo weatherRepo;
+
+
+    public AffinityService(AffinityRepo repo, EquipmentRepo equipmentRepo, WeatherRepo weatherRepo) {
         this.repo = repo;
+        this.equipmentRepo = equipmentRepo;
+        this.weatherRepo = weatherRepo;
     }
 
     public List<Affinity> findAll() {
@@ -73,11 +79,24 @@ public class AffinityService {
 
     }
 
-    public Result<Affinity> deleteById(int affinityId){
+    public Result<Affinity> deleteById(Affinity affinity){
         Result<Affinity> result = new Result<>();
-        boolean delete = repo.deleteById(affinityId);
-        if (!delete) {
-            String message = String.format("Affinity with Id: %s was not found", affinityId);
+        String affinityName = affinity.getAffinityName();
+        List<Equipment> equipments = equipmentRepo.findAll();
+        Optional<Equipment> duplicateEquipment = equipments.stream().filter(e -> e.getAffinityName().equalsIgnoreCase(affinityName)).findAny();
+        if (duplicateEquipment.isPresent()){
+            result.addMessage("Affinity cannot be deleted because it is attached to an equipment", ResultType.INVALID);
+            return result;
+        }
+        List<Weather> weathers = weatherRepo.findAll();
+        Optional<Weather> duplicateWeather = weathers.stream().filter(w -> w.getAffinityName().equalsIgnoreCase(affinityName)).findAny();
+        if (duplicateWeather.isPresent()){
+            result.addMessage("Affinity cannot be deleted because it is attached to a weather event", ResultType.INVALID);
+            return result;
+        }
+        boolean delete = repo.deleteById(affinity.getAffinityId());
+        if (!delete){
+            String message = String.format("Affinity with Id: %s was not found", affinity.getAffinityId());
             result.addMessage(message, ResultType.NOT_FOUND);
         }
         return result;
@@ -86,11 +105,11 @@ public class AffinityService {
     private Result<Affinity> validate(Affinity affinity) {
         Result<Affinity> result = new Result<>();
         if (affinity == null) {
-            result.addMessage("Cannot add a null weather", ResultType.INVALID);
+            result.addMessage("Cannot add a null affinity", ResultType.INVALID);
             return result;
         }
         if (affinity.getAffinityName().isBlank() || affinity.getAffinityName() == null) {
-            result.addMessage("Cannot add weather without a name", ResultType.INVALID);
+            result.addMessage("Cannot add affinity without a name", ResultType.INVALID);
             return result;
         }
 

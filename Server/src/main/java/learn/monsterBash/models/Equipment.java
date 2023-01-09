@@ -6,28 +6,19 @@ public class Equipment {
     public String equipmentName;
     public String equipmentImage;
     public int strength;
-    public int affinityId;
+    public Affinity affinity;
 
     public Equipment() {
     }
 
-    @Override
-    public String toString() {
-        return "Equipment{" +
-                "equipmentId=" + equipmentId +
-                ", equipmentName='" + equipmentName + '\'' +
-                ", equipmentImage='" + equipmentImage + '\'' +
-                ", strength=" + strength +
-                ", affinityId=" + affinityId +
-                '}';
-    }
 
-    public Equipment(int equipmentId, String equipmentName, String equipmentImage, int strength, int affinityId) {
+
+    public Equipment(int equipmentId, String equipmentName, String equipmentImage, int strength, Affinity affinity) {
         this.equipmentId = equipmentId;
         this.equipmentName = equipmentName;
         this.equipmentImage = equipmentImage;
         this.strength = strength;
-        this.affinityId = affinityId;
+        this.affinity = affinity;
     }
 
     public int getEquipmentId() {
@@ -62,11 +53,26 @@ public class Equipment {
         this.strength = strength;
     }
 
-    public int getAffinityId() {
-        return affinityId;
+    public Affinity getAffinity() {
+        return affinity;
     }
 
-    public void setAffinityId(int affinityId) {
-        this.affinityId = affinityId;
+    public String getAffinityName(){ return affinity.getAffinityName();}
+
+    public int getAffinityId(){return affinity.getAffinityId();}
+
+    public void setAffinity(Affinity affinity) {
+        this.affinity = affinity;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "equipmentId=" + equipmentId +
+                ", equipmentName='" + equipmentName + '\'' +
+                ", equipmentImage='" + equipmentImage + '\'' +
+                ", strength=" + strength +
+                ", affinity=" + affinity +
+                '}';
     }
 }

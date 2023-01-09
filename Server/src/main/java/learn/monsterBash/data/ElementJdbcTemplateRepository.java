@@ -1,10 +1,7 @@
 package learn.monsterBash.data;
 
 import learn.monsterBash.data.mappers.ElementMapper;
-import learn.monsterBash.data.mappers.MonsterMapper;
 import learn.monsterBash.models.Element;
-import learn.monsterBash.models.Monster;
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -25,19 +22,19 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
     @Override
     public List<Element> findAll() {
         final String sql = "select element_id, element_name "
-                + "from Melement;";
+                + "from element;";
         return jdbcTemplate.query(sql, new ElementMapper());
     }
 
     @Override
     @Transactional
-    public Element findById(int MonsterId) {
+    public Element findById(int elementId) {
 
         final String sql = "select element_id, element_name "
                 + "from element "
                 + "where element_id = ?;";
 
-        Monster monster = jdbcTemplate.query(sql, new ElementMapper(), elementId).stream()
+        Element element = jdbcTemplate.query(sql, new ElementMapper(), elementId).stream()
                 .findFirst().orElse(null);
 
         return element;
@@ -48,15 +45,15 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
 
 
         final String sql = """
-                insert into element (element_name, element_image, power, element)
-                 values (?,?,?,?);
+                insert into element (element_name,element_id)
+                 values (?,?);
                  """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, element.getElementName());
-            ps.setInt(4, element.getElementId());
+            ps.setInt(2, element.getElementId());
             return ps;
         }, keyHolder);
 
@@ -72,10 +69,7 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
     public boolean update(Element element) {
 
         final String sql = "update element set "
-                + "element_name = ?, "
-                + "element_image = ?, "
-                + "power = ?, "
-                + "element = ? "
+                + "element_name = ?"
                 + "where element_id = ?;";
 
         return jdbcTemplate.update(sql,
