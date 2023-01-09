@@ -6,18 +6,18 @@ public class Monster {
     public String monsterImage;
     public int power;
 
-    public String element;
+    public int elementId;
 
     public Monster() {
     }
 
-    public Monster(int monsterId, String monsterName, String monsterImage, int power, String element, int equipmentId) {
+    public Monster(int monsterId, String monsterName, String monsterImage, int power, int elementId) {
         this.monsterId = monsterId;
         this.monsterName = monsterName;
         this.monsterImage = monsterImage;
         this.power = power;
-        this.element = element;
-        this.equipmentId = equipmentId;
+        this.elementId = elementId;
+
     }
 
     public int getMonsterId() {
@@ -52,34 +52,12 @@ public class Monster {
         this.power = power;
     }
 
-    public String getElement() {
-        return element;
+    public int getElementId() {
+        return elementId;
     }
 
-    public void setElement(String element) {
-        this.element = element;
-    }
-
-    public int getEquipmentId() {
-        return equipmentId;
-    }
-
-    public void setEquipmentId(int equipmentId) {
-        this.equipmentId = equipmentId;
-    }
-
-    public int equipmentId;
-
-    @Override
-    public String toString() {
-        return "Monster{" +
-                "monsterId=" + monsterId +
-                ", monsterName='" + monsterName + '\'' +
-                ", monsterImage='" + monsterImage + '\'' +
-                ", power=" + power +
-                ", element='" + element + '\'' +
-                ", equipmentId=" + equipmentId +
-                '}';
+    public void setElementId(int elementId) {
+        this.elementId = elementId;
     }
 }
 
