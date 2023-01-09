@@ -20,7 +20,7 @@ public class MonsterJdbcTemplateRepository implements MonsterRepository {
 
     @Override
     public List<Monster> findAll() {
-        final String sql = "select Monster_id, first_name, middle_name, last_name, dob, height_in_inches "
+        final String sql = "select monster_id, monster_name, middle_name, last_name, dob, height_in_inches "
                 + "from Monster limit 1000;";
         return jdbcTemplate.query(sql, new MonsterMapper());
     }
