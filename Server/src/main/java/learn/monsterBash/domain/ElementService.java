@@ -6,10 +6,12 @@ import learn.monsterBash.data.MonsterRepository;
 import learn.monsterBash.models.Element;
 import learn.monsterBash.models.Location;
 import learn.monsterBash.models.Monster;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ElementService {
 
     private final ElementRepo repo;
@@ -76,24 +78,23 @@ public class ElementService {
        return result;
    }
 
-   public Result<Element> deleteById(Element element){
+   public Result<Element> deleteById(int elementId){
         Result<Element> result = new Result<>();
-        String elementName = element.getElementName();
         List<Monster> monsters = monsterRepo.findAll();
-        Optional<Monster> duplicateMonster = monsters.stream().filter(m -> m.getElementName().equalsIgnoreCase(elementName)).findAny();
+        Optional<Monster> duplicateMonster = monsters.stream().filter(m -> m.getElementId() == elementId).findAny();
        if (duplicateMonster.isPresent()){
            result.addMessage("Element cannot be deleted because it is attached to a monster", ResultType.INVALID);
            return result;
        }
        List<Location> locations = locationRepo.findAll();
-       Optional<Location> duplicateLocation = locations.stream().filter(l -> l.getElementName().equalsIgnoreCase(elementName)).findAny();
+       Optional<Location> duplicateLocation = locations.stream().filter(l -> l.getElementId() == elementId).findAny();
        if (duplicateLocation.isPresent()){
            result.addMessage("Element cannot be deleted because it is attached to a location", ResultType.INVALID);
            return result;
        }
-        boolean delete = repo.deleteById(element.getElementId());
+        boolean delete = repo.deleteById(elementId);
         if (!delete){
-            String message = String.format("Element with Id: %s was not found", element.getElementId());
+            String message = String.format("Element with Id: %s was not found", elementId);
             result.addMessage(message, ResultType.NOT_FOUND);
         }
         return result;

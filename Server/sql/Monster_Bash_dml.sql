@@ -71,8 +71,5 @@ insert into App_Role_User(role_id, user_id) values (2,8);
 insert into App_Role_User(role_id, user_id) values (2,9);
 insert into App_Role_User(role_id, user_id) values (2,10);
 /*
-insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('1', '2', '1', '2', '1', '1', '1', 'WIN');
-insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('3', '4', '3', '4', '2', '2', '1', 'WIN');
-insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('5', '6', '5', '6', '3', '3', '1', 'LOSS');
-
+insert into battle ( player_monster, computer_monster, player_equipment, computer_equipment, weather_id, location_id, app_user_id, player_win) values ('1', '2', '1', '2', '1', '1', '1', true);
 */

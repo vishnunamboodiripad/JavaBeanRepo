@@ -63,4 +63,3 @@ class AffinityJdbcTemplateRepositoryTest {
         assertFalse(repository.deleteById(200));
     }
 }
-}

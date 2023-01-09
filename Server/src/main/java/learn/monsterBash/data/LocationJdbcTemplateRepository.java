@@ -5,12 +5,14 @@ import learn.monsterBash.models.Location;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
+@Repository
 public class LocationJdbcTemplateRepository implements LocationRepo {
     private final JdbcTemplate jdbcTemplate;
 
@@ -48,7 +50,7 @@ public class LocationJdbcTemplateRepository implements LocationRepo {
 
         final String sql = """
                insert into location (location_name, location_image, element_id)
-               values (?,?,?,?);
+               values (?,?,?);
                 """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -56,8 +58,7 @@ public class LocationJdbcTemplateRepository implements LocationRepo {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, location.getLocationName());
             ps.setString(2, location.getLocationImage());
-            ps.setString(3, location.getLocationImage());
-            ps.setInt(4, location.getElementId());
+            ps.setInt(3, location.getElementId());
             return ps;
         }, keyHolder);
 

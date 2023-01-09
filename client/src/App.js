@@ -15,8 +15,12 @@ import ManageWeatherHome from './pages/Manage/Weather/ManageWeatherHome';
 import WeatherForm from './pages/Manage/Weather/WeatherForm';
 import DisplayAllWeather from './pages/Manage/Weather/DisplayAllWeather';
 import LocationForm from './pages/Manage/Location/LocationForm';
+import DisplayAllLocation from './pages/Manage/Location/DisplayAllLocations';
 import EquipmentForm from './pages/Manage/Equipment/EquipmentForm';
 import DisplayAllEquipment from './pages/Manage/Equipment/DisplayAllEquipment';
+import MonsterForm from './pages/Manage/Monster/MonsterForm';
+import DisplayAllMonster from './pages/Manage/Monster/DisplayAllMonsters';
+
 
 
 function App() {
@@ -33,11 +37,9 @@ function App() {
   const [errors, setErrors] = useState([]);
   const [locationList, setLocationList] = useState("");
   const [equipmentList, setEquipmentList] = useState("");
-  const [affinityList, setAffinityList] = useState("");
-  const [elementList, setElementList] = useState("");
 
   const getAllMonster = () => {
-    fetch("http://localhost:8080/api/monsters/viewAll",
+    fetch("http://localhost:8080/api/monster/viewAll",
       {method: "GET"})
     .then((response) => {
       return response.json()
@@ -72,31 +74,10 @@ function App() {
       .then((json) => {setEquipmentList(json)})
     }
 
-    const getAllAffinity = () => {
-      fetch("http://localhost:8080/api/affinity/viewAll" , 
-        {method: "GET"})
-      .then((response) => {
-        return response.json()
-      })
-      .then((json) => {setAffinityList(json)})
-    }
-
-    const getAllElement = () => {
-      fetch("http://localhost:8080/api/element/viewAll" , 
-        {method: "GET"})
-      .then((response) => {
-        return response.json()
-      })
-      .then((json) => {setElementList(json)})
-    }
-
     useEffect(getAllWeather, [])
     useEffect(getAllLocation, [])
     useEffect(getAllEquipment, [])
     useEffect(getAllMonster, [])
-    useEffect(getAllAffinity, []);
-    useEffect(getAllElement, []);
-  
 
   return (
     <div className="App">
@@ -131,11 +112,11 @@ function App() {
             <Route exact path = "/manage/monster">
               <ManageMonster/>
             </Route>
-            <Route exact path = "/manage/monster/form">
-              <ManageMonster monsterList = {monsterList} getAllMonster = {getAllMonster} setErrors = {setErrors}/>
+            <Route exact path = {["/manage/monster/form", "/manage/monster/edit/:id"]}>
+              <MonsterForm monsterList = {monsterList} getAllMonster = {getAllMonster} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/monster/displayAll">
-              <ManageMonster monsterList = {monsterList} getAllMonster = {getAllMonster} setErrors = {setErrors}/>
+              <DisplayAllMonster monsterList = {monsterList} getAllMonster = {getAllMonster} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/equipment">
               <ManageEquipment/>
@@ -162,7 +143,7 @@ function App() {
               <LocationForm locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/location/displayAll">
-              <DisplayAllWeather locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
+              <DisplayAllLocation locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
             </Route>
           </Switch>
         </BrowserRouter>

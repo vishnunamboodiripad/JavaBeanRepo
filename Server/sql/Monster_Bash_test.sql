@@ -28,7 +28,7 @@ create table location (
     );
     
 create table affinity (
-    affinity_id int primary key,
+    affinity_id int primary key auto_increment,
     affinity_name varchar(15) not null
     );
 
@@ -127,8 +127,6 @@ begin
 
 delete from location;
 alter table location auto_increment = 1;
-delete from element;
-alter table element auto_increment = 1;
 delete from weather;
 alter table weather auto_increment = 1;
 delete from monster;
@@ -137,6 +135,8 @@ delete from equipment;
 alter table equipment auto_increment = 1;
 delete from affinity;
 alter table affinity auto_increment = 1;
+delete from element;
+alter table element auto_increment = 1;
 
 
 insert into element (element_name, element_id) values ('Fire', 1);
@@ -158,20 +158,20 @@ insert into monster (monster_name, power, element_id, monster_image) values ('P�
 insert into monster (monster_name, power, element_id, monster_image) values ('Estève', 19, 1, '/monsters_images/monster5');
 insert into monster (monster_name, power, element_id, monster_image) values ('Maéna', 41, 2, '/monsters_images/monster6');
 insert into monster (monster_name, power, element_id, monster_image) values ('Mélina', 12, 3, '/monsters_images/monster7');
-insert into monster (monster_name, power, element_id, monster_image) values ('Judicaël', 82, 4, '/monsters_images/monster8');
+insert into monster (monster_name, power, element_id, monster_image) values ('Judicaël', 82, 3, '/monsters_images/monster8');
 insert into monster (monster_name, power, element_id, monster_image) values ('Dorothée', 75, 1, '/monsters_images/monster9');
 insert into monster (monster_name, power, element_id, monster_image) values ('Vishnu', 29, 2, '/monsters_images/monster10');
 
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Sword of Minor Static Electricity', 'desdev.cn', 65, 1, 1);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Staff of Soggyness', 'tripod.com', 60, 2, 2);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Mace of Too Many Rocks', 'yellowpages.com', 68, 3, 3);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spear of Second Degree Burns','google.com', 70, 4, 4);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Bow and Arrow of Dangerously Icy Road Conditions', 'networksolutions.com', 58, 5, 5);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spikey Shield of Wind Protection & Cowardice', 't.co', 17, 6, 6);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id) values ('Sword of Minor Static Electricity', 'desdev.cn', 65, 1);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id) values ('Staff of Soggyness', 'tripod.com', 60, 2);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id) values ('Mace of Too Many Rocks', 'yellowpages.com', 68, 3);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id) values ('Spear of Second Degree Burns','google.com', 70, 4);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id) values ('Bow and Arrow of Dangerously Icy Road Conditions', 'networksolutions.com', 58, 5);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id) values ('Spikey Shield of Wind Protection & Cowardice', 't.co', 17, 5);
 
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Blizzard', 1, 5, 'intel.com');
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sandstorm', 2, 3, 'java.com');
-insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Tornado', 3, 6, 'de.vu');
+insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Tornado', 3, 5, 'de.vu');
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Flood', 4, 2, 'mozilla.com');
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Electric Storm', 5, 1, 'meetup.com');
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sunshine', 6, 4, 'angelfire.com');
@@ -180,13 +180,11 @@ insert into weather (weather_name, weather_id, affinity_id, weather_image) value
 insert into location (location_name, location_id, element_id, location_image) values ('Minneapolis', 1, 1, 'drupal.org');
 insert into location (location_name, location_id, element_id, location_image) values ('Las Vegas', 2, 2, 'cbc.ca');
 insert into location (location_name, location_id, element_id, location_image) values ('Kansas', 3, 3, 'buzzfeed.com');
-insert into location (location_name, location_id, element_id, location_image) values ('Seattle', 4, 4, 'ameblo.jp');
+insert into location (location_name, location_id, element_id, location_image) values ('Seattle', 4, 3, 'ameblo.jp');
 insert into location (location_name, location_id, element_id, location_image) values ('Houston', 5, 1, 'sfgate.com');
 insert into location (location_name, location_id, element_id, location_image) values ('Miami', 6, 2, 'delicious.com');
 /*
-insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('1', '2', '1', '2', '1', '1', '1', 'WIN');
-insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('3', '4', '3', '4', '2', '2', '1', 'WIN');
-insert into battle ( monster_id_1, monster_id_2, equipment_id_1, equipment_id_2, weather_id, location_id, app_user_id, result) values ('5', '6', '5', '6', '3', '3', '1', 'LOSS');
+insert into battle ( player_monster, computer_monster, player_equipment, computer_equipment, weather_id, location_id, app_user_id, player_win) values ('1', '2', '1', '2', '1', '1', '1', true);
 */
 end //
 delimiter ;

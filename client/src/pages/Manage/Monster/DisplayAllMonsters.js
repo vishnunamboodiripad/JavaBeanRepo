@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export default function DisplayAllMonster(props){
     const doDelete = (id) => {
                if (!window.confirm("Are you sure?")) {
- debugger
             return
         }
         fetch (`http://localhost:8080/api/delete/monster/${id}` , {
@@ -18,6 +17,24 @@ export default function DisplayAllMonster(props){
           })
     }
 
+    const getElementName = (elementId) => {
+        let elementName = "";
+            switch(elementId) {
+                case 1:
+                    elementName = "Fire";
+                    break;
+                case 2:
+                    elementName = "Water";
+                    break;
+                case 3:
+                    elementName = "Earth";
+                    break;
+                case 4:
+                    elementName = "Wind";
+                    break;
+            }
+        return elementName;
+    }
     return (
         <table>
             <thead key = "header">
@@ -35,7 +52,7 @@ export default function DisplayAllMonster(props){
                         <tr key = {monster.monsterId}>
                             <td>{monster.monsterName}</td>
                             <td><img id = "monsterImage"src={monster.monsterImage}></img></td>
-                            <td>{monster.getElement}</td>
+                            <td>{getElementName(monster.elementId)}</td>
                             <td><Link to= {`/manage/monster/edit/${monster.monsterId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(monster.monsterId)}}>Delete</button></td>
                         </tr>

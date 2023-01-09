@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000"})
-@RequestMapping("/location")
+@RequestMapping("/api")
 public class LocationController {
     private final LocationService service;
     public LocationController(LocationService service) {
             this.service = service;
         }
-        @GetMapping
+        @GetMapping("/location/viewAll")
         public List<Location> findAll() {
             return service.findAll();
         }
 
-        @GetMapping("/{locationId}")
+        @GetMapping("/location/{locationId}")
         public Location findById(@PathVariable int locationId) {
             return service.findById(locationId);
         }
 
-        @PostMapping
+        @PostMapping("/add/location")
         public ResponseEntity<Object> add(@RequestBody Location location) {
             Result<Location> result = service.add(location);
             if (result.isSuccess()) {
@@ -37,7 +37,7 @@ public class LocationController {
             return ErrorResponse.build(result);
         }
 
-        @PutMapping("/{locationId}")
+        @PutMapping("/edit/location/{locationId}")
         public ResponseEntity<Object> update(@PathVariable int locationId, @RequestBody Location location) {
             if (locationId != location.getLocationId()) {
                 return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -51,7 +51,7 @@ public class LocationController {
             return ErrorResponse.build(result);
         }
 
-    @DeleteMapping("{/locationId}")
+    @DeleteMapping("/delete/location/{locationId}")
     public ResponseEntity<Void> delete(@PathVariable int locationId) {
         Result<Location> result = service.deleteById(locationId);
         if (result.isSuccess()){

@@ -5,9 +5,11 @@ import learn.monsterBash.data.LocationJdbcTemplateRepository;
 import learn.monsterBash.models.Equipment;
 import learn.monsterBash.models.Location;
 import learn.monsterBash.models.Weather;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LocationService {
     private final LocationJdbcTemplateRepository repository;
 
@@ -77,10 +79,6 @@ public class LocationService {
 
         if (location.getLocationName() == null || location.getLocationName().isBlank()) {
             result.addMessage("location name is required", ResultType.INVALID);
-        }
-
-        if (!location.getLocationImage().contains(".")){
-            result.addMessage("image must call from a website address", ResultType.INVALID);
         }
 
         return result;

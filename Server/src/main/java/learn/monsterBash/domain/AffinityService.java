@@ -4,10 +4,11 @@ import learn.monsterBash.data.AffinityRepo;
 import learn.monsterBash.data.EquipmentRepo;
 import learn.monsterBash.data.WeatherRepo;
 import learn.monsterBash.models.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class AffinityService {
     private final AffinityRepo repo;
 
@@ -79,24 +80,23 @@ public class AffinityService {
 
     }
 
-    public Result<Affinity> deleteById(Affinity affinity){
+    public Result<Affinity> deleteById(int affinityId){
         Result<Affinity> result = new Result<>();
-        String affinityName = affinity.getAffinityName();
         List<Equipment> equipments = equipmentRepo.findAll();
-        Optional<Equipment> duplicateEquipment = equipments.stream().filter(e -> e.getAffinityName().equalsIgnoreCase(affinityName)).findAny();
+        Optional<Equipment> duplicateEquipment = equipments.stream().filter(e -> e.getAffinityId() == affinityId).findAny();
         if (duplicateEquipment.isPresent()){
             result.addMessage("Affinity cannot be deleted because it is attached to an equipment", ResultType.INVALID);
             return result;
         }
         List<Weather> weathers = weatherRepo.findAll();
-        Optional<Weather> duplicateWeather = weathers.stream().filter(w -> w.getAffinityName().equalsIgnoreCase(affinityName)).findAny();
+        Optional<Weather> duplicateWeather = weathers.stream().filter(w -> w.getAffinityId() == affinityId).findAny();
         if (duplicateWeather.isPresent()){
             result.addMessage("Affinity cannot be deleted because it is attached to a weather event", ResultType.INVALID);
             return result;
         }
-        boolean delete = repo.deleteById(affinity.getAffinityId());
+        boolean delete = repo.deleteById(affinityId);
         if (!delete){
-            String message = String.format("Affinity with Id: %s was not found", affinity.getAffinityId());
+            String message = String.format("Affinity with Id: %s was not found", affinityId);
             result.addMessage(message, ResultType.NOT_FOUND);
         }
         return result;

@@ -5,6 +5,7 @@ export default function EquipmentForm(props){
     const [equipmentName, setEquipmentName] = useState("");
     const [equipmentImage, setEquipmentImage] = useState("");
     const [affinityId, setAffinityId] = useState("");
+    const [equipmentStrength, setEquipmentStrength] = useState("");
     
     
 
@@ -19,6 +20,7 @@ export default function EquipmentForm(props){
             setEquipmentName(targetEquipment.equipmentName);
             setEquipmentImage(targetEquipment.equipmentImage);
             setAffinityId(targetEquipment.affinityId);
+            setEquipmentStrength(targetEquipment.strength)
         }
     }
 
@@ -39,6 +41,7 @@ export default function EquipmentForm(props){
             equipmentName,
             equipmentImage,
             affinityId,
+            equipmentStrength,
             
         }
         debugger
@@ -73,6 +76,7 @@ export default function EquipmentForm(props){
             equipmentName,
             equipmentImage,
             affinityId,
+            equipmentStrength,
             equipmentId: params.id
         }
         fetch (`http://localhost:8080/api/edit/equipment/${params.id}`, {
@@ -103,6 +107,7 @@ export default function EquipmentForm(props){
         setEquipmentName("")
         setEquipmentImage("")
         setAffinityId("")
+        setEquipmentStrength(0)
         
     }
     const cancelEdit = () => {
@@ -114,15 +119,19 @@ export default function EquipmentForm(props){
 
     return (
         <>
-        <h4>Enter the information for a new Weather event in the form below</h4>
+        <h4>Enter the information for a new Equipment in the form below</h4>
         <form onSubmit={(event)=>handleSubmit(event)}>
             <div>
                 <label htmlFor = "equipmentName">Equipment name: </label>
                 <input type = "text" id = "equipmentName-input" value = {equipmentName} onChange = {(event) => {setEquipmentName(event.target.value)}}/>
             </div>
             <div>
-                <label htmlFor = "equipmentImage">Link for weather Image: </label>
+                <label htmlFor = "equipmentImage">Link for equipment Image: </label>
                 <input type = "text" id = "equipmentImage-input" value = {equipmentImage} onChange = {(event) => {setEquipmentImage(event.target.value)}}/>
+            </div>
+            <div>
+                <label htmlFor = "equipmentStrength>">Set your equipment strength here: </label>
+                <input type = "number" id = "equipmentStrength"  value = {equipmentStrength} onChange = {(event) => {setEquipmentStrength(event.target.value)}}/>
             </div>
             <div>
                 <label htmlFor = "affinityId">Affinity:</label>
