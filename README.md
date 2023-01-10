@@ -34,3 +34,7 @@ Stretch goal for ourselves:
 --Have user create an account to track history
 --Allow user to choose both monsters in a battle
 --Tournaments/leagues to track winners 
+
+
+Link to Equipment: collection: https://giphy.com/channel/Zunadir/monsterbash
+Link to Locations: https://cp.sync.com/files/2512540435
