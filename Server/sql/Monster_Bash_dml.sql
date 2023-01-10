@@ -12,7 +12,7 @@ insert into affinity (affinity_name, affinity_id) values ('Flame', 4);
 insert into affinity (affinity_name, affinity_id) values ('Snow', 5);
 insert into affinity (affinity_name, affinity_id) values ('Breeze', 6);
 
-insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, '/monsters_images/monster1');
+insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, 'https://app.pixelencounter.com/api/basic/monsters/random');
 insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 5, 2, '/monsters_images/monster2');
 insert into monster (monster_name, power, element_id, monster_image) values ('Loïca', 58, 3, '/monsters_images/monster3');
 insert into monster (monster_name, power, element_id, monster_image) values ('Pål', 61, 4, '/monsters_images/monster4');

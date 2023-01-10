@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import ViewAll from './pages/ViewAll';
 import StartBattle from './pages/BattleArena/StartBattle';
+import BattleArena from './pages/BattleArena/BattleArena';
 import ManageArena from './pages/Manage/ManageArena';
 import ManageMonster from './pages/Manage/Monster/ManageMonster';
 import ManageEquipment from './pages/Manage/Equipment/ManageEquipment';
@@ -104,7 +105,10 @@ function App() {
               <ViewAll monsterList = {monsterList} getAllMonster = {getAllMonster}/>
             </Route>
             <Route exact path ="/battle">
-              <StartBattle monsterList = {monsterList} getAllMonster = {getAllMonster}/>
+              <StartBattle monsterList = {monsterList} getAllMonster = {getAllMonster} getAllEquipment={getAllEquipment} equipmentList = {equipmentList}/>
+            </Route>
+            <Route exact path = "/battle/arena">
+              <BattleArena></BattleArena>
             </Route>
             <Route exact path = "/manage">
               <ManageArena/>
