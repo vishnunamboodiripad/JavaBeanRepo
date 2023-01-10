@@ -116,7 +116,7 @@ export default function ManageWeather(props){
         <>
         <h4>Enter the information for a new Weather event in the form below</h4>
         <form onSubmit={(event)=>handleSubmit(event)}>
-            <div>
+            <div class="form-group">
                 <label htmlFor = "weatherName">Weather name: </label>
                 <input type = "text" id = "weatherName-input" value = {weatherName} onChange = {(event) => {setWeatherName(event.target.value)}}/>
             </div>
