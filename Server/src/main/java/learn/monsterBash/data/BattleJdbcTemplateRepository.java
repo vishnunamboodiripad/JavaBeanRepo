@@ -5,12 +5,13 @@ import learn.monsterBash.models.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
-
+@Repository
 public class BattleJdbcTemplateRepository implements BattleRepo {
     private final WeatherRepo weatherRepo;
     private final LocationRepo locationRepo;
@@ -101,8 +102,6 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         battle.setPlayerMonsterId(playerMonster.getMonsterId());
         battle.setPlayerEquipmentId(playerEquipment.getEquipmentId());
         battle.setAppUserId(appUserId);
-
-
 
         return battle;
     }

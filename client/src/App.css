@@ -11,3 +11,25 @@ td {
   border: 1px black solid;
 }
 
+#battle-arena{
+  position: relative;
+}
+#start-battle-button{
+  position: relative;
+  top: 10rem;
+  right: 6rem;
+}
+#computer-monster-battle{
+  float: right;
+  padding-right: 2rem;
+  padding-left: 0rem;
+}
+
+#player-monster-battle{
+  float: left;
+  padding-right: 0rem;
+  padding-left: 2rem;
+}
+
+
+
