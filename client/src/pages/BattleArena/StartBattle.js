@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, {useRef, useEffect, useState} from "react";
+import {gsap} from "gsap";
 
 export default function StartBattle(props){
 
    const [playerMonster, setPlayerMonster] = useState("");
    const [playerEquipment, setPlayerEquipment] = useState("");
 
+   const monster = useRef(null);
+
+
+   
+  
+    useEffect(() => {
+        gsap.fromTo(
+          [monster.current],
+          3,
+          { y: 10 },
+          { y: -10, repeat: -1, yoyo:true }
+        );
+      }, [playerMonster]);
+    
     return(
         <div>
         <h1>Here's the page for starting a battle</h1>
@@ -14,12 +29,13 @@ export default function StartBattle(props){
                 <select id = "playerMonster-input" value = {playerMonster} onChange = {(event) => {setPlayerMonster(parseInt(event.target.value))}}>
                     {props.monsterList.map((monster) => (
                         <option key = {monster.monsterId} value = {monster.monsterId}>{monster.monsterName}</option>
+                        
                     ))}
-                    
                 </select>
-                <img src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "200" width = "200"></img>  
+                <img ref = {monster} className = "monster" src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "200" width = "200"></img>  
+
         </div>
-        
+
         {/* <div>
                 <label htmlFor = "playerEquipment-input">Choose a weapon for your monster:</label>
                 <select id = "playerEquipment-input" value = {playerEquipment} onChange = {(event) => {setPlayerEquipment(parseInt(event.target.value))}}>
