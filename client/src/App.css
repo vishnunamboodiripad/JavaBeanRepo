@@ -1,7 +1,14 @@
 .App {
-  text-align: center;
+  text-align: center;  
+  background-color: rgb(43, 43, 43);
+  color: white
 }
+body{
+  text-align: center;  
+  background-color: rgb(43, 43, 43);
+  color: white
 
+}
 #weatherImage{
   height: 10rem;
   width: 10rem;
