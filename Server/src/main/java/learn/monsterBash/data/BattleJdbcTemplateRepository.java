@@ -5,12 +5,14 @@ import learn.monsterBash.models.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
-
+@Repository
 public class BattleJdbcTemplateRepository implements BattleRepo {
     private final WeatherRepo weatherRepo;
     private final LocationRepo locationRepo;
@@ -106,7 +108,8 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
 
         return battle;
     }
-
+    @Transactional
+    @Override
     public Battle findById(int battleId){
         final String sql = """
                 select battle_id, app_user_id, player_win
@@ -120,6 +123,7 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         return battle;
     }
 
+    @Override
     public List<Battle> findBattlesByUser(int user_id) {
         final String sql = """
                 select battle_id, app_user_id, player_win
@@ -130,7 +134,7 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         List<Battle> battles = jdbcTemplate.query(sql, new BattleMapper(), user_id);
         return battles;
     }
-
+    @Override
     public Battle add(Battle battle){
         final String sql = """
                 insert into battle (player_monster_id, computer_monster_id, player_equipment_id, computer_equipment_id, weather_id, location_id, app_user_id, player_win)

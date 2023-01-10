@@ -31,7 +31,7 @@ public class Battle {
 
 
     public int getAppUserId() {
-        return AppUser;
+        return appUserId;
     }
 
     public void setAppUserId(int appUser) {appUserId = appUserId;
