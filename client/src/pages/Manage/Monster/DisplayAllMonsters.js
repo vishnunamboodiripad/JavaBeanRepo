@@ -36,7 +36,9 @@ export default function DisplayAllMonster(props){
         return elementName;
     }
     return (
-        <table>
+
+        
+        <table id = "#displayMonster"class = "table table-hover table-dark">
             <thead key = "header">
                 <tr>
                     <td>Name</td>
@@ -51,7 +53,7 @@ export default function DisplayAllMonster(props){
                     return (
                         <tr key = {monster.monsterId}>
                             <td>{monster.monsterName}</td>
-                            <td><img id = "monsterImage"src={monster.monsterImage}></img></td>
+                            <td><img id = "monsterImage"src={monster.monsterImage} width="100" height="100"></img></td>
                             <td>{getElementName(monster.elementId)}</td>
                             <td><Link to= {`/manage/monster/edit/${monster.monsterId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(monster.monsterId)}}>Delete</button></td>
@@ -60,5 +62,6 @@ export default function DisplayAllMonster(props){
                 })}
             </tbody>
         </table>
+     
     )
 }
