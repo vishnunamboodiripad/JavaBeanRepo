@@ -23,12 +23,12 @@ insert into monster (monster_name, power, element_id, monster_image) values ('Ju
 insert into monster (monster_name, power, element_id, monster_image) values ('Dorothée', 75, 1, '/monsters_images/monster9');
 insert into monster (monster_name, power, element_id, monster_image) values ('Vishnu', 29, 2, '/monsters_images/monster10');
 
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Sword of Minor Static Electricity', 'desdev.cn', 65, 1, 1);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Staff of Soggyness', 'tripod.com', 60, 2, 2);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Mace of Too Many Rocks', 'yellowpages.com', 68, 3, 3);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spear of Second Degree Burns','google.com', 70, 4, 4);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Bow and Arrow of Dangerously Icy Road Conditions', 'networksolutions.com', 58, 5, 5);
-insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spikey Shield of Wind Protection & Cowardice', 't.co', 17, 6, 6);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Sword of Minor Static Electricity', 'https://media1.giphy.com/media/fgFKv7iL822GesuYNh/giphy.gif', 65, 1, 1);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Staff of Soggyness', 'https://media3.giphy.com/media/13JmE93YJMtjCL8jLg/giphy.gif', 60, 2, 2);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Mace of Too Many Rocks', 'https://media3.giphy.com/media/peDpV5AZOeSin6L5e8/giphy.gif', 68, 3, 3);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spear of Second Degree Burns','https://media0.giphy.com/media/Qns2skrouXGi8sVKh6/giphy.gif', 70, 4, 4);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Bow and Arrow of Dangerously Icy Road Conditions', 'https://media4.giphy.com/media/4jBttKNeeux4Wd1Rrr/giphy.gif', 58, 5, 5);
+insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spikey Shield of Wind Protection & Cowardice', 'https://media0.giphy.com/media/Q6jZduc5riol3Z6rGl/giphy.gif', 17, 6, 6);
 
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Blizzard', 1, 5, 'https://www.publicdomainpictures.net/pictures/390000/velka/baum-nacht-schnee-winter-1613641634iKr.jpg');
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sandstorm', 2, 3, 'https://www.publicdomainpictures.net/pictures/210000/velka/hintergrund-tapete-1486984641pyy.jpg');

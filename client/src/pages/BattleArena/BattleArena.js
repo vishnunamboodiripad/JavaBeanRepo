@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
 
 export default function BattleArena(){
 
@@ -10,10 +11,32 @@ export default function BattleArena(){
     const [winnerReveal, setWinnerReveal] = useState("");
 
    
+    const playerMonsterRef = useRef(null)
+    const computerMonsterRef = useRef(null)
+
+    
 
     const displayWinner = () => {
         setWinnerReveal("The winner is!");
     }
+
+    useEffect(() => {
+        gsap.to(
+          [computerMonsterRef.current],
+          3,
+          {x:-200}
+        );
+      }, [winnerReveal]);
+
+      useEffect(() => {
+        gsap.to(
+          [playerMonsterRef.current],
+          3,
+          { x: 200 }
+        
+        );
+      }, [winnerReveal]);
+
     return (
         <div id = "#battle-arena">
             <h1>Welcome to the Arena!</h1>
@@ -26,14 +49,18 @@ export default function BattleArena(){
             alt = "House" height = "200" width = "200"></img>
 
             <p id = "computer-monster-battle">Computer monster:</p>
-            <img id = "computer-monster-battle" src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "100" width = "100"></img>
+            <img ref = {computerMonsterRef} id = "computer-monster-battle" src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "100" width = "100"></img>
 
             <p id = "player-monster-battle">Player monster:</p>
-            <img id = "player-monster-battle" src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "100" width = "100"></img>
+            <img ref = {playerMonsterRef} id = "player-monster-battle" src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "100" width = "100"></img>
 
             <button id = "start-battle-button" onClick = {displayWinner}>START BATTLE!</button>
 
-            <p>{winnerReveal}</p>
+            <div class = "winner-reveal">
+                <div>{winnerReveal}</div>
+            </div>
         </div>
     )
+
+    
 }
