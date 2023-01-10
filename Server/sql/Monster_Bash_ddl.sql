@@ -87,7 +87,7 @@ create table App_Role_User (
 );
 
 
-        
+/*
 create table battle (
 	battle_id int primary key auto_increment,
 	player_monster int not null,
@@ -120,3 +120,4 @@ create table battle (
         references App_User(user_id),
 	player_win boolean not null
     );
+    */

@@ -104,8 +104,6 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         battle.setPlayerEquipmentId(playerEquipment.getEquipmentId());
         battle.setAppUserId(appUserId);
 
-
-
         return battle;
     }
     @Transactional
