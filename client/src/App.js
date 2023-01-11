@@ -21,7 +21,9 @@ import EquipmentForm from './pages/Manage/Equipment/EquipmentForm';
 import DisplayAllEquipment from './pages/Manage/Equipment/DisplayAllEquipment';
 import MonsterForm from './pages/Manage/Monster/MonsterForm';
 import DisplayAllMonster from './pages/Manage/Monster/DisplayAllMonsters';
-
+import AffinityForm from './pages/Manage/Affinity/AffinityForm';
+import DisplayAllAffinity from './pages/Manage/Affinity/DisplayAllAffinity';
+import ManageAffinity from './pages/Manage/Affinity/ManageAffinity';
 
 function App() {
 
@@ -40,7 +42,8 @@ function App() {
   const [errors, setErrors] = useState([]);
   const [locationList, setLocationList] = useState([]);
   const [equipmentList, setEquipmentList] = useState([]);
-  
+  const [affinityList, setAffinityList] = useState([]);
+  const [elementList, setElementList] = useState([]);
 
   const getAllMonster = () => {
     fetch("http://localhost:8080/api/monster/viewAll",
@@ -77,11 +80,31 @@ function App() {
       })
       .then((json) => {setEquipmentList(json)})
     }
+    const getAllAffinity = () => {
+      fetch("http://localhost:8080/api/affinity/viewAll" , 
+          {method: "GET"})
+      .then((response) => {
+          return response.json()
+      })
+      .then((json) => {setAffinityList(json)})      
+    }
+    // const getAllElement = () => {
+    //   fetch("http://localhost:8080/api/element/viewAll" , 
+    //       {method: "GET"})
+    //   .then((response) => {
+    //       return response.json()
+    //   })
+    //   .then((json) => {setElementList(json)})      
+    // }
 
     useEffect(getAllWeather, [])
     useEffect(getAllLocation, [])
     useEffect(getAllEquipment, [])
     useEffect(getAllMonster, [])
+    useEffect(getAllAffinity, [])
+    //useEffect(getAllElement, [])
+
+
 
     const getElementName = (elementId) => {
       let elementName = "";
@@ -194,6 +217,15 @@ function App() {
             </Route>
             <Route exact path = "/manage/location/displayAll">
               <DisplayAllLocation getElementName = {getElementName} locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
+            </Route>
+            <Route exact path = "/manage/affinity">
+              <ManageAffinity/>
+            </Route>
+            <Route exact path = {["/manage/affinity/form", "/manage/affinity/edit/:id"]}>
+              <AffinityForm affinityList = {affinityList} getAllAffinity= {getAllAffinity} setErrors = {setErrors}/>
+            </Route>
+            <Route exact path = "/manage/affinity/displayAll">
+              <DisplayAllAffinity affinityList = {affinityList} getAllAffinity = {getAllAffinity} setErrors = {setErrors}/>
             </Route>
           </Switch>
         </BrowserRouter>

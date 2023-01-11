@@ -17,6 +17,12 @@ export default function HomePage() {
         <div>
         <a className = "btn btn-success" href = "/manage/location" >Manage location database</a>
         </div>
+        <div>
+        <a className = "btn btn-success" href = "/manage/affinity" >Manage affinity database</a>
+        </div>
+        <div>
+        <a className = "btn btn-success" href = "/manage/element" >Manage element database</a>
+        </div>
         </div>
         </div>
     
