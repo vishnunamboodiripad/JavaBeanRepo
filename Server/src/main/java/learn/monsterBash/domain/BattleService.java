@@ -1,13 +1,11 @@
 package learn.monsterBash.domain;
 
 import learn.monsterBash.data.BattleRepo;
-import learn.monsterBash.models.Battle;
-import learn.monsterBash.models.Element;
-import learn.monsterBash.models.Monster;
-import learn.monsterBash.models.Weather;
+import learn.monsterBash.models.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class BattleService {
 
     private final BattleRepo repo;
@@ -20,8 +18,12 @@ public class BattleService {
         return repo.findById(battleId);
     }
 
+    public Battle findWinner(Monster playerMonster, Equipment playerEquipment, AppUser user) {
+        return repo.findWinner(playerMonster, playerEquipment, user);
+    }
+
     public Result<Battle> add(Battle battle) {
-        Result<Battle> result = null;
+        Result<Battle> result = new Result<>();
         if (battle == null) {
             result.addMessage("Battle cannot be null", ResultType.INVALID);
             return result;
@@ -32,8 +34,10 @@ public class BattleService {
             return result;
         }
         battle = repo.add(battle);
+
         result.setPayload(battle);
         return result;
     }
+
 }
 

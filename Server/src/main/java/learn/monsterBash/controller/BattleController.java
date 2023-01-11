@@ -3,6 +3,7 @@ package learn.monsterBash.controller;
 import learn.monsterBash.domain.BattleService;
 import learn.monsterBash.domain.Result;
 import learn.monsterBash.domain.ResultType;
+import learn.monsterBash.models.AppUser;
 import learn.monsterBash.models.Battle;
 import learn.monsterBash.models.Equipment;
 import learn.monsterBash.models.Monster;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api")
 public class BattleController {
-    /*
+
     private final BattleService service;
 
 
@@ -27,9 +28,9 @@ public class BattleController {
         return service.findById(battleId);
     }
 
-    @GetMapping("/battle/findWinner")
-    public Battle findWinner(@RequestBody (required=false)Monster playerMonster, Equipment playerEquipment, int appUserId){
-        return service.findWinner(playerMonster, playerEquipment, appUserId);
+    @PostMapping("/battle/findWinner")
+    public Battle findWinner(@RequestBody Monster playerMonster, Equipment playerEquipment, AppUser user){
+        return service.findWinner(playerMonster, playerEquipment, user);
     }
 
     @PostMapping("/battle/add")
@@ -42,6 +43,6 @@ public class BattleController {
         }
         return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
     }
-*/
+
 
 }

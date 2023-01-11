@@ -34,7 +34,7 @@ public class Battle {
         return appUserId;
     }
 
-    public void setAppUserId(int appUser) {appUserId = appUserId;
+    public void setAppUserId(int appUserId) {this.appUserId = appUserId;
     }
 
     public Boolean getPlayerWin() {

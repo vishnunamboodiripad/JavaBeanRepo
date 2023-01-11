@@ -87,24 +87,24 @@ create table App_Role_User (
 );
 
 
-/*
+
 create table battle (
 	battle_id int primary key auto_increment,
-	player_monster int not null,
+	player_monster_id int not null,
 		constraint fk_monster_battle_id_1
-		foreign key (player_monster)
+		foreign key (player_monster_id)
 		references monster(monster_id),
-	computer_monster int not null,
+	computer_monster_id int not null,
 		constraint fk_monster_battle_id_2
-		foreign key (computer_monster)
+		foreign key (computer_monster_id)
 		references monster(monster_id),
-	player_equipment int not null,
+	player_equipment_id int not null,
 		constraint fk_equipment_battle_id_1
-		foreign key (player_equipment)
+		foreign key (player_equipment_id)
 		references equipment(equipment_id),
-	computer_equipment int not null,
+	computer_equipment_id int not null,
 		constraint fk_equipment_battle_id_2
-		foreign key (computer_equipment)
+		foreign key (computer_equipment_id)
 		references equipment(equipment_id),
 	weather_id int not null,
 		constraint fk_weather_battle_id
@@ -120,4 +120,3 @@ create table battle (
         references App_User(user_id),
 	player_win boolean not null
     );
-    */

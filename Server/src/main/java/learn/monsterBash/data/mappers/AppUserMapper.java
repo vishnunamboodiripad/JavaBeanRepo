@@ -13,7 +13,6 @@ public class AppUserMapper implements RowMapper<AppUser> {
     public AppUserMapper( List<String> userRoles){
         this.userRoles = userRoles;
     }
-
     @Override
     public AppUser mapRow(ResultSet rs, int rowNum) throws SQLException {
         AppUser toReturn = new AppUser();

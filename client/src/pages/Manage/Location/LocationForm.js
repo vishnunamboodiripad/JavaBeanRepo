@@ -41,7 +41,6 @@ export default function LocationForm(props){
             elementId,
             
         }
-        debugger
         fetch ("http://localhost:8080/api/add/location", {
             method: "POST",
             headers: {
@@ -52,7 +51,7 @@ export default function LocationForm(props){
         })
         .then((result)=> {
             if (result.status === 201) {
-                props.getAll();
+                props.getAllLocation();
                 clearForm();
                 props.setErrors([]);
                 history.push("/manage/location")
@@ -68,7 +67,6 @@ export default function LocationForm(props){
     }
 
     const update = () => {
-        debugger
         const updatedLocation = {
             locationName,
             locationImage,
@@ -85,7 +83,7 @@ export default function LocationForm(props){
         })
         .then((result)=> {
             if (result.status === 204) {
-                props.getAll();
+                props.getAllLocation();
                 clearForm();
                 props.setErrors([]);
                 history.push("/manage/location")
@@ -127,7 +125,7 @@ export default function LocationForm(props){
             <div>
                 <label htmlFor = "elementId">Element:</label>
                 <select id = "elementId-input" value = {elementId} onChange = {(event) => {setElementId(parseInt(event.target.value))}}>
-                    <option  value = '1'>Fire</option>
+                    <option selected value = "1">Fire</option>
                     <option  value = "2">Water</option>
                     <option  value = "3">Earth</option>
                     <option  value = "4">Wind</option>

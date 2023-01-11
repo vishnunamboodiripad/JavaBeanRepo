@@ -16,25 +16,7 @@ export default function DisplayAllMonster(props){
             props.getAllMonster()
           })
     }
-
-    const getElementName = (elementId) => {
-        let elementName = "";
-            switch(elementId) {
-                case 1:
-                    elementName = "Fire";
-                    break;
-                case 2:
-                    elementName = "Water";
-                    break;
-                case 3:
-                    elementName = "Earth";
-                    break;
-                case 4:
-                    elementName = "Wind";
-                    break;
-            }
-        return elementName;
-    }
+    
     return (
         <table>
             <thead key = "header">
@@ -52,7 +34,7 @@ export default function DisplayAllMonster(props){
                         <tr key = {monster.monsterId}>
                             <td>{monster.monsterName}</td>
                             <td><img id = "monsterImage"src={monster.monsterImage}></img></td>
-                            <td>{getElementName(monster.elementId)}</td>
+                            <td>{props.getElementName(monster.elementId)}</td>
                             <td><Link to= {`/manage/monster/edit/${monster.monsterId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(monster.monsterId)}}>Delete</button></td>
                         </tr>

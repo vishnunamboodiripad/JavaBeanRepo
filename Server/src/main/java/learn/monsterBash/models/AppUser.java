@@ -9,18 +9,18 @@ import java.util.Collection;
 import java.util.List;
 
 public class AppUser implements UserDetails {
-    Integer appUserId;
+    int appUserId;
     String username;
     String passHash;
     Boolean enabled;
 
     List<String> roles;
 
-    public Integer getAppUserId() {
+    public int getAppUserId() {
         return appUserId;
     }
 
-    public void setAppUserId(Integer appUserId) {
+    public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
     }
 
