@@ -5,7 +5,17 @@ public class Element {
 
     public String elementName;
 
+    public String elementImage;
+
     public Element() {
+    }
+
+    public String getElementImage() {
+        return elementImage;
+    }
+
+    public void setElementImage(String elementImage) {
+        this.elementImage = elementImage;
     }
 
     public Element(int elementId, String elementName) {

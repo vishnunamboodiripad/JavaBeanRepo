@@ -26,7 +26,7 @@ public class AffinityJdbcTemplateRepository implements AffinityRepo {
     public List<Affinity> findAll() {
 
             final String sql = """
-                    select affinity_id, affinity_name
+                    select affinity_id, affinity_name, affinity_image
                     from affinity
                     order by affinity_id;
                     """;
@@ -39,14 +39,16 @@ public class AffinityJdbcTemplateRepository implements AffinityRepo {
     public Affinity add(Affinity affinity) {
 
         final String sql = """
-                insert into affinity(affinity_name)
-                values (?);
+                insert into affinity(affinity_name, affinity_image)
+                values (?,?);
                  """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, affinity.getAffinityName());
+            ps.setString(2, affinity.getAffinityImage());
+
             return ps;
         }, keyHolder);
 
@@ -63,7 +65,7 @@ public class AffinityJdbcTemplateRepository implements AffinityRepo {
     public Affinity findById(int affinityId) {
 
         final String sql = """
-               select affinity_id, affinity_name
+               select affinity_id, affinity_name, affinity_image
                from affinity
                where affinity_id = ?;
                """;
@@ -78,12 +80,14 @@ public class AffinityJdbcTemplateRepository implements AffinityRepo {
     public boolean update(Affinity affinity) {
         final String sql = """
                 update affinity set
-                affinity_name = ?
+                affinity_name = ?,
+                affinity_image = ?
                 where affinity_id = ?
                 """;
 
         return jdbcTemplate.update(sql,
                 affinity.getAffinityName(),
+                affinity.getAffinityImage(),
                 affinity.getAffinityId()) > 0;
     }
 

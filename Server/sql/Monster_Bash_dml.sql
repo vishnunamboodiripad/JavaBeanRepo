@@ -1,16 +1,16 @@
 use monster_bash;
 
-insert into element (element_name, element_id) values ('Fire', 1);
-insert into element (element_name, element_id) values ('Water', 2);
-insert into element (element_name, element_id) values ('Earth', 3);
-insert into element (element_name, element_id) values ('Wind', 4);
+insert into element (element_name, element_id, element_image) values ('Fire', 1, "google.com");
+insert into element (element_name, element_id, element_image) values ('Water', 2, "google.com");
+insert into element (element_name, element_id, element_image) values ('Earth', 3, "google.com");
+insert into element (element_name, element_id, element_image) values ('Wind', 4, "google.com");
 
-insert into affinity (affinity_name, affinity_id) values ('Electric', 1);
-insert into affinity (affinity_name, affinity_id) values ('Liquid', 2);
-insert into affinity (affinity_name, affinity_id) values ('Stone', 3);
-insert into affinity (affinity_name, affinity_id) values ('Flame', 4);
-insert into affinity (affinity_name, affinity_id) values ('Snow', 5);
-insert into affinity (affinity_name, affinity_id) values ('Breeze', 6);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Electric',"google.com", 1);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Liquid',"google.com", 2);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Stone',"google.com", 3);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Flame',"google.com", 4);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Snow',"google.com", 5);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Breeze',"google.com", 6);
 
 insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, 'https://app.pixelencounter.com/api/basic/monsters/10');
 insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 5, 2, 'https://app.pixelencounter.com/api/basic/monsters/22');

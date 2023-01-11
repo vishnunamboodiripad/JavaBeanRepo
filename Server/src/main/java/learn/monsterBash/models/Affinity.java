@@ -3,6 +3,16 @@ package learn.monsterBash.models;
 public class Affinity {
     int affinityId;
     String affinityName;
+    String affinityImage;
+
+
+    public String getAffinityImage() {
+        return affinityImage;
+    }
+
+    public void setAffinityImage(String affinityImage) {
+        this.affinityImage = affinityImage;
+    }
 
     public int getAffinityId() {
         return affinityId;

@@ -4,6 +4,7 @@ import learn.monsterBash.data.ElementRepo;
 import learn.monsterBash.data.LocationRepo;
 import learn.monsterBash.data.MonsterRepository;
 import learn.monsterBash.models.Element;
+import learn.monsterBash.models.Equipment;
 import learn.monsterBash.models.Location;
 import learn.monsterBash.models.Monster;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,10 @@ public class ElementService {
     public Element findById(int elementId) {
         return repo.findById(elementId);
     }
+    public List<Element> findAll() {
+        return repo.findAll();
+    }
+
 
     public Result<Element> add(Element element){
         Result<Element> result = validate(element);

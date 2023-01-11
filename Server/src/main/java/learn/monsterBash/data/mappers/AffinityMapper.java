@@ -13,6 +13,7 @@ public class AffinityMapper implements RowMapper<Affinity> {
         Affinity affinity = new Affinity();
         affinity.setAffinityId(resultSet.getInt("affinity_id"));
         affinity.setAffinityName(resultSet.getString("affinity_name"));
+        affinity.setAffinityImage(resultSet.getString("affinity_image"));
         return affinity;
     }
 }

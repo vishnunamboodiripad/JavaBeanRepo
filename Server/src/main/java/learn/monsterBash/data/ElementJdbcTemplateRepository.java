@@ -23,7 +23,7 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
 
     @Override
     public List<Element> findAll() {
-        final String sql = "select element_id, element_name "
+        final String sql = "select element_id, element_name, element_image "
                 + "from element;";
         return jdbcTemplate.query(sql, new ElementMapper());
     }
@@ -32,7 +32,7 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
     @Transactional
     public Element findById(int elementId) {
 
-        final String sql = "select element_id, element_name "
+        final String sql = "select element_id, element_name, element_image "
                 + "from element "
                 + "where element_id = ?;";
 
@@ -47,8 +47,8 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
 
 
         final String sql = """
-                insert into element (element_name,element_id)
-                 values (?,?);
+                insert into element (element_name,element_id, element_image)
+                 values (?,?,?);
                  """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -72,10 +72,12 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
 
         final String sql = "update element set "
                 + "element_name = ?"
+                + "element_image = ?"
                 + "where element_id = ?;";
 
         return jdbcTemplate.update(sql,
                 element.getElementName(),
+                element.getElementImage(),
                 element.getElementId()) > 0;
     }
 

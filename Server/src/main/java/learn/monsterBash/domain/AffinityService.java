@@ -27,7 +27,7 @@ public class AffinityService {
         return repo.findAll();
     }
 
-    public Affinity findByID(int affinityId){
+    public Affinity findById(int affinityId){
         return repo.findById(affinityId);
     }
 

@@ -26,14 +26,14 @@ class AffinityServiceTest {
             expected.setAffinityName("shock");
             expected.setAffinityId(5);
             when(repo.findById(1)).thenReturn(expected);
-            Affinity actual = service.findByID(1);
+            Affinity actual = service.findById(1);
             assertEquals(expected, actual);
         }
 
         @Test
         void shouldNotFindById() {
             when(repo.findById(10)).thenReturn(null);
-            Affinity actual = service.findByID(10);
+            Affinity actual = service.findById(10);
             assertEquals(null, actual);
         }
 
