@@ -24,7 +24,9 @@ import DisplayAllMonster from './pages/Manage/Monster/DisplayAllMonsters';
 import AffinityForm from './pages/Manage/Affinity/AffinityForm';
 import DisplayAllAffinity from './pages/Manage/Affinity/DisplayAllAffinity';
 import ManageAffinity from './pages/Manage/Affinity/ManageAffinity';
-
+import ManageElement from './pages/Manage/Element/ManageElement';
+import ElementForm from './pages/Manage/Element/ElementForm';
+import DisplayAllElement from './pages/Manage/Element/DisplayAllElement';
 function App() {
 
   let currentUserData = localStorage.getItem("userData");
@@ -88,21 +90,21 @@ function App() {
       })
       .then((json) => {setAffinityList(json)})      
     }
-    // const getAllElement = () => {
-    //   fetch("http://localhost:8080/api/element/viewAll" , 
-    //       {method: "GET"})
-    //   .then((response) => {
-    //       return response.json()
-    //   })
-    //   .then((json) => {setElementList(json)})      
-    // }
+     const getAllElement = () => {
+       fetch("http://localhost:8080/api/element/viewAll" , 
+           {method: "GET"})
+       .then((response) => {
+         return response.json()
+       })
+       .then((json) => {setElementList(json)})      
+     }
 
     useEffect(getAllWeather, [])
     useEffect(getAllLocation, [])
     useEffect(getAllEquipment, [])
     useEffect(getAllMonster, [])
     useEffect(getAllAffinity, [])
-    //useEffect(getAllElement, [])
+    useEffect(getAllElement, [])
 
 
 
@@ -227,6 +229,17 @@ function App() {
             <Route exact path = "/manage/affinity/displayAll">
               <DisplayAllAffinity affinityList = {affinityList} getAllAffinity = {getAllAffinity} setErrors = {setErrors}/>
             </Route>
+
+            <Route exact path = "/manage/element">
+              <ManageElement/>
+            </Route>
+            <Route exact path = {["/manage/element/form", "/manage/element/edit/:id"]}>
+              <ElementForm elementList = {elementList} getAllElement= {getAllElement} setErrors = {setErrors}/>
+            </Route>
+            <Route exact path = "/manage/element/displayAll">
+              <DisplayAllElement elementList = {elementList} getAllElement = {getAllElement} setErrors = {setErrors}/>
+            </Route>
+            
           </Switch>
         </BrowserRouter>
     </UserContext.Provider>
