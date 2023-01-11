@@ -1,16 +1,16 @@
 use monster_bash;
 
-insert into element (element_name, element_id, element_image) values ('Fire', 1, "google.com");
-insert into element (element_name, element_id, element_image) values ('Water', 2, "google.com");
-insert into element (element_name, element_id, element_image) values ('Earth', 3, "google.com");
-insert into element (element_name, element_id, element_image) values ('Wind', 4, "google.com");
+insert into element (element_name, element_id, element_image) values ('Fire', 1, "https://media3.giphy.com/media/JPJCYTfdCj5iPQGTgc/giphy.gif");
+insert into element (element_name, element_id, element_image) values ('Water', 2, "https://media3.giphy.com/media/Kv1A13RfsS1YzBRiF4/giphy.gif");
+insert into element (element_name, element_id, element_image) values ('Earth', 3, "https://media3.giphy.com/media/fvSVVQ0wxRhBZJGSMh/giphy.gif");
+insert into element (element_name, element_id, element_image) values ('Wind', 4, "https://media3.giphy.com/media/hnozaYTOpoAIWzl95k/giphy.gif");
 
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Electric',"google.com", 1);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Liquid',"google.com", 2);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Stone',"google.com", 3);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Flame',"google.com", 4);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Snow',"google.com", 5);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Breeze',"google.com", 6);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Electric',"https://media1.giphy.com/media/IQt7inCtPsVi1buTEX/giphy.gif", 1);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Liquid',"https://media3.giphy.com/media/POEvU1mhHWvpY5jvov/giphy.gif", 2);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Stone',"https://media4.giphy.com/media/YivkxBm8WGAAIAmdmk/giphy.gif", 3);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Flame',"https://media2.giphy.com/media/IQ8K7v7zHbv00PiIP2/giphy.gif", 4);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Snow',"https://media3.giphy.com/media/gyVEJnrQLUhF4QXIb2/giphy.gif", 5);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Breeze',"https://media4.giphy.com/media/fOTkOncov2DbhD0ymN/giphy.gif", 6);
 
 insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, 'https://app.pixelencounter.com/api/basic/monsters/10');
 insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 5, 2, 'https://app.pixelencounter.com/api/basic/monsters/22');
@@ -30,12 +30,12 @@ insert into equipment (equipment_name, equipment_image, strength, affinity_id, e
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Bow and Arrow of Dangerously Icy Road Conditions', 'https://media4.giphy.com/media/4jBttKNeeux4Wd1Rrr/giphy.gif', 58, 5, 5);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Spikey Shield of Wind Protection & Cowardice', 'https://media0.giphy.com/media/Q6jZduc5riol3Z6rGl/giphy.gif', 17, 6, 6);
 
-insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Blizzard', 1, 5, 'https://www.publicdomainpictures.net/pictures/390000/velka/baum-nacht-schnee-winter-1613641634iKr.jpg');
-insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sandstorm', 2, 3, 'https://www.publicdomainpictures.net/pictures/210000/velka/hintergrund-tapete-1486984641pyy.jpg');
-insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Tornado', 3, 6, 'https://www.publicdomainpictures.net/pictures/450000/velka/tornado-1651106114dvq.jpg');
-insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Flood', 4, 2, 'https://www.publicdomainpictures.net/pictures/180000/velka/raging-river.jpg');
-insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Electric Storm', 5, 1, 'https://www.publicdomainpictures.net/pictures/340000/velka/blitz-gewitter-sturm-wetter.jpg');
-insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sunshine', 6, 4, 'https://www.publicdomainpictures.net/pictures/310000/velka/wald-herbst-baume-laub-1573340070HKJ.jpg');
+insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Blizzard', 1, 5, 'https://media2.giphy.com/media/ejFTqiwEuuDBlhoSOT/giphy.gif');
+insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sandstorm', 2, 3, 'https://media4.giphy.com/media/UVeHWW5HPwsFHRvPvm/giphy.gif');
+insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Tornado', 3, 6, 'https://media1.giphy.com/media/OF6np9BT7r315BvxzV/giphy.gif');
+insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Flood', 4, 2, 'https://media0.giphy.com/media/WX3TapcaRiV2mLNGhF/giphy.gif');
+insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Electric Storm', 5, 1, 'https://media0.giphy.com/media/Kkn14Xtu0cEsnIU3OH/giphy.gif');
+insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sunshine', 6, 4, 'https://media2.giphy.com/media/ytp0Fuo64mQQpTBlYC/giphy.gif');
 
 
 insert into location (location_name, location_id, element_id, location_image) values ('Minneapolis', 1, 1, 'https://i.imgur.com/75DaECA.png');
