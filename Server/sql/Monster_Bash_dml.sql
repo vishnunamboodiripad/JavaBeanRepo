@@ -12,16 +12,16 @@ insert into affinity (affinity_name, affinity_id) values ('Flame', 4);
 insert into affinity (affinity_name, affinity_id) values ('Snow', 5);
 insert into affinity (affinity_name, affinity_id) values ('Breeze', 6);
 
-insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, 'https://app.pixelencounter.com/api/basic/monsters/random');
-insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 5, 2, '/monsters_images/monster2');
-insert into monster (monster_name, power, element_id, monster_image) values ('Loïca', 58, 3, '/monsters_images/monster3');
-insert into monster (monster_name, power, element_id, monster_image) values ('Pål', 61, 4, '/monsters_images/monster4');
-insert into monster (monster_name, power, element_id, monster_image) values ('Estève', 19, 1, '/monsters_images/monster5');
-insert into monster (monster_name, power, element_id, monster_image) values ('Maéna', 41, 2, '/monsters_images/monster6');
-insert into monster (monster_name, power, element_id, monster_image) values ('Mélina', 12, 3, '/monsters_images/monster7');
-insert into monster (monster_name, power, element_id, monster_image) values ('Judicaël', 82, 4, '/monsters_images/monster8');
-insert into monster (monster_name, power, element_id, monster_image) values ('Dorothée', 75, 1, '/monsters_images/monster9');
-insert into monster (monster_name, power, element_id, monster_image) values ('Vishnu', 29, 2, '/monsters_images/monster10');
+insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, 'https://app.pixelencounter.com/api/basic/monsters/10');
+insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 5, 2, 'https://app.pixelencounter.com/api/basic/monsters/22');
+insert into monster (monster_name, power, element_id, monster_image) values ('Zach', 58, 3, 'https://app.pixelencounter.com/api/basic/monsters/85');
+insert into monster (monster_name, power, element_id, monster_image) values ('Pål', 61, 4, 'https://app.pixelencounter.com/api/basic/monsters/434');
+insert into monster (monster_name, power, element_id, monster_image) values ('Estève', 19, 1, 'https://app.pixelencounter.com/api/basic/monsters/75');
+insert into monster (monster_name, power, element_id, monster_image) values ('Mike', 41, 2, 'https://app.pixelencounter.com/api/basic/monsters/400');
+insert into monster (monster_name, power, element_id, monster_image) values ('Mélina', 12, 3, 'https://app.pixelencounter.com/api/basic/monsters/99');
+insert into monster (monster_name, power, element_id, monster_image) values ('Judicaël', 82, 4, 'https://app.pixelencounter.com/api/basic/monsters/45');
+insert into monster (monster_name, power, element_id, monster_image) values ('Dorothée', 75, 1, 'https://app.pixelencounter.com/api/basic/monsters/777');
+insert into monster (monster_name, power, element_id, monster_image) values ('Vishnu', 29, 2, 'https://app.pixelencounter.com/api/basic/monsters/4');
 
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Sword of Minor Static Electricity', 'https://media1.giphy.com/media/fgFKv7iL822GesuYNh/giphy.gif', 65, 1, 1);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Staff of Soggyness', 'https://media3.giphy.com/media/13JmE93YJMtjCL8jLg/giphy.gif', 60, 2, 2);
@@ -38,12 +38,12 @@ insert into weather (weather_name, weather_id, affinity_id, weather_image) value
 insert into weather (weather_name, weather_id, affinity_id, weather_image) values ('Sunshine', 6, 4, 'https://www.publicdomainpictures.net/pictures/310000/velka/wald-herbst-baume-laub-1573340070HKJ.jpg');
 
 
-insert into location (location_name, location_id, element_id, location_image) values ('Minneapolis', 1, 1, 'drupal.org');
-insert into location (location_name, location_id, element_id, location_image) values ('Las Vegas', 2, 2, 'cbc.ca');
-insert into location (location_name, location_id, element_id, location_image) values ('Kansas', 3, 3, 'buzzfeed.com');
-insert into location (location_name, location_id, element_id, location_image) values ('Seattle', 4, 4, 'ameblo.jp');
-insert into location (location_name, location_id, element_id, location_image) values ('Houston', 5, 1, 'sfgate.com');
-insert into location (location_name, location_id, element_id, location_image) values ('Miami', 6, 2, 'delicious.com');
+insert into location (location_name, location_id, element_id, location_image) values ('Minneapolis', 1, 1, 'https://i.imgur.com/75DaECA.png');
+insert into location (location_name, location_id, element_id, location_image) values ('Forest', 2, 2, 'https://i.imgur.com/ezB2aRu.png');
+insert into location (location_name, location_id, element_id, location_image) values ('Mountains', 3, 3, 'https://i.imgur.com/XJMHlWu.png');
+insert into location (location_name, location_id, element_id, location_image) values ('Oceans', 4, 4, 'https://i.imgur.com/V9KdI2J.png');
+insert into location (location_name, location_id, element_id, location_image) values ('Space', 5, 1, 'https://i.imgur.com/K3RvfbG.png');
+insert into location (location_name, location_id, element_id, location_image) values ('Volcano', 6, 2, 'https://i.imgur.com/A7JDXoJ.png');
 
 ##password for all users is 'password'
 insert into App_User (user_id, username, password, enabled) values (1, 'bmadrell0', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
