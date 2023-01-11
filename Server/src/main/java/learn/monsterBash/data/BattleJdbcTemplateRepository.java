@@ -14,54 +14,55 @@ import java.util.List;
 
 @Repository
 public class BattleJdbcTemplateRepository implements BattleRepo {
+
+    private JdbcTemplate jdbcTemplate;
+
     private final WeatherRepo weatherRepo;
     private final LocationRepo locationRepo;
     private final MonsterRepository monsterRepo;
     private final EquipmentRepo equipmentRepo;
 
-    private JdbcTemplate jdbcTemplate;
-
-
-    public BattleJdbcTemplateRepository(WeatherRepo weatherRepo, LocationRepo locationRepo, MonsterRepository monsterRepo, EquipmentRepo equipmentRepo) {
+    public BattleJdbcTemplateRepository(WeatherRepo weatherRepo, LocationRepo locationRepo, MonsterRepository monsterRepo, EquipmentRepo equipmentRepo, JdbcTemplate jdbcTemplate) {
         this.weatherRepo = weatherRepo;
         this.locationRepo = locationRepo;
         this.monsterRepo = monsterRepo;
         this.equipmentRepo = equipmentRepo;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
-    private int calcTotalMonsterPower(Location location, Monster monster, Equipment equipment, Weather weather) {
+    public int calcTotalMonsterPower(Location location, Monster monster, Equipment equipment, Weather weather) {
         monster.setPower(setElementEffects(location, monster));
         equipment.setStrength(setAffinityEffects(weather, equipment));
         int totalMonsterPower = (monster.getPower() + equipment.getStrength());
         return totalMonsterPower;
     }
 
-    private Weather getWeather() {
-        int weatherId = (int) (Math.random() * (weatherRepo.findAll().size() + 1));
+    public Weather getWeather() {
+        int weatherId = (int) (Math.random() * (weatherRepo.findAll().size()) + 1);
         Weather battleWeather = weatherRepo.findById(weatherId);
         return battleWeather;
     }
 
-    private Monster getComputerMonster() {
-        int monsterId = (int) (Math.random() * (monsterRepo.findAll().size() + 1));
+    public Monster getComputerMonster() {
+        int monsterId = (int) (Math.random() * (monsterRepo.findAll().size()) + 1);
         Monster computerMonster = monsterRepo.findById(monsterId);
         return computerMonster;
     }
 
-    private Equipment getComputerEquipment() {
-        int equipmentId = (int) (Math.random() * (equipmentRepo.findAll().size() + 1));
+    public Equipment getComputerEquipment() {
+        int equipmentId = (int) (Math.random() * (equipmentRepo.findAll().size()) + 1);
         Equipment computerEquipment = equipmentRepo.findById(equipmentId);
         return computerEquipment;
     }
 
-    private Location getLocation() {
-        int locationId = (int) (Math.random() * (locationRepo.findAll().size() + 1));
+    public Location getLocation() {
+        int locationId = (int) (Math.random() * (locationRepo.findAll().size()) + 1);
         Location battleLocation = locationRepo.findById(locationId);
         return battleLocation;
     }
 
 
-    private int setElementEffects(Location location, Monster monster) {
+    public int setElementEffects(Location location, Monster monster) {
         int monsterPower = 0;
         if (location.getElementId() == monster.getElementId()) {
             monsterPower = (monster.getPower() + 15);
@@ -70,7 +71,7 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         return monsterPower;
     }
 
-    private int setAffinityEffects(Weather weather, Equipment equipment) {
+    public int setAffinityEffects(Weather weather, Equipment equipment) {
         int equipmentPower = 0;
         if (equipment.getAffinityId() == weather.getAffinityId()) {
             equipmentPower = (equipment.getStrength() + 15);
@@ -79,9 +80,9 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         return equipmentPower;
     }
 
-
+    @Override
     public Battle findWinner(Monster playerMonster,
-                             Equipment playerEquipment, int appUserId) {
+                             Equipment playerEquipment, AppUser user) {
 
         Battle battle = new Battle();
         Weather battleWeather = getWeather();
@@ -102,15 +103,20 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         battle.setComputerEquipmentId(computerEquipment.getEquipmentId());
         battle.setPlayerMonsterId(playerMonster.getMonsterId());
         battle.setPlayerEquipmentId(playerEquipment.getEquipmentId());
-        battle.setAppUserId(appUserId);
-
+        if (user == null){
+            battle.setAppUserId(0);
+        }
+        else {
+            battle.setAppUserId(user.getAppUserId());
+        }
         return battle;
     }
+
     @Transactional
     @Override
     public Battle findById(int battleId){
         final String sql = """
-                select battle_id, app_user_id, player_win
+                select battle_id, player_monster_id, computer_monster_id, player_equipment_id, computer_equipment_id, weather_id, location_id, app_user_id, player_win
                 from battle
                 where battle_id = ?;
                 """;
@@ -124,14 +130,15 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
     @Override
     public List<Battle> findBattlesByUser(int user_id) {
         final String sql = """
-                select battle_id, app_user_id, player_win
+                select battle_id, player_monster_id, computer_monster_id, player_equipment_id, computer_equipment_id, weather_id, location_id, app_user_id, player_win
                 from battle
-                where app_user_id = ?;
+                where battle_id = ?;
                 """;
 
         List<Battle> battles = jdbcTemplate.query(sql, new BattleMapper(), user_id);
         return battles;
     }
+
     @Override
     public Battle add(Battle battle){
         final String sql = """

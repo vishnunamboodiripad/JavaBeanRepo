@@ -85,7 +85,38 @@ create table App_Role_User (
     constraint foreign key (role_id) references App_Role(role_id),
     constraint primary key (user_id, role_id)
 );
-
+create table battle (
+	battle_id int primary key auto_increment,
+	player_monster_id int not null,
+		constraint fk_monster_battle_id_1
+		foreign key (player_monster_id)
+		references monster(monster_id),
+	computer_monster_id int not null,
+		constraint fk_monster_battle_id_2
+		foreign key (computer_monster_id)
+		references monster(monster_id),
+	player_equipment_id int not null,
+		constraint fk_equipment_battle_id_1
+		foreign key (player_equipment_id)
+		references equipment(equipment_id),
+	computer_equipment_id int not null,
+		constraint fk_equipment_battle_id_2
+		foreign key (computer_equipment_id)
+		references equipment(equipment_id),
+	weather_id int not null,
+		constraint fk_weather_battle_id
+		foreign key (weather_id)
+		references weather(weather_id),
+	location_id int not null,
+		constraint fk_location_battle_id
+		foreign key (location_id)
+		references location(location_id),
+	app_user_id int not null,
+		constraint fk_app_user_battle_id
+		foreign key (app_user_id)
+        references App_User(user_id),
+	player_win boolean not null
+);
 
         
 
@@ -94,6 +125,10 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
+delete from battle;
+alter table battle auto_increment = 1;
+delete from App_User;
+alter table App_User auto_increment = 1;
 delete from location;
 alter table location auto_increment = 1;
 delete from weather;
@@ -106,6 +141,7 @@ delete from affinity;
 alter table affinity auto_increment = 1;
 delete from element;
 alter table element auto_increment = 1;
+
 
 
 insert into element (element_name, element_id) values ('Fire', 1);
@@ -153,42 +189,23 @@ insert into location (location_name, location_id, element_id, location_image) va
 insert into location (location_name, location_id, element_id, location_image) values ('Houston', 5, 1, 'sfgate.com');
 insert into location (location_name, location_id, element_id, location_image) values ('Miami', 6, 2, 'delicious.com');
 
+insert into App_User (user_id, username, password, enabled) values (1, 'bmadrell0', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (2, 'uomannion1', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (3, 'rcollinwood2', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (4, 'bbeange3', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (5, 'hsturzaker4', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (6, 'dchave5', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (7, 'sdhennin6', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (8, 'orown7', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (9, 'bkellie8', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+insert into App_User (user_id, username, password, enabled) values (10, 'rbart9', '$2a$12$AqN/wwEwDhOTXSpL3.BhBe57Xg7AKJEoolkyqoAdaQVPYnnCq7GtO', true);
+
+insert into battle (player_monster_id, computer_monster_id, player_equipment_id, computer_equipment_id, weather_id, location_id, app_user_id, player_win) 
+values ('1', '2', '1', '2', '1', '1', '1', true);
 end //
 delimiter ;
 
-create table battle (
-	battle_id int primary key auto_increment,
-	player_monster int not null,
-		constraint fk_monster_battle_id_1
-		foreign key (player_monster)
-		references monster(monster_id),
-	computer_monster int not null,
-		constraint fk_monster_battle_id_2
-		foreign key (computer_monster)
-		references monster(monster_id),
-	player_equipment int not null,
-		constraint fk_equipment_battle_id_1
-		foreign key (player_equipment)
-		references equipment(equipment_id),
-	computer_equipment int not null,
-		constraint fk_equipment_battle_id_2
-		foreign key (computer_equipment)
-		references equipment(equipment_id),
-	weather_id int not null,
-		constraint fk_weather_battle_id
-		foreign key (weather_id)
-		references weather(weather_id),
-	location_id int not null,
-		constraint fk_location_battle_id
-		foreign key (location_id)
-		references location(location_id),
-	app_user_id int not null,
-		constraint fk_app_user_battle_id
-		foreign key (app_user_id)
-        references App_User(user_id),
-	player_win boolean not null
-);
+
 
     
-insert into battle (player_monster, computer_monster, player_equipment, computer_equipment, weather_id, location_id, app_user_id, player_win) 
-values ('1', '2', '1', '2', '1', '1', '1', true);
+

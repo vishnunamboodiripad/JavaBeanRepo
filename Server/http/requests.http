@@ -112,12 +112,12 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/api/edit/monster/12
+PUT http://localhost:8080/api/edit/monster/5
 Content-Type: application/json
 
 {
   
-    "monsterId": "12",
+    "monsterId": "5",
     "monsterName": "Test-updated",
     "monsterImage": "tester-put working",
     "power": "42",
@@ -161,4 +161,53 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:8080/api/delete/location/7
+
+###
+POST http://localhost:8080/api/battle/findWinner
+Content-Type: application/json
+
+{
+    "playerMonster":
+    {
+    "monsterId": "9",
+    "monsterName": "Test",
+    "monsterImage": "tester",
+    "power": "42",
+    "elementId": "3"
+    },
+
+    "playerEquipment":
+    {
+    "equipmentId": "7",
+    "equipmentName": "Murder sphere",
+    "equipmentImage": "google3.com",
+    "strength": "70",
+    "affinityId": "2"
+    },
+
+    "user":
+    {
+    "appUserId": "1",
+    "username": "mike",
+    "passHash": "test",
+    "enabled": "true",
+    "roles": null
+    }
+}
+
+
+###
+POST http://localhost:8080/api/battle/add
+Content-Type: application/json
+
+{
+    "playerMonsterId": 3,
+    "computerMonsterId": 10,
+    "playerEquipmentId": 3,
+    "computerEquipmentId": 6,
+    "weatherId": 2,
+    "locationId": 5,
+    "appUserId": 1,
+    "playerWin": true
+}
 

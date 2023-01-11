@@ -34,12 +34,10 @@ public class WeatherController {
     @PostMapping("/add/weather")
     public ResponseEntity<?> add(@RequestBody(required = false) Weather weather) {
         Result<Weather> result = service.add(weather);
-        if (result.getType() == ResultType.INVALID){
-            ValidationErrorResult validationErrorResult = new ValidationErrorResult();
-            result.getMessages().forEach(validationErrorResult::addMessage);
-            return new ResponseEntity<>(validationErrorResult, HttpStatus.BAD_REQUEST);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        return ErrorResponse.build(result);
 
     }
 
@@ -50,20 +48,18 @@ public class WeatherController {
         }
 
         Result<Weather> result = service.update(weather);
-        if (result.getType() == ResultType.INVALID) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        else if (result.getType() == ResultType.NOT_FOUND) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        return ErrorResponse.build(result);
     }
 
     @DeleteMapping("/delete/weather/{weatherId}")
     public ResponseEntity<Void> delete(@PathVariable int weatherId) {
         Result<Weather> result = service.deleteById(weatherId);
         if (result.isSuccess()){
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function DisplayAllLocation(props){
     const doDelete = (id) => {
                if (!window.confirm("Are you sure?")) {
- debugger
+ 
             return
         }
         fetch (`http://localhost:8080/api/delete/location/${id}` , {
@@ -16,25 +16,6 @@ export default function DisplayAllLocation(props){
             }
             props.getAllLocation()
           })
-    }
-
-    const getElementName = (elementId) => {
-        let elementName = "";
-            switch(elementId) {
-                case 1:
-                    elementName = "Fire";
-                    break;
-                case 2:
-                    elementName = "Water";
-                    break;
-                case 3:
-                    elementName = "Earth";
-                    break;
-                case 4:
-                    elementName = "Wind";
-                    break;
-            }
-        return elementName;
     }
 
     return (
@@ -54,7 +35,7 @@ export default function DisplayAllLocation(props){
                         <tr key = {location.locationId}>
                             <td>{location.locationName}</td>
                             <td><img id = "locationImage"src={location.locationImage}></img></td>
-                            <td>{getElementName(location.elementId)}</td>
+                            <td>{props.getElementName(location.elementId)}</td>
                             <td><Link to= {`/manage/location/edit/${location.locationId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(location.locationId)}}>Delete</button></td>
                         </tr>

@@ -55,7 +55,7 @@ public class LocationController {
     public ResponseEntity<Void> delete(@PathVariable int locationId) {
         Result<Location> result = service.deleteById(locationId);
         if (result.isSuccess()){
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default function DisplayAllWeather(props){
     const doDelete = (id) => {
-        debugger
         if (!window.confirm("Are you sure?")) {
             return
         }
@@ -16,31 +15,6 @@ export default function DisplayAllWeather(props){
             }
             props.getAllWeather()
           })
-    }
-
-    const getAffinityName = (affinityId) => {
-        let affinityName = "";
-            switch(affinityId) {
-                case 1:
-                    affinityName = "Electric";
-                    break;
-                case 2:
-                    affinityName = "Liquid";
-                    break;
-                case 3:
-                    affinityName = "Stone";
-                    break;
-                case 4:
-                    affinityName = "Flame";
-                    break;
-                case 5:
-                    affinityName = "Snow";
-                    break;
-                case 6:
-                    affinityName = "Breeze";
-                    break;
-            }
-        return affinityName;
     }
 
     return (
@@ -60,7 +34,7 @@ export default function DisplayAllWeather(props){
                         <tr key = {weather.weatherId}>
                             <td>{weather.weatherName}</td>
                             <td><img id = "weatherImage"src={weather.weatherImage}></img></td>
-                            <td>{getAffinityName(weather.affinityId)}</td>
+                            <td>{props.getAffinityName(weather.affinityId)}</td>
                             <td><Link to= {`/manage/weather/edit/${weather.weatherId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(weather.weatherId)}}>Delete</button></td>
                         </tr>

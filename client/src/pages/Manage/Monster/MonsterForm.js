@@ -5,7 +5,7 @@ export default function MonsterForm(props){
     const [monsterName, setMonsterName] = useState("");
     const [monsterImage, setMonsterImage] = useState("");
     const [elementId, setElementId] = useState("");
-    const [monsterPower, setMonsterPower] = useState(0);
+    const [power, setMonsterPower] = useState(0);
 
     const params = useParams();
     const history = useHistory();
@@ -38,10 +38,9 @@ export default function MonsterForm(props){
             monsterName,
             monsterImage,
             elementId,
-            monsterPower,
-            
+            power,
+
         }
-        debugger
         fetch ("http://localhost:8080/api/add/monster", {
             method: "POST",
             headers: {
@@ -69,11 +68,12 @@ export default function MonsterForm(props){
 
     const update = () => {
         const updatedMonster = {
+            monsterId: params.id,
             monsterName,
             monsterImage,
             elementId,
-            monsterPower,
-            monsterId: params.id
+            power,
+        
         }
         fetch (`http://localhost:8080/api/edit/monster/${params.id}`, {
             method: "PUT",
@@ -129,7 +129,7 @@ export default function MonsterForm(props){
             </div>
             <div>
                 <label htmlFor = "monsterPower-input">Enter the power level of your monster: </label>
-                <input type = "number" id = "monsterPower-input" value = {monsterPower} onChange = {(event) => {setMonsterPower(event.target.value)}}/>
+                <input type = "number" id = "monsterPower-input" value = {power} onChange = {(event) => {setMonsterPower(event.target.value)}}/>
 
             </div>
             <div>

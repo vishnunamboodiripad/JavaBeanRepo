@@ -21,8 +21,6 @@ import EquipmentForm from './pages/Manage/Equipment/EquipmentForm';
 import DisplayAllEquipment from './pages/Manage/Equipment/DisplayAllEquipment';
 import MonsterForm from './pages/Manage/Monster/MonsterForm';
 import DisplayAllMonster from './pages/Manage/Monster/DisplayAllMonsters';
-import Animationdummy from './pages/BattleArena/Animationdummy';
-
 
 
 function App() {
@@ -33,12 +31,16 @@ function App() {
     currentUserData = JSON.parse(currentUserData);
   }
 
+  let currentPlayerMonster = localStorage.getItem("playerMonster");
+
+  const [playerMonsterData, setPlayerMonsterData] = useState(currentPlayerMonster);
   const [loggedInUserData, setLoggedInUserData] = useState(currentUserData);
-  const [weatherList, setWeatherList] = useState("");
+  const [weatherList, setWeatherList] = useState([]);
   const [monsterList, setMonsterList] = useState([]);
   const [errors, setErrors] = useState([]);
-  const [locationList, setLocationList] = useState("");
-  const [equipmentList, setEquipmentList] = useState("");
+  const [locationList, setLocationList] = useState([]);
+  const [equipmentList, setEquipmentList] = useState([]);
+  
 
   const getAllMonster = () => {
     fetch("http://localhost:8080/api/monster/viewAll",
@@ -81,11 +83,48 @@ function App() {
     useEffect(getAllEquipment, [])
     useEffect(getAllMonster, [])
 
-  let monsterImages = [];
-
-  const getImagesFromApi = () =>{
-    fetch("")
+    const getElementName = (elementId) => {
+      let elementName = "";
+          switch(elementId) {
+              case 1:
+                  elementName = "Fire";
+                  break;
+              case 2:
+                  elementName = "Water";
+                  break;
+              case 3:
+                  elementName = "Earth";
+                  break;
+              case 4:
+                  elementName = "Wind";
+                  break;
+          }
+      return elementName;
   }
+  const getAffinityName = (affinityId) => {
+    let affinityName = "";
+        switch(affinityId) {
+            case 1:
+                affinityName = "Electric";
+                break;
+            case 2:
+                affinityName = "Liquid";
+                break;
+            case 3:
+                affinityName = "Stone";
+                break;
+            case 4:
+                affinityName = "Flame";
+                break;
+            case 5:
+                affinityName = "Snow";
+                break;
+            case 6:
+                affinityName = "Breeze";
+                break;
+        }
+    return affinityName;
+}
     
   return (
     <div className="App">
@@ -112,7 +151,7 @@ function App() {
               <ViewAll monsterList = {monsterList} getAllMonster = {getAllMonster}/>
             </Route>
             <Route exact path ="/battle">
-              <StartBattle monsterList = {monsterList} getAllMonster = {getAllMonster} getAllEquipment={getAllEquipment} equipmentList = {equipmentList}/>
+              <StartBattle getAffinityName = {getAffinityName} getElementName = {getElementName} monsterList = {monsterList} getAllMonster = {getAllMonster} getAllEquipment={getAllEquipment} equipmentList = {equipmentList}/>
             </Route>
             <Route exact path = "/battle/arena">
               <BattleArena></BattleArena>
@@ -127,7 +166,7 @@ function App() {
               <MonsterForm monsterList = {monsterList} getAllMonster = {getAllMonster} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/monster/displayAll">
-              <DisplayAllMonster monsterList = {monsterList} getAllMonster = {getAllMonster} setErrors = {setErrors}/>
+              <DisplayAllMonster getElementName = {getElementName} monsterList = {monsterList} getAllMonster = {getAllMonster} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/equipment">
               <ManageEquipment/>
@@ -136,7 +175,7 @@ function App() {
                 <EquipmentForm equipmentList = {equipmentList} getAllEquipment = {getAllEquipment} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/equipment/displayAll">
-                <DisplayAllEquipment equipmentList = {equipmentList} getAllEquipment = {getAllEquipment} setErrors = {setErrors}/>
+                <DisplayAllEquipment getAffinityName = {getAffinityName} equipmentList = {equipmentList} getAllEquipment = {getAllEquipment} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/weather">
               <ManageWeatherHome/>
@@ -145,7 +184,7 @@ function App() {
               <WeatherForm weatherList = {weatherList} getAllWeather = {getAllWeather} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/weather/displayAll">
-              <DisplayAllWeather getAllWeather = {getAllWeather} setErrors = {setErrors} weatherList = {weatherList}/>
+              <DisplayAllWeather getAffinityName = {getAffinityName}getAllWeather = {getAllWeather} setErrors = {setErrors} weatherList = {weatherList}/>
             </Route>
             <Route exact path = "/manage/location">
               <ManageLocation/>
@@ -154,10 +193,7 @@ function App() {
               <LocationForm locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
             </Route>
             <Route exact path = "/manage/location/displayAll">
-              <DisplayAllLocation locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
-            </Route>
-            <Route exact path = "/animation">
-              <Animationdummy/>
+              <DisplayAllLocation getElementName = {getElementName} locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
             </Route>
           </Switch>
         </BrowserRouter>

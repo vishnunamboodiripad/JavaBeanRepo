@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function DisplayAllEquipment(props){
     const doDelete = (id) => {
-        debugger
+        
         if (!window.confirm("Are you sure?")) {
             return
         }
@@ -16,31 +16,6 @@ export default function DisplayAllEquipment(props){
             }
             props.getAllEquipment()
           })
-    }
-
-    const getAffinityName = (affinityId) => {
-        let affinityName = "";
-            switch(affinityId) {
-                case 1:
-                    affinityName = "Electric";
-                    break;
-                case 2:
-                    affinityName = "Liquid";
-                    break;
-                case 3:
-                    affinityName = "Stone";
-                    break;
-                case 4:
-                    affinityName = "Flame";
-                    break;
-                case 5:
-                    affinityName = "Snow";
-                    break;
-                case 6:
-                    affinityName = "Breeze";
-                    break;
-            }
-        return affinityName;
     }
 
     return (
@@ -60,7 +35,7 @@ export default function DisplayAllEquipment(props){
                         <tr key = {equipment.equipmentId}>
                             <td>{equipment.equipmentName}</td>
                             <td><img id = "equipmentImage"src={equipment.equipmentImage}></img></td>
-                            <td>{getAffinityName(equipment.affinityId)}</td>
+                            <td>{props.getAffinityName(equipment.affinityId)}</td>
                             <td><Link to= {`/manage/equipment/edit/${equipment.equipmentId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(equipment.equipmentId)}}>Delete</button></td>
                         </tr>

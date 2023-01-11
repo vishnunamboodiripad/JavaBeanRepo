@@ -35,7 +35,7 @@ export default function EquipmentForm(props){
             create()
         }
     }}
-
+    
     const create = () => {
         const newEquipment = {
             equipmentName,
@@ -44,7 +44,7 @@ export default function EquipmentForm(props){
             equipmentStrength,
             
         }
-        debugger
+        
         fetch ("http://localhost:8080/api/add/equipment", {
             method: "POST",
             headers: {
@@ -55,7 +55,7 @@ export default function EquipmentForm(props){
         })
         .then((result)=> {
             if (result.status === 201) {
-                props.getAll();
+                props.getAllEquipment();
                 clearForm();
                 props.setErrors([]);
                 history.push("/manage/equipment")
@@ -71,7 +71,7 @@ export default function EquipmentForm(props){
     }
 
     const update = () => {
-        debugger
+        
         const updatedEquipment = {
             equipmentName,
             equipmentImage,
@@ -89,7 +89,7 @@ export default function EquipmentForm(props){
         })
         .then((result)=> {
             if (result.status === 204) {
-                props.getAll();
+                props.getAllEquipment();
                 clearForm();
                 props.setErrors([]);
                 history.push("/manage/equipment")
@@ -138,7 +138,7 @@ export default function EquipmentForm(props){
             <div>
                 <label htmlFor = "affinityId">Affinity:</label>
                 <select id = "affinityId-input" value = {affinityId} onChange = {(event) => {setAffinityId(parseInt(event.target.value))}}>
-                    <option  value = '1'>Electric</option>
+                    <option  value = "1">Electric</option>
                     <option  value = "2">Liquid</option>
                     <option  value = "3">Stone</option>
                     <option  value = "4">Flame</option>

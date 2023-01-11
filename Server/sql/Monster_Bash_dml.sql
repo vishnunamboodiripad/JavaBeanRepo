@@ -70,6 +70,6 @@ insert into App_Role_User(role_id, user_id) values (2,7);
 insert into App_Role_User(role_id, user_id) values (2,8);
 insert into App_Role_User(role_id, user_id) values (2,9);
 insert into App_Role_User(role_id, user_id) values (2,10);
-/*
-insert into battle ( player_monster, computer_monster, player_equipment, computer_equipment, weather_id, location_id, app_user_id, player_win) values ('1', '2', '1', '2', '1', '1', '1', true);
-*/
+
+insert into battle ( player_monster_id, computer_monster_id, player_equipment_id, computer_equipment_id, weather_id, location_id, app_user_id, player_win) values ('1', '2', '1', '2', '1', '1', '1', true);
+

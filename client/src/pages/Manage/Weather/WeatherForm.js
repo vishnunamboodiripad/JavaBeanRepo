@@ -41,7 +41,6 @@ export default function ManageWeather(props){
             affinityId,
             
         }
-        debugger
         fetch ("http://localhost:8080/api/add/weather", {
             method: "POST",
             headers: {
@@ -52,7 +51,7 @@ export default function ManageWeather(props){
         })
         .then((result)=> {
             if (result.status === 201) {
-                props.getAll();
+                props.getAllWeather();
                 clearForm();
                 props.setErrors([]);
                 history.push("/manage/weather")
@@ -68,7 +67,7 @@ export default function ManageWeather(props){
     }
 
     const update = () => {
-        debugger
+
         const updatedWeather = {
             weatherName,
             weatherImage,
@@ -85,7 +84,7 @@ export default function ManageWeather(props){
         })
         .then((result)=> {
             if (result.status === 204) {
-                props.getAll();
+                props.getAllWeather();
                 clearForm();
                 props.setErrors([]);
                 history.push("/manage/weather")
@@ -128,7 +127,7 @@ export default function ManageWeather(props){
             <div>
                 <label htmlFor = "affinityId">Affinity:</label>
                 <select id = "affinityId-input" value = {affinityId} onChange = {(event) => {setAffinityId(parseInt(event.target.value))}}>
-                    <option  value = '1'>Electric</option>
+                    <option selected value = "1">Electric</option>
                     <option  value = "2">Liquid</option>
                     <option  value = "3">Stone</option>
                     <option  value = "4">Flame</option>

@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import gsap from "gsap";
+import PlayerMonsterContext from '../../context/PlayerMonsterContext';
 
 export default function BattleArena(){
 
@@ -10,10 +11,26 @@ export default function BattleArena(){
     const [computerEquipment, setComputerEquipment] = useState("");   
     const [winnerReveal, setWinnerReveal] = useState("");
 
-   
+    const playerMonster = localStorage.getItem("playerMonster")
+    const playerEquipment = localStorage.getItem("playerEquipment")
     const playerMonsterRef = useRef(null)
     const computerMonsterRef = useRef(null)
 
+    // const getBattle = () => {
+    //     fetch("http://localhost:8080/api/battle/findWinner", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //           "Accept": "application/json"
+    //       },
+    //       body: 
+    //         JSON.stringify(playerMonster),
+    //         JSON.stringify(playerEquipment),
+    //       }
+    //     })
+
+        
+    // }
     
 
     const displayWinner = () => {
@@ -40,6 +57,8 @@ export default function BattleArena(){
     return (
         <div id = "#battle-arena">
             <h1>Welcome to the Arena!</h1>
+            <h2>{playerMonster}</h2>
+            <h3>{playerEquipment}</h3>
             <h3>The weather for today's battle:</h3>
             <img id = "weather-battle" src = "https://www.publicdomainpictures.net/pictures/390000/velka/baum-nacht-schnee-winter-1613641634iKr.jpg" 
             alt = "Blizzard" height = "100" width = "200"></img>

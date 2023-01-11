@@ -35,27 +35,24 @@ public class MonsterController {
     @PostMapping("/add/monster")
     public ResponseEntity<?> add(@RequestBody(required = false) Monster monster) {
         Result<Monster> result = service.add(monster);
-        if (result.getType() == ResultType.INVALID) {
-            ValidationErrorResult validationErrorResult = new ValidationErrorResult();
-            result.getMessages().forEach(validationErrorResult::addMessage);
-            return new ResponseEntity<>(validationErrorResult, HttpStatus.BAD_REQUEST);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        return ErrorResponse.build(result);
     }
 
     @PutMapping("/edit/monster/{monsterId}")
-    public ResponseEntity<Void> update(@PathVariable int monsterId, @RequestBody Monster monster) {
+    public ResponseEntity<Object> update(@PathVariable int monsterId, @RequestBody Monster monster) {
         if (monsterId != monster.getMonsterId()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         Result<Monster> result = service.update(monster);
-        if (result.getType() == ResultType.INVALID) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        } else if (result.getType() == ResultType.NOT_FOUND) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        return ErrorResponse.build(result);
 
     }
 
@@ -63,7 +60,7 @@ public class MonsterController {
     public ResponseEntity<Void> delete(@PathVariable int monsterId) {
         Result<Monster> result = service.deleteById(monsterId);
         if (result.isSuccess()) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
