@@ -116,7 +116,9 @@ export default function MonsterForm(props){
     return (
         <>
         <h4>Enter the information for a new Monster in the form below</h4>
-        <form onSubmit={(event)=>handleSubmit(event)}>
+        
+        <form onSubmit={(event)=>handleSubmit(event)} >
+        <div id = "flexbox2" class ="flex-container">
             <div>
                 <label htmlFor = "monsterName-input">Monster name: </label>
                 <input type = "text" id = "monsterName-input" value = {monsterName} onChange = {(event) => {setMonsterName(event.target.value)}}/>
@@ -142,8 +144,10 @@ export default function MonsterForm(props){
             <input type = "submit" value = {params.id ? "Update!" : "Create!"}/>
             {params.id !== undefined ? <button onClick = {() => {cancelEdit()}}>Cancel Edit</button>
             : null}
-
+            
+            </div>
         </form>
+        
         </>
     )
 }

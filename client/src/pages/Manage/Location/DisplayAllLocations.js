@@ -19,7 +19,7 @@ export default function DisplayAllLocation(props){
     }
 
     return (
-        <table>
+        <table class = "table table-hover table-dark">
             <thead key = "header">
                 <tr>
                     <td>Name</td>

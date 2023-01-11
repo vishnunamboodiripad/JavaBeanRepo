@@ -13,7 +13,7 @@ export default function NavBar({setLoggedInUserData}) {
     
 
     return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav id = "#nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="/">Homepage</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -21,13 +21,13 @@ export default function NavBar({setLoggedInUserData}) {
         <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                    <a className="nav-link" href="/battle">Start A Battle</a>
+                    <a className="nav-link" href="/battle">Start Battle  </a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/viewAll">ViewAllMonsters</a>
+                    <a className="nav-link" href="/viewAll">View Monsters  </a>
                 </li>
                 <li className="nav-item">
-                     {user ? <a className="nav-link" href="/manage">Manage Arena</a> : null}
+                     {user ? <a className="nav-link" href="/manage">Manage Arena  </a> : null}
                 </li>
              </ul>
             
