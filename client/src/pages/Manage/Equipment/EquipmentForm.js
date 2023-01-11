@@ -121,6 +121,8 @@ export default function EquipmentForm(props){
         <>
         <h4>Enter the information for a new Equipment in the form below</h4>
         <form onSubmit={(event)=>handleSubmit(event)}>
+        <div id = "flexbox1" class ="flex-container">
+
             <div>
                 <label htmlFor = "equipmentName">Equipment name: </label>
                 <input type = "text" id = "equipmentName-input" value = {equipmentName} onChange = {(event) => {setEquipmentName(event.target.value)}}/>
@@ -147,7 +149,7 @@ export default function EquipmentForm(props){
             <input type = "submit" value = {params.id ? "Update!" : "Create!"}/>
             {params.id !== undefined ? <button onClick = {() => {cancelEdit()}}>Cancel Edit</button>
             : null}
-
+        </div>
         </form>
         </>
     )

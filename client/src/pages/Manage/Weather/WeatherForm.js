@@ -115,7 +115,8 @@ export default function ManageWeather(props){
         <>
         <h4>Enter the information for a new Weather event in the form below</h4>
         <form onSubmit={(event)=>handleSubmit(event)}>
-            <div>
+        <div id = "flexbox1" class ="flex-container">
+            <div class="form-group">
                 <label htmlFor = "weatherName">Weather name: </label>
                 <input type = "text" id = "weatherName-input" value = {weatherName} onChange = {(event) => {setWeatherName(event.target.value)}}/>
             </div>
@@ -137,7 +138,7 @@ export default function ManageWeather(props){
             <input type = "submit" value = {params.id ? "Update!" : "Create!"}/>
             {params.id !== undefined ? <button onClick = {() => {cancelEdit()}}>Cancel Edit</button>
             : null}
-
+        </div>
         </form>
         </>
     )

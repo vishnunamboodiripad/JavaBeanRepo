@@ -114,6 +114,7 @@ export default function LocationForm(props){
         <>
         <h4>Enter the information for a new Location event in the form below</h4>
         <form onSubmit={(event)=>handleSubmit(event)}>
+        <div id = "flexbox1" class ="flex-container">
             <div>
                 <label htmlFor = "locationName">Location name: </label>
                 <input type = "text" id = "locationName-input" value = {locationName} onChange = {(event) => {setLocationName(event.target.value)}}/>
@@ -134,7 +135,7 @@ export default function LocationForm(props){
             <input type = "submit" value = {params.id ? "Update!" : "Create!"}/>
             {params.id !== undefined ? <button onClick = {() => {cancelEdit()}}>Cancel Edit</button>
             : null}
-
+        </div>
         </form>
         </>
     )
