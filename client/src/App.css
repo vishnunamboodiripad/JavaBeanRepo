@@ -107,6 +107,7 @@ td {
   padding-left: 2rem;
 }
 
+
 #locationImage{
   position: center; 
   top: 10rem;
@@ -125,5 +126,22 @@ td {
   align-items: center ;
   margin: 50px;
 }
+=======
+.winner-reveal{
+  display: flex;
+  background-color: white;
+  width: 10rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.winner-reveal > div{
+  background-color: dodgerblue;
+  color: white;
+  font-size: xx-large;
+  
+}
+
+
 
 

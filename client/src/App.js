@@ -21,6 +21,7 @@ import EquipmentForm from './pages/Manage/Equipment/EquipmentForm';
 import DisplayAllEquipment from './pages/Manage/Equipment/DisplayAllEquipment';
 import MonsterForm from './pages/Manage/Monster/MonsterForm';
 import DisplayAllMonster from './pages/Manage/Monster/DisplayAllMonsters';
+import Animationdummy from './pages/BattleArena/Animationdummy';
 
 
 
@@ -80,6 +81,12 @@ function App() {
     useEffect(getAllEquipment, [])
     useEffect(getAllMonster, [])
 
+  let monsterImages = [];
+
+  const getImagesFromApi = () =>{
+    fetch("")
+  }
+    
   return (
     <div className="App">
       <UserContext.Provider value = {loggedInUserData}>
@@ -148,6 +155,9 @@ function App() {
             </Route>
             <Route exact path = "/manage/location/displayAll">
               <DisplayAllLocation locationList = {locationList} getAllLocation = {getAllLocation} setErrors = {setErrors}/>
+            </Route>
+            <Route exact path = "/animation">
+              <Animationdummy/>
             </Route>
           </Switch>
         </BrowserRouter>
