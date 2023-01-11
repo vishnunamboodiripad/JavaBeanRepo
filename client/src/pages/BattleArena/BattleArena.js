@@ -18,6 +18,54 @@ export default function BattleArena(props){
     const user = useContext(UserContext);
 
     const playerMonster = JSON.parse(localStorage.getItem("playerMonster"))
+    const playerEquipment = JSON.parse(localStorage.getItem("playerEquipment"))
+
+    let playerAffinityId = playerEquipment.affinityId;
+    let playerElementId = playerMonster.elementId;
+    let computerElementId = computerMonster.elementId;
+    let computerAffinityId = computerEquipment.affinityId
+
+    const grabWeather = (b) => {
+      let weatherId = b.weatherId;
+      fetch(`http://localhost:8080/api/weather/${weatherId}`, 
+      {method: "GET"})
+      .then((response) => {
+          return response.json()
+      })
+      .then((json) => {setWeather(json)
+    })} 
+
+    const grabLocation = (b) => {
+      let locationId = b.locationId;
+      fetch(`http://localhost:8080/api/location/${locationId}`, 
+      {method: "GET"})
+      .then((response) => {
+          return response.json()
+      })
+      .then((json) => {setLocation(json)
+    })}  
+
+    const grabComputerMonster = (b) => {
+      let compMonsterId = b.computerMonsterId;
+      fetch(`http://localhost:8080/api/monster/${compMonsterId}`, 
+      {method: "GET"})
+      .then((response) => {
+          return response.json()
+      })
+      .then((json) => {setComputerMonster(json)
+    })}  
+
+    const grabComputerEquipment = (b) => {
+      let compEquipmentId = b.computerEquipmentId;
+
+      fetch(`http://localhost:8080/api/equipment/${compEquipmentId}`, 
+      {method: "GET"})
+      .then((response) => {
+          return response.json()
+      })
+      .then((json) => {setComputerEquipment(json)
+    })
+  }
 
     const getBattle = () => {
           const playerEquipment = JSON.parse(localStorage.getItem("playerEquipment"))
@@ -39,6 +87,7 @@ export default function BattleArena(props){
         ).then((response) => {
           if (response.status === 201){
             return response.json()
+            
 
           }
           else {
@@ -46,55 +95,19 @@ export default function BattleArena(props){
               props.setErrors(errors)
             })
           }})
-          .then((json) => {setBattle(json)})
-        }
+          .then((json) => {
+            grabWeather(json)
+            grabLocation(json)
+            grabComputerEquipment(json)
+            grabComputerMonster(json)
+            setBattle(json)
+          })
+    }
+      
 
-    //useEffect(getBattle, [])   
+    useEffect(getBattle, [])   
 
     
-     
-    const grabWeather = () => {
-      let weatherId = battle.weatherId;
-      fetch(`http://localhost:8080/api/weather/${weatherId}`, 
-      {method: "GET"})
-      .then((response) => {
-          return response.json()
-      })
-      .then((json) => {setWeather(json)
-    })} 
-
-    const grabLocation = () => {
-      fetch(`http://localhost:8080/api/location/${battle.locationId}`, 
-      {method: "GET"})
-      .then((response) => {
-          return response.json()
-      })
-      .then((json) => {setLocation(json)
-    })}  
-
-    const grabComputerMonster = () => {
-      fetch(`http://localhost:8080/api/monster/${battle.computerMonsterId}`, 
-      {method: "GET"})
-      .then((response) => {
-          return response.json()
-      })
-      .then((json) => {setComputerMonster(json)
-    })}  
-
-    const grabComputerEquipment = () => {
-      fetch(`http://localhost:8080/api/equipment/${battle.computerEquipmentId}`, 
-      {method: "GET"})
-      .then((response) => {
-          return response.json()
-      })
-      .then((json) => {setComputerEquipment(json)
-    })}
-
-    useEffect(grabWeather, [battle])
-    //useEffect(grabLocation, [battle])
-    //useEffect(grabComputerMonster, [battle])
-    //useEffect(grabComputerEquipment, [battle])
-
     const displayWinner = () => {
         if (battle.playerWin === true) {
           setWinnerReveal("You won! Congratulations you have slayed the enemy")
@@ -124,21 +137,35 @@ export default function BattleArena(props){
     return (
         <div id = "#battle-arena">
             <h1>Welcome to the Arena!</h1>
-            <h3>The weather for today's battle:</h3>
+            <h3>Weather forecast: {weather.weatherName}</h3>
             <img id = "weather-battle" src = {weather.weatherImage}
             height = "100" width = "200"></img>
 
-            <h4>Today's battle will take place at: </h4>
-            <img id = "location-battle" src = {location.locationImage} 
-            height = "200" width = "200"></img>
-
-            <p id = "computer-monster-battle">Computer monster:</p>
+            <h4>Battle location: {location.locationName} </h4>
+            <img id = "location-battle" src = {location.locationImage} ></img>
+            
+            <p id = "computer-monster-battle">Computer monster: {computerMonster.monsterName}</p>
             <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
 
-            <p id = "player-monster-battle">Player monster:</p>
+            <p id = "player-monster-battle">Player monster: {playerMonster.monsterName}</p>
             <img ref = {playerMonsterRef} id = "player-monster-battle" src = {playerMonster.monsterImage} height = "100" width = "100"></img>
-
             <button id = "start-battle-button" onClick = {displayWinner}>START BATTLE!</button>
+
+            <div id = "player-info" className = "grid-container">
+              <p>Player monster element: {props.getElementName(playerElementId)}</p>
+              <p>Player equipment: {playerEquipment.equipmentName}</p>
+              <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
+              <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
+              <p>Player battle power: {playerMonster.power}</p>
+            </div>
+
+            <div id = "computer-info" className = "grid-container">
+              <p>Computer monster element: {props.getElementName(computerElementId)}</p>
+              <p>Computer equipment: {computerEquipment.equipmentName}</p>
+              <img src = {computerEquipment.equipmentImage} height = "50" width = "50"></img>
+              <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
+              <p>Computer battle power: {computerMonster.power}</p>
+            </div>
 
             <div class = "winner-reveal">
                 <div>{winnerReveal}</div>
