@@ -18,8 +18,18 @@ public class BattleService {
         return repo.findById(battleId);
     }
 
-    public Battle findWinner(Monster playerMonster, Equipment playerEquipment, AppUser user) {
-        return repo.findWinner(playerMonster, playerEquipment, user);
+    public Result<Battle> findWinner(Monster playerMonster, Equipment playerEquipment, int userId) {
+        Result<Battle> result = new Result<>();
+        if (playerMonster == null || playerEquipment == null) {
+            result.addMessage("You must choose a monster and equipment to battle with!", ResultType.INVALID);
+            return result;
+        }
+
+        Battle battle = new Battle();
+        battle = repo.findWinner(playerMonster, playerEquipment, userId);
+        result.setPayload(battle);
+        return result;
+
     }
 
     public Result<Battle> add(Battle battle) {

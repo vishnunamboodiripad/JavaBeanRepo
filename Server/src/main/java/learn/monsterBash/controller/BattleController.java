@@ -3,12 +3,10 @@ package learn.monsterBash.controller;
 import learn.monsterBash.domain.BattleService;
 import learn.monsterBash.domain.Result;
 import learn.monsterBash.domain.ResultType;
-import learn.monsterBash.models.AppUser;
-import learn.monsterBash.models.Battle;
-import learn.monsterBash.models.Equipment;
-import learn.monsterBash.models.Monster;
+import learn.monsterBash.models.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,8 +27,16 @@ public class BattleController {
     }
 
     @PostMapping("/battle/findWinner")
-    public Battle findWinner(@RequestBody Monster playerMonster, Equipment playerEquipment, AppUser user){
-        return service.findWinner(playerMonster, playerEquipment, user);
+    public ResponseEntity<Object> findWinner(@RequestBody PlayerBattleChoice choice){
+        Monster playerMonster = choice.getChosenMonster();
+        Equipment playerEquipment = choice.getChosenEquipment();
+        int userId = choice.getApp_user_id();
+
+        Result<Battle> result = service.findWinner(playerMonster, playerEquipment, userId);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
     }
 
     @PostMapping("/battle/add")
