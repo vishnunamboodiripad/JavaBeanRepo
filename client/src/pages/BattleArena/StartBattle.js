@@ -20,30 +20,27 @@ export default function StartBattle(props){
       }, [props.playerMonster]);
 
     const setPlayerMonsterFetch = () => {
-
+        localStorage.removeItem("playerMonster");
         fetch(`http://localhost:8080/api/monster/${playerMonsterInt}`, 
         {method: "GET"})
         .then((response) => {
             return response.json()
         })
-        .then((json) => {setPlayerMonster(json)})  
-        
-
-        localStorage.setItem("playerMonster", {playerMonster})
-
-
+        .then((json) => {setPlayerMonster(json)
+        localStorage.setItem("playerMonster", JSON.stringify(json))
+    })  
+    
     }
 
     const setPlayerEquipmentFetch = () => {
-
+        localStorage.removeItem("playerEquipment");
         fetch(`http://localhost:8080/api/equipment/${playerEquipmentInt}`, 
         {method: "GET"})
         .then((response) => {
             return response.json()
         })
-        .then((json) => {setPlayerEquipment(json)})  
-        
-        localStorage.setItem("playerEquipment", {playerEquipment})
+        .then((json) => {setPlayerEquipment(json) 
+        localStorage.setItem("playerEquipment", JSON.stringify(json))})  
     }
 
     useEffect(setPlayerMonsterFetch, [playerMonsterInt])
@@ -53,7 +50,8 @@ export default function StartBattle(props){
     return(
         <div>
         <h1>Here's the page for starting a battle</h1>
-        <h2>{playerEquipment.playerEquipmentId}</h2>
+        <h2>{playerMonster.monsterId}</h2>
+        <h3>{playerEquipment.equipmentId}</h3>
         
         
             <div>

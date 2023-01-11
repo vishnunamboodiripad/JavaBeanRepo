@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface BattleRepo {
     Battle findWinner(Monster playerMonster,
-                      Equipment playerEquipment, AppUser user);
+                      Equipment playerEquipment, int userId);
 
     @Transactional
     public Battle findById(int battleId);

@@ -82,7 +82,7 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
 
     @Override
     public Battle findWinner(Monster playerMonster,
-                             Equipment playerEquipment, AppUser user) {
+                             Equipment playerEquipment, int userId) {
 
         Battle battle = new Battle();
         Weather battleWeather = getWeather();
@@ -103,12 +103,8 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         battle.setComputerEquipmentId(computerEquipment.getEquipmentId());
         battle.setPlayerMonsterId(playerMonster.getMonsterId());
         battle.setPlayerEquipmentId(playerEquipment.getEquipmentId());
-        if (user == null){
-            battle.setAppUserId(0);
-        }
-        else {
-            battle.setAppUserId(user.getAppUserId());
-        }
+        battle.setAppUserId(userId);
+
         return battle;
     }
 
