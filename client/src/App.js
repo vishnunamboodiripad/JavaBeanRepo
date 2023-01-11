@@ -177,7 +177,7 @@ function App() {
               <StartBattle getAffinityName = {getAffinityName} getElementName = {getElementName} monsterList = {monsterList} getAllMonster = {getAllMonster} getAllEquipment={getAllEquipment} equipmentList = {equipmentList}/>
             </Route>
             <Route exact path = "/battle/arena">
-              <BattleArena setErrors = {setErrors}></BattleArena>
+              <BattleArena getAffinityName = {getAffinityName} getElementName = {getElementName}setErrors = {setErrors}></BattleArena>
             </Route>
             <Route exact path = "/manage">
               <ManageArena/>

@@ -127,19 +127,49 @@ td {
   margin: 50px;
 }
 
-.winner-reveal{
-  display: flex;
-  background-color: white;
-  width: 10rem;
-  text-align: center;
-  padding: 0.5rem;
-}
 
 .winner-reveal > div{
-  background-color: dodgerblue;
-  color: white;
+  background-color: rgb(43, 43, 43);
+  color: orange;
   font-size: xx-large;
+  margin: 15rem;
   
+}
+
+
+#computer-monster-battle{
+  justify-content: flex-start;
+  position: relative;
+  margin-top: 15rem;
+  
+}
+
+#player-monster-battle{
+  justify-content: flex-end;
+  position: relative;
+  margin-top: 15rem;
+}
+
+#start-battle-button{
+  position: relative;
+  margin-top: 0rem;
+
+}
+
+#location-battle{
+  opacity: 30%;
+  height: 650px;
+  width: 900px;
+  align-self: start;
+  margin-bottom: 0px;
+  position: absolute;
+ 
+}
+
+#player-info{
+  position: relative;
+  justify-content: center;
+
 }
 
 
