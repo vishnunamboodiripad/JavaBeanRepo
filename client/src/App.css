@@ -65,6 +65,13 @@ button{
   font-family: brick;
 }
 
+.grid-container{
+  display: grid;
+  grid-template-columns:2fr;
+  grid-auto-rows: minmax(150px,auto);
+  grid-gap: 20px;
+}
+
 #displayMonster{
   color:white;
   background-color: rgb(43, 43, 43);
@@ -100,5 +107,23 @@ td {
   padding-left: 2rem;
 }
 
+#locationImage{
+  position: center; 
+  top: 10rem;
+  height: 100px;
+  width: 100px;
+}
+#flexbox1 > div{
+  display: flex;
+  margin: 10px 10px;
+  justify-content: center;
+}
+#flexbox2 > div{
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center ;
+  margin: 50px;
+}
 
 
