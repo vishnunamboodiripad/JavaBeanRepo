@@ -5,6 +5,14 @@ public class Affinity {
     String affinityName;
     String affinityImage;
 
+    public Affinity() {
+    }
+
+    public Affinity(int affinityId, String affinityName, String affinityImage) {
+        this.affinityId = affinityId;
+        this.affinityName = affinityName;
+        this.affinityImage = affinityImage;
+    }
 
     public String getAffinityImage() {
         return affinityImage;

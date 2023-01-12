@@ -1,7 +1,6 @@
 package learn.monsterBash.data.mappers;
 
 import learn.monsterBash.models.Affinity;
-import learn.monsterBash.models.Equipment;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

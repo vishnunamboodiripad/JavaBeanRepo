@@ -119,25 +119,13 @@ export default function BattleArena(props){
         
     }
   
-    
     useEffect(getBattle, [])   
 
     
     const displayWinner = () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        addBattle(battle)
-        gsap.to(
-        [computerMonsterRef.current],
-        3,
-        {x:-200}
-=======
-=======
 
         addBattle(battle)
-        
-
->>>>>>> 5ce233a3464600caa45046bb326ad2f956dbde1f
+       
         if (battle.playerWin === true) {
           setWinnerReveal("You won! Congratulations you have slain the enemy")
         }
@@ -148,16 +136,12 @@ export default function BattleArena(props){
           [computerMonsterRef.current],
           5,
           {x:-1000}
-<<<<<<< HEAD
-         
->>>>>>> 94a09c54b5dfcc9ff2611655f4147d2bf0d2cb1a
-=======
->>>>>>> 5ce233a3464600caa45046bb326ad2f956dbde1f
+
         );
         gsap.to(
           [playerMonsterRef.current],
           5,
-          { x: 1000}
+          { x: 1000},
     
         );
         if (battle.playerWin === true) {
@@ -184,28 +168,16 @@ export default function BattleArena(props){
             height = "100" width = "200"></img>
         </div>
         <div id = "b3" class = "box c">
-        <p id = "computer-monster-battle"> enemy monster:{computerMonster.monsterName}</p>
-        <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
-<<<<<<< HEAD
 
-
-<<<<<<< HEAD
             {/* <div id = "player-info" className = "grid-container">
               <p>Player monster element: {props.getElementName(playerElementId)}</p>
               <p>Player equipment: {playerEquipment.equipmentName}</p>
-=======
-=======
->>>>>>> 5ce233a3464600caa45046bb326ad2f956dbde1f
+
         </div>
         <div id = "b4" class = "box d">
             <div>
                <p>Player monster element: {props.getElementName(playerElementId)}</p>
                <p>Player equipment: {playerEquipment.equipmentName}</p>
-<<<<<<< HEAD
->>>>>>> 94a09c54b5dfcc9ff2611655f4147d2bf0d2cb1a
-=======
-
->>>>>>> 5ce233a3464600caa45046bb326ad2f956dbde1f
               <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
                <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
                <p>Player battle power: {playerMonster.power}</p>
@@ -213,6 +185,22 @@ export default function BattleArena(props){
         </div>
         <div id = "b5" class = "box e">
         <h4>location: {location.locationName} </h4>
+        <p id = "computer-monster-battle"> enemy monster: {computerMonster.monsterName}</p>
+        <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
+        </div>
+        <div id = "b4" class = "box d">
+            <div>
+               <p>Player monster element: {props.getElementName(playerElementId)}</p>
+               <p>Player equipment: {playerEquipment.equipmentName}</p>
+
+              <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
+               <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
+               <p>Player battle power: {playerMonster.power}</p>
+             </div>
+        </div>
+        <div id = "b5" class = "box e">
+        <h4>location: {location.locationName} </h4>
+
         <img id = "location-battle" src = {location.locationImage}
         height = "200" width = "400" ></img>
         </div>
@@ -221,15 +209,7 @@ export default function BattleArena(props){
                <p>Enemy monster element: {props.getElementName(computerElementId)}</p>
                <p>computer equipment: {computerEquipment.equipmentName}</p>
               <img src = {computerEquipment.equipmentImage} height = "50" width = "50"></img>
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
-              <p>Computer battle power: {computerMonster.power}</p>
-            </div> */}
-=======
-=======
 
->>>>>>> 5ce233a3464600caa45046bb326ad2f956dbde1f
                <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
                <p>Enemy battle power: {computerMonster.power}</p>
              </div>
@@ -239,23 +219,19 @@ export default function BattleArena(props){
         <button id = "start-battle-button" onClick = {displayWinner}>START BATTLE!</button>
         
         </div>
-<<<<<<< HEAD
->>>>>>> 94a09c54b5dfcc9ff2611655f4147d2bf0d2cb1a
-=======
-
->>>>>>> 5ce233a3464600caa45046bb326ad2f956dbde1f
-
         <div id = "b8" class = "box h">
             <div class = "winner-reveal">
+
                 <div>{winnerReveal}</div>
             </div>
         </div>
-
-        <div id = "b9" class = "box j">
-        </div>
    
-        <div id = "b10" class = "box j">j</div>
+        <div id = "b9" class = "box j">
+        <a className = "btn btn-secondary" href = "/battle" >Exit Arena</a>
+
         </div>
+
+      
         
 
     
