@@ -90,8 +90,8 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         Monster computerMonster = getComputerMonster();
         Equipment computerEquipment = getComputerEquipment();
 
-        battle.setPlayerTotalPower(calcTotalMonsterPower(battleLocation, computerMonster, computerEquipment, battleWeather));
-        battle.setComputerTotalPower(calcTotalMonsterPower(battleLocation, playerMonster, playerEquipment, battleWeather));
+        battle.setPlayerTotalPower(calcTotalMonsterPower(battleLocation, playerMonster, playerEquipment, battleWeather));
+        battle.setComputerTotalPower(calcTotalMonsterPower(battleLocation, computerMonster, computerEquipment, battleWeather));
 
         if (battle.getPlayerTotalPower() > battle.getComputerTotalPower())
             battle.setPlayerWin(true);

@@ -1,7 +1,7 @@
 package learn.monsterBash.data;
 
-import learn.monsterBash.data.mappers.ElementMapper;
 import learn.monsterBash.models.Element;
+import learn.monsterBash.data.mappers.ElementMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -55,7 +55,7 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, element.getElementName());
-            ps.setInt(2, element.getElementId());
+            ps.setString(2, element.getElementImage());
             return ps;
         }, keyHolder);
 
