@@ -41,7 +41,7 @@ export default function EquipmentForm(props){
             equipmentName,
             equipmentImage,
             affinityId,
-            equipmentStrength,
+            strength: equipmentStrength,
             
         }
         
@@ -76,7 +76,7 @@ export default function EquipmentForm(props){
             equipmentName,
             equipmentImage,
             affinityId,
-            equipmentStrength,
+            strength: equipmentStrength,
             equipmentId: params.id
         }
         fetch (`http://localhost:8080/api/edit/equipment/${params.id}`, {

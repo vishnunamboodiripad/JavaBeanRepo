@@ -58,13 +58,13 @@ public class WeatherService {
         }
         List<Weather> weathers = repo.findAll();
         String name = weather.getWeatherName();
-        Optional<Weather> duplicateName = weathers.stream().filter(w -> w.getWeatherName().equalsIgnoreCase(name)).findAny();
+        Optional<Weather> duplicateName = weathers.stream().filter(w -> w.getWeatherName().equalsIgnoreCase(name) && (w.getWeatherId() != weather.getWeatherId())).findAny();
         if (duplicateName.isPresent()) {
             result.addMessage("That weather name already exists", ResultType.INVALID);
             return result;
         }
         String image = weather.getWeatherImage();
-        Optional<Weather> duplicateImage = weathers.stream().filter(w -> w.getWeatherImage().equalsIgnoreCase(image)).findAny();
+        Optional<Weather> duplicateImage = weathers.stream().filter(w -> w.getWeatherImage().equalsIgnoreCase(image) && (w.getWeatherId() != weather.getWeatherId())).findAny();
         if (duplicateImage.isPresent()) {
             result.addMessage("That weather image is already being used in the database", ResultType.INVALID);
             return result;
