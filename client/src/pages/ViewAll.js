@@ -1,22 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
 export default function ViewAll(props){
-        const doDelete = (id) => {
-                   if (!window.confirm("Are you sure?")) {
-                return
-            }
-            fetch (`http://localhost:8080/api/delete/monster/${id}` , {
-                method: "DELETE"
-            })
-            .then((response) => {
-                if (response.status === 404) {
-                  props.setErrors([`Couldn't find monster ${id}, maybe try refreshing`])
-                }
-                props.getAllMonster()
-              })
-        }
-    
         const getElementName = (elementId) => {
             let elementName = "";
                 switch(elementId) {

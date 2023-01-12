@@ -2,6 +2,7 @@ package learn.monsterBash.domain;
 
 import learn.monsterBash.data.BattleRepo;
 import learn.monsterBash.models.*;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,6 +47,18 @@ public class BattleService {
         battle = repo.add(battle);
 
         result.setPayload(battle);
+        return result;
+    }
+
+    public Result<UserHistory> findRecord(int userId) {
+        Result<UserHistory> result = new Result<>();
+        if (userId <= 0) {
+            result.addMessage("Something went wrong with your user information", ResultType.INVALID);
+            return result;
+        }
+
+        UserHistory userHistory = repo.findRecord(userId);
+        result.setPayload(userHistory);
         return result;
     }
 

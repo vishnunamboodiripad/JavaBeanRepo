@@ -10,13 +10,19 @@ public class BattleMapper implements RowMapper<Battle> {
     @Override
     public Battle mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         Battle battle = new Battle();
-        battle.setPlayerMonsterId(resultSet.getInt("player_monster"));
-        battle.setComputerMonsterId(resultSet.getInt("computer_monster"));
-        battle.setPlayerEquipmentId(resultSet.getInt("player_equipment"));
-        battle.setComputerEquipmentId(resultSet.getInt("computer_equipment"));
+        battle.setPlayerMonsterId(resultSet.getInt("player_monster_id"));
+        battle.setComputerMonsterId(resultSet.getInt("computer_monster_id"));
+        battle.setPlayerEquipmentId(resultSet.getInt("player_equipment_id"));
+        battle.setComputerEquipmentId(resultSet.getInt("computer_equipment_id"));
         battle.setWeatherId(resultSet.getInt("weather_id"));
         battle.setLocationId(resultSet.getInt("location_id"));
         battle.setAppUserId(resultSet.getInt("app_user_id"));
+        if (resultSet.getInt("player_win") == 0) {
+            battle.setPlayerWin(false);
+        }
+        else {
+            battle.setPlayerWin(true);
+        }
 
         return battle;
 

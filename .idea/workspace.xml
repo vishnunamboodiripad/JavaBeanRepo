@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da3852e3-7f7d-4e11-b33a-de0837156691" name="Changes" comment="" />
+    <list default="true" id="da3852e3-7f7d-4e11-b33a-de0837156691" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/http/requests.http" beforeDir="false" afterPath="$PROJECT_DIR$/Server/http/requests.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/sql/Monster_Bash_ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Server/sql/Monster_Bash_ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/controller/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/controller/BattleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/BattleJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/BattleJdbcTemplateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/BattleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/BattleRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/ElementJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/ElementJdbcTemplateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/mappers/BattleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/data/mappers/BattleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/domain/BattleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/domain/BattleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/models/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/models/Battle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/learn/monsterBash/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/PlayerEquipmentContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/PlayerMonsterContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/BattleArena/BattleArena.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/BattleArena/BattleArena.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Manage/ManageArena.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Manage/ManageArena.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ViewAll.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ViewAll.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,13 +48,13 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/the_f/Dev10/JavaBeanRepo/Server"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/the_f/Dev10/JavaBeanRepo/Server&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -46,5 +65,16 @@
       <updated>1672946068982</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

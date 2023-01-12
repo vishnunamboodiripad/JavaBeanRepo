@@ -27,6 +27,7 @@ import ManageAffinity from './pages/Manage/Affinity/ManageAffinity';
 import ManageElement from './pages/Manage/Element/ManageElement';
 import ElementForm from './pages/Manage/Element/ElementForm';
 import DisplayAllElement from './pages/Manage/Element/DisplayAllElement';
+import UserRecord from './pages/UserRecord';
 function App() {
 
   let currentUserData = localStorage.getItem("userData");
@@ -172,6 +173,9 @@ function App() {
             <Route exact path = "/login">
               <LoginPage setLoggedInUserData = {setLoggedInUserData}/>
             </Route>
+            <Route exact path = "/userRecord">
+              <UserRecord setErrors = {setErrors} />
+            </Route>
             <Route exact path = "/viewAll">
               <ViewAll monsterList = {monsterList} getAllMonster = {getAllMonster}/>
             </Route>
@@ -238,6 +242,9 @@ function App() {
             </Route>
             <Route exact path = "/manage/element/displayAll">
               <DisplayAllElement elementList = {elementList} getAllElement = {getAllElement} setErrors = {setErrors}/>
+            </Route>
+            <Route path = "/**">
+              <h1>Sorry, the page you are looking for does not exist</h1>
             </Route>
             
           </Switch>
