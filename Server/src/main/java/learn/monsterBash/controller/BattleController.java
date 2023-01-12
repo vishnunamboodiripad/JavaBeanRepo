@@ -39,15 +39,23 @@ public class BattleController {
         return ErrorResponse.build(result);
     }
 
-    @PostMapping("/battle/add")
+    @PostMapping("/add/battle")
     public ResponseEntity<?> add(@RequestBody(required=false) Battle battle){
         Result<Battle> result = service.add(battle);
-        if (result.getType() == ResultType.INVALID){
-            ValidationErrorResult validationErrorResult = new ValidationErrorResult();
-            result.getMessages().forEach(validationErrorResult::addMessage);
-            return new ResponseEntity<>(validationErrorResult, HttpStatus.BAD_REQUEST);
+        if (result.isSuccess()){
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+
         }
-        return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        return ErrorResponse.build(result);
+    }
+
+    @GetMapping ("/findRecord/{userId}")
+    public ResponseEntity<Object> findRecord(@PathVariable int userId) {
+        Result<UserHistory> result = service.findRecord(userId);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
     }
 
 

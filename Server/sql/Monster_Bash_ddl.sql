@@ -30,7 +30,7 @@ create table location (
     
 create table affinity (
     affinity_id int primary key auto_increment,
-    affinity_image varchar(1636),
+    affinity_image varchar(100),
     affinity_name varchar(15) not null
     );
 

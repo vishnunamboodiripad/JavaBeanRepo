@@ -27,8 +27,15 @@ export default function NavBar({setLoggedInUserData}) {
                     <a className="nav-link" href="/viewAll">View Monsters  </a>
                 </li>
                 <li className="nav-item">
-                     {user ? <a className="nav-link" href="/manage">Manage Arena  </a> : null}
+                {user ? <a className="nav-link" href="/userRecord">View User Profile  </a> : null}
+
                 </li>
+                <li className="nav-item">
+                     {user ? <a className="nav-link" href="/manage">Manage Arena  </a> : null}
+
+                </li>
+                
+
              </ul>
             
             {user ? <a className = "btn btn-danger " onClick = {handleLogOut}>Log Out {user.userData.sub}</a>  : <a className = "btn btn-primary float-right" href ="/login">Login</a>}

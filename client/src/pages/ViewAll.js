@@ -1,22 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
 export default function ViewAll(props){
-        const doDelete = (id) => {
-                   if (!window.confirm("Are you sure?")) {
-                return
-            }
-            fetch (`http://localhost:8080/api/delete/monster/${id}` , {
-                method: "DELETE"
-            })
-            .then((response) => {
-                if (response.status === 404) {
-                  props.setErrors([`Couldn't find monster ${id}, maybe try refreshing`])
-                }
-                props.getAllMonster()
-              })
-        }
-    
         const getElementName = (elementId) => {
             let elementName = "";
                 switch(elementId) {
@@ -44,6 +28,7 @@ export default function ViewAll(props){
                         <td>Name</td>
                         <td>Image</td>
                         <td>Element</td>
+                        <td>Power</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,6 +38,7 @@ export default function ViewAll(props){
                                 <td>{monster.monsterName}</td>
                                 <td><img id = "monsterImage"src={monster.monsterImage} width="100" height="100"></img></td>
                                 <td>{getElementName(monster.elementId)}</td>
+                                <td>{monster.power}</td>
                             </tr>
                         )
                     })}
