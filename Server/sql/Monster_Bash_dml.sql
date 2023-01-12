@@ -1,27 +1,27 @@
 use monster_bash;
 
-insert into element (element_name, element_id, element_image) values ('Fire', 1, "https://media3.giphy.com/media/JPJCYTfdCj5iPQGTgc/giphy.gif");
-insert into element (element_name, element_id, element_image) values ('Water', 2, "https://media1.giphy.com/media/Kv1A13RfsS1YzBRiF4/giphy.gif");
-insert into element (element_name, element_id, element_image) values ('Earth', 3, "https://media3.giphy.com/media/fvSVVQ0wxRhBZJGSMh/giphy.gif");
-insert into element (element_name, element_id, element_image) values ('Wind', 4, "https://media1.giphy.com/media/hnozaYTOpoAIWzl95k/giphy.gif");
+insert into element (element_name, element_id, element_image) values ('Fire', 1,'https://media3.giphy.com/media/JPJCYTfdCj5iPQGTgc/giphy.gif');
+insert into element (element_name, element_id, element_image) values ('Water', 2,'https://media1.giphy.com/media/Kv1A13RfsS1YzBRiF4/giphy.gif');
+insert into element (element_name, element_id, element_image) values ('Earth', 3,'https://media3.giphy.com/media/fvSVVQ0wxRhBZJGSMh/giphy.gif');
+insert into element (element_name, element_id, element_image) values ('Wind', 4,'https://media1.giphy.com/media/hnozaYTOpoAIWzl95k/giphy.gif');
 
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Electric',"https://media1.giphy.com/media/IQt7inCtPsVi1buTEX/giphy.gif", 1);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Liquid',"https://media3.giphy.com/media/POEvU1mhHWvpY5jvov/giphy.gif", 2);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Stone',"https://media4.giphy.com/media/YivkxBm8WGAAIAmdmk/giphy.gif", 3);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Flame',"https://media2.giphy.com/media/IQ8K7v7zHbv00PiIP2/giphy.gif", 4);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Snow',"https://media3.giphy.com/media/gyVEJnrQLUhF4QXIb2/giphy.gif", 5);
-insert into affinity (affinity_name, affinity_image, affinity_id) values ('Breeze',"https://media4.giphy.com/media/fOTkOncov2DbhD0ymN/giphy.gif", 6);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Electric','https://media1.giphy.com/media/IQt7inCtPsVi1buTEX/giphy.gif', 1);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Liquid','https://media3.giphy.com/media/POEvU1mhHWvpY5jvov/giphy.gif', 2);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Stone','https://media4.giphy.com/media/YivkxBm8WGAAIAmdmk/giphy.gif', 3);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Flame','https://media2.giphy.com/media/IQ8K7v7zHbv00PiIP2/giphy.gif', 4);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Snow','https://media3.giphy.com/media/gyVEJnrQLUhF4QXIb2/giphy.gif', 5);
+insert into affinity (affinity_name, affinity_image, affinity_id) values ('Breeze','https://media4.giphy.com/media/fOTkOncov2DbhD0ymN/giphy.gif', 6);
 
 insert into monster (monster_name, power, element_id, monster_image) values ('Lén', 47, 1, 'https://app.pixelencounter.com/api/basic/monsters/10');
-insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 5, 2, 'https://app.pixelencounter.com/api/basic/monsters/22');
+insert into monster (monster_name, power, element_id, monster_image) values ('Naëlle', 35, 2, 'https://app.pixelencounter.com/api/basic/monsters/22');
 insert into monster (monster_name, power, element_id, monster_image) values ('Zach', 58, 3, 'https://app.pixelencounter.com/api/basic/monsters/85');
 insert into monster (monster_name, power, element_id, monster_image) values ('Pål', 61, 4, 'https://app.pixelencounter.com/api/basic/monsters/434');
-insert into monster (monster_name, power, element_id, monster_image) values ('Estève', 19, 1, 'https://app.pixelencounter.com/api/basic/monsters/75');
+insert into monster (monster_name, power, element_id, monster_image) values ('Estève', 39, 1, 'https://app.pixelencounter.com/api/basic/monsters/75');
 insert into monster (monster_name, power, element_id, monster_image) values ('Mike', 41, 2, 'https://app.pixelencounter.com/api/basic/monsters/400');
-insert into monster (monster_name, power, element_id, monster_image) values ('Mélina', 12, 3, 'https://app.pixelencounter.com/api/basic/monsters/99');
-insert into monster (monster_name, power, element_id, monster_image) values ('Judicaël', 82, 4, 'https://app.pixelencounter.com/api/basic/monsters/45');
+insert into monster (monster_name, power, element_id, monster_image) values ('Mélina', 32, 3, 'https://app.pixelencounter.com/api/basic/monsters/99');
+insert into monster (monster_name, power, element_id, monster_image) values ('Judicaël', 62, 4, 'https://app.pixelencounter.com/api/basic/monsters/45');
 insert into monster (monster_name, power, element_id, monster_image) values ('Dorothée', 75, 1, 'https://app.pixelencounter.com/api/basic/monsters/777');
-insert into monster (monster_name, power, element_id, monster_image) values ('Vishnu', 29, 2, 'https://app.pixelencounter.com/api/basic/monsters/4');
+insert into monster (monster_name, power, element_id, monster_image) values ('Vishnu', 49, 2, 'https://app.pixelencounter.com/api/basic/monsters/4');
 
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Sword of Minor Static Electricity', 'https://media1.giphy.com/media/fgFKv7iL822GesuYNh/giphy.gif', 65, 1, 1);
 insert into equipment (equipment_name, equipment_image, strength, affinity_id, equipment_id) values ('Staff of Soggyness', 'https://media3.giphy.com/media/13JmE93YJMtjCL8jLg/giphy.gif', 60, 2, 2);

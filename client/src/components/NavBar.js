@@ -1,13 +1,17 @@
 import React, {useContext} from 'react';
 import UserContext from '../context/AuthContext';
+import {useHistory} from 'react-router-dom';
 
 export default function NavBar({setLoggedInUserData}) {
 
     const user = useContext(UserContext);
 
+    const history = useHistory();
+
     function handleLogOut() {
         localStorage.removeItem("userData");
         setLoggedInUserData(null);
+        history.push("/")
     }
 
     

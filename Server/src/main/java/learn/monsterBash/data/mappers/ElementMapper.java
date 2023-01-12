@@ -12,6 +12,7 @@ public class ElementMapper implements RowMapper<Element> {
         Element element = new Element();
         element.setElementId(resultSet.getInt("element_id"));
         element.setElementName(resultSet.getString("element_name"));
+        element.setElementImage(resultSet.getString("element_image"));
         return element;
     }
 }

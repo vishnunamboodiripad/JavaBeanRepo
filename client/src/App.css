@@ -122,7 +122,6 @@ td {
 
 
 .winner-reveal > div{
-  background-color: rgb(43, 43, 43);
   color: orange;
   font-size: large;
   
@@ -138,15 +137,6 @@ td {
     justify-content: center;
 
 }
-.flex-container {
-  display: flex;
-  background-color: DodgerBlue;
-  height: 500px;
-  align-items: center;
-}
-
-
-
 
 .wrapper {
   display: grid;
@@ -188,7 +178,7 @@ td {
   grid-column: col 0 ;
   grid-row: row 1/ span 2;
   justify-content: right;
-  font-size: 75%;
+  font-size: 100%;
 
   background-color: rgb(66, 77, 66);
 
@@ -196,12 +186,12 @@ td {
 
 .e {
   grid-column: col 0;
-  grid-row: row 1;
+  grid-row: row 1/ span 2;
 }
 .f {
   grid-column: col 0;
   grid-row: row 1 / span 2;
-  font-size: 75%;
+  font-size: 100%;
 
   background-color: rgb(65, 40, 36);
 }
@@ -213,13 +203,10 @@ td {
 
 }
 .i{
-
   justify-content: center;
-
 }
 .j{
   justify-content: center;
-
 }
 
 

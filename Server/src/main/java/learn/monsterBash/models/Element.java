@@ -10,14 +10,6 @@ public class Element {
     public Element() {
     }
 
-    public String getElementImage() {
-        return elementImage;
-    }
-
-    public void setElementImage(String elementImage) {
-        this.elementImage = elementImage;
-    }
-
     public Element(int elementId, String elementName) {
         this.elementId = elementId;
         this.elementName = elementName;
@@ -37,6 +29,14 @@ public class Element {
 
     public void setElementName(String elementName) {
         this.elementName = elementName;
+    }
+
+    public String getElementImage() {
+        return elementImage;
+    }
+
+    public void setElementImage(String elementImage) {
+        this.elementImage = elementImage;
     }
 
     @Override
