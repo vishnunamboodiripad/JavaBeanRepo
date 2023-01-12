@@ -135,7 +135,8 @@ export default function BattleArena(props){
           gsap.to(
           [computerMonsterRef.current],
           5,
-          {x:-1000}
+          {x:-800,
+          y: 400}
 
         );
         gsap.to(
@@ -155,81 +156,65 @@ export default function BattleArena(props){
     
 
     return (
-        <div id = "#battle-arena">
-             <h1>Welcome to the Arena!</h1>
-       <div class = "wrapper" id = "arenaGrid">
-        <div id = "b1" class = "box a">
-        <p id = "player-monster-battle"> your monster: {playerMonster.monsterName}</p>
-             <img ref = {playerMonsterRef} id = "player-monster-battle" src = {playerMonster.monsterImage} height = "100" width = "100"></img>
-        </div>
-        <div id = "b2" class = "box b">
-        <h3>Weather: {weather.weatherName}</h3>
-        <img id = "weather-battle" src = {weather.weatherImage}
-            height = "100" width = "200"></img>
-        </div>
-        <div id = "b3" class = "box c">
+      <div id = "#battle-arena">
+           <h1>Welcome to the Arena!</h1>
+     <div class = "wrapper" id = "arenaGrid">
+      <div id = "b1" class = "box a">
+      <p id = "player-monster-battle"> Your monster: {playerMonster.monsterName}</p>
+           <img ref = {playerMonsterRef} id = "player-monster-battle" src = {playerMonster.monsterImage} height = "100" width = "100"></img>
+      </div>
+      <div id = "b2" class = "box b">
+      <h3>Weather: {weather.weatherName}</h3>
+      <img id = "weather-battle" src = {weather.weatherImage}
+          height = "100" width = "200"></img>
+      </div>
+      <div id = "b3" class = "box c">
+      <p id = "computer-monster-battle"> Enemy monster: {computerMonster.monsterName}</p>
+      <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
+      </div>
+      <div id = "b4" class = "box d">
+          <div>
+             <p>Player monster element: {props.getElementName(playerElementId)}</p>
+             <p>Player equipment: {playerEquipment.equipmentName}</p>
 
-            {/* <div id = "player-info" className = "grid-container">
-              <p>Player monster element: {props.getElementName(playerElementId)}</p>
-              <p>Player equipment: {playerEquipment.equipmentName}</p>
+            <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
+             <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
+             <p>Player battle power: {battle.playerTotalPower}</p>
+           </div>
+      </div>
+      <div id = "b5" class = "box e">
+      <h4>location: {location.locationName} </h4>
 
-        </div>
-        <div id = "b4" class = "box d">
-            <div>
-               <p>Player monster element: {props.getElementName(playerElementId)}</p>
-               <p>Player equipment: {playerEquipment.equipmentName}</p>
-              <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
-               <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
-               <p>Player battle power: {playerMonster.power}</p>
-             </div>
-        </div>
-        <div id = "b5" class = "box e">
-        <h4>location: {location.locationName} </h4>
-        <p id = "computer-monster-battle"> enemy monster: {computerMonster.monsterName}</p>
-        <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
-        </div>
-        <div id = "b4" class = "box d">
-            <div>
-               <p>Player monster element: {props.getElementName(playerElementId)}</p>
-               <p>Player equipment: {playerEquipment.equipmentName}</p>
+      <img id = "location-battle" src = {location.locationImage}
+      height = "200" width = "400" ></img>
+      </div>
+  )
+<div id = "b6" class = "box f">
+      <div>
+             <p>Enemy monster element: {props.getElementName(computerElementId)}</p>
+             <p>computer equipment: {computerEquipment.equipmentName}</p>
+            <img src = {computerEquipment.equipmentImage} height = "50" width = "50"></img>
 
-              <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
-               <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
-               <p>Player battle power: {playerMonster.power}</p>
-             </div>
-        </div>
-        <div id = "b5" class = "box e">
-        <h4>location: {location.locationName} </h4>
+             <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
+             <p>Enemy battle power: {battle.computerTotalPower}</p>
+           </div>
+      </div>
+      </div>
+      <div id = "b7" class = "box g">
+      <button id = "start-battle-button" onClick = {displayWinner}>SEE WHO WON!</button>
+ </div>
+      <div id = "b8" class = "box h">
+          <div class = "winner-reveal">
 
-        <img id = "location-battle" src = {location.locationImage}
-        height = "200" width = "400" ></img>
-        </div>
-        <div id = "b6" class = "box f">
-        <div>
-               <p>Enemy monster element: {props.getElementName(computerElementId)}</p>
-               <p>computer equipment: {computerEquipment.equipmentName}</p>
-              <img src = {computerEquipment.equipmentImage} height = "50" width = "50"></img>
+              <div>{winnerReveal}</div>
+          </div>
+      </div>
 
-               <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
-               <p>Enemy battle power: {computerMonster.power}</p>
-             </div>
-        </div>
-        </div>
-        <div id = "b7" class = "box g">
-        <button id = "start-battle-button" onClick = {displayWinner}>START BATTLE!</button>
-        
-        </div>
-        <div id = "b8" class = "box h">
-            <div class = "winner-reveal">
+      <div id = "b9" class = "box j">
+      <a className = "btn btn-secondary" href = "/battle" >Exit Arena</a>
 
-                <div>{winnerReveal}</div>
-            </div>
-        </div>
-   
-        <div id = "b9" class = "box j">
-        <a className = "btn btn-secondary" href = "/battle" >Exit Arena</a>
-
-        </div>
+      </div>
+      </div>
 
       
         
