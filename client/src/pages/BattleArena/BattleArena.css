@@ -1,0 +1,10 @@
+#arenastart{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 25% 50% 25%;
+    background-color: yellow;
+    color: #444;
+    align-content: center;
+    grid-auto-flow: row
+
+}

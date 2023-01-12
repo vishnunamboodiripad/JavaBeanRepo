@@ -49,13 +49,16 @@ export default function StartBattle(props){
 
     return(
         <div>
-        <h1>Here's the page for starting a battle</h1>
+            <div class = "header">
+        <h1>Choose your fighter and weapon!</h1>
+         </div>
+        <div class = "flex-box"></div>
         <h2>{playerMonster.monsterId}</h2>
         <h3>{playerEquipment.equipmentId}</h3>
-        
+ 
         
             <div>
-            <table>
+            <table class = "table table-dark">
             <thead key = "header">
                 <tr>
                     <td>Name</td>
@@ -69,7 +72,7 @@ export default function StartBattle(props){
                     return (
                         <tr key = {monster.monsterId}>
                             <td>{monster.monsterName}</td>
-                            <td><img id = "monsterImage"src={monster.monsterImage}></img></td>
+                            <td><img id = "monsterImage"src={monster.monsterImage} height = "50" width = "50"></img></td>
                             <td>{props.getElementName(monster.elementId)}</td>
                             <td>{monster.power}</td>
                         </tr>
@@ -89,7 +92,7 @@ export default function StartBattle(props){
         
 
             <div>
-            <table>
+            <table class = "table table-dark">
             <thead key = "header">
                 <tr>
                     <td>Name</td>
@@ -103,7 +106,7 @@ export default function StartBattle(props){
                     return (
                         <tr key = {equipment.equipmentId}>
                             <td>{equipment.equipmentName}</td>
-                            <td><img id = "equipmentImage"src={equipment.equipmentImage}></img></td>
+                            <td><img id = "equipmentImage"src={equipment.equipmentImage} height = "50" width = "50"></img></td>
                             <td>{props.getAffinityName(equipment.affinityId)}</td>
                             <td>{equipment.strength}</td>
                         </tr>
@@ -119,14 +122,16 @@ export default function StartBattle(props){
                     
                 </select>
             </div>
-        
-                
+     
+                <div>
+
+                </div>
             
             
             <a className = "btn btn-secondary" href = "/battle/arena" >Enter Arena</a>
 
-        
-        </div>
+            </div>
+ 
     )
     
 }
