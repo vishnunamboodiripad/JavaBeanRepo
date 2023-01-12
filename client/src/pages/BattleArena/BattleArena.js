@@ -16,6 +16,7 @@ export default function BattleArena(props){
     const computerMonsterRef = useRef(null)
 
     const user = useContext(UserContext);
+    let userId = 1;
 
     const playerMonster = JSON.parse(localStorage.getItem("playerMonster"))
     const playerEquipment = JSON.parse(localStorage.getItem("playerEquipment"))
@@ -66,10 +67,23 @@ export default function BattleArena(props){
       .then((json) => {setComputerEquipment(json)
     })
   }
+    const addBattle = (b) => {
+      fetch("http://localhost:8080/api/add/battle", {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(b),
+      })
+    }
 
     const getBattle = () => {
           const playerEquipment = JSON.parse(localStorage.getItem("playerEquipment"))
-          const userId = parseInt(user.userData.userId);
+          if (user !== null) {
+            userId = parseInt(user.userData.userId);
+          }
+          
           const playerChoice = {
               chosenMonster: playerMonster,
               chosenEquipment: playerEquipment,
@@ -102,13 +116,26 @@ export default function BattleArena(props){
             grabComputerMonster(json)
             setBattle(json)
           })
+        
     }
-      
-
+  
+    
     useEffect(getBattle, [])   
 
     
     const displayWinner = () => {
+        addBattle(battle)
+        gsap.to(
+        [computerMonsterRef.current],
+        3,
+        {x:-200}
+        );
+        gsap.to(
+          [playerMonsterRef.current],
+          3,
+          { x: 200 }
+        
+        );
         if (battle.playerWin === true) {
           setWinnerReveal("You won! Congratulations you have slayed the enemy")
         }
@@ -117,22 +144,7 @@ export default function BattleArena(props){
         }
     }
 
-    useEffect(() => {
-        gsap.to(
-          [computerMonsterRef.current],
-          3,
-          {x:-200}
-        );
-      }, [winnerReveal]);
-
-      useEffect(() => {
-        gsap.to(
-          [playerMonsterRef.current],
-          3,
-          { x: 200 }
-        
-        );
-      }, [winnerReveal]);
+    
 
     return (
         <div id = "#battle-arena">
@@ -151,7 +163,7 @@ export default function BattleArena(props){
             <img ref = {playerMonsterRef} id = "player-monster-battle" src = {playerMonster.monsterImage} height = "100" width = "100"></img>
             <button id = "start-battle-button" onClick = {displayWinner}>START BATTLE!</button>
 
-            <div id = "player-info" className = "grid-container">
+            {/* <div id = "player-info" className = "grid-container">
               <p>Player monster element: {props.getElementName(playerElementId)}</p>
               <p>Player equipment: {playerEquipment.equipmentName}</p>
               <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
@@ -165,7 +177,7 @@ export default function BattleArena(props){
               <img src = {computerEquipment.equipmentImage} height = "50" width = "50"></img>
               <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
               <p>Computer battle power: {computerMonster.power}</p>
-            </div>
+            </div> */}
 
             <div class = "winner-reveal">
                 <div>{winnerReveal}</div>
