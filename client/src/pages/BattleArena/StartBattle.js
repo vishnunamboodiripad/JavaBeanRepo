@@ -10,15 +10,6 @@ export default function StartBattle(props){
     const [playerEquipmentInt, setPlayerEquipmentInt] = useState("");
     
 
-    useEffect(() => {
-        gsap.fromTo(
-          [monster.current],
-          3,
-          { y: 10 },
-          { y: -10, repeat: -1, yoyo:true }
-        );
-      }, [props.playerMonster]);
-
     const setPlayerMonsterFetch = () => {
         localStorage.removeItem("playerMonster");
         fetch(`http://localhost:8080/api/monster/${playerMonsterInt}`, 
@@ -52,11 +43,7 @@ export default function StartBattle(props){
             <div class = "header">
         <h1>Choose your fighter and weapon!</h1>
          </div>
-        <div class = "flex-box"></div>
-        <h2>{playerMonster.monsterId}</h2>
-        <h3>{playerEquipment.equipmentId}</h3>
- 
-        
+        <div class = "flex-box"></div> 
             <div>
             <table class = "table table-dark">
             <thead key = "header">
@@ -87,7 +74,6 @@ export default function StartBattle(props){
                         
                     ))}
                 </select>
-                <img ref = {monster} className = "monster" src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "200" width = "200"></img>  
             </div>
         
 
