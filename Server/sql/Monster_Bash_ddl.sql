@@ -14,7 +14,7 @@ drop table if exists battle;
 
 create table element (
     element_id int primary key auto_increment,
-    element_image varchar(10),
+    element_image varchar(1636),
     element_name varchar(10) not null
     );
     
@@ -29,8 +29,8 @@ create table location (
     );
     
 create table affinity (
-    affinity_id int primary key,
-    affinity_image varchar(100),
+    affinity_id int primary key auto_increment,
+    affinity_image varchar(1636),
     affinity_name varchar(15) not null
     );
 

@@ -85,8 +85,8 @@ public class EquipmentJdbcTemplateRepository implements EquipmentRepo {
                 """;
 
         return jdbcTemplate.update(sql,
-                equipment.getEquipmentImage(),
                 equipment.getEquipmentName(),
+                equipment.getEquipmentImage(),
                 equipment.getStrength(),
                 equipment.getAffinityId(),
                 equipment.getEquipmentId()) > 0;

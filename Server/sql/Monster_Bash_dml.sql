@@ -1,9 +1,9 @@
 use monster_bash;
 
 insert into element (element_name, element_id, element_image) values ('Fire', 1, "https://media3.giphy.com/media/JPJCYTfdCj5iPQGTgc/giphy.gif");
-insert into element (element_name, element_id, element_image) values ('Water', 2, "https://media3.giphy.com/media/Kv1A13RfsS1YzBRiF4/giphy.gif");
+insert into element (element_name, element_id, element_image) values ('Water', 2, "https://media1.giphy.com/media/Kv1A13RfsS1YzBRiF4/giphy.gif");
 insert into element (element_name, element_id, element_image) values ('Earth', 3, "https://media3.giphy.com/media/fvSVVQ0wxRhBZJGSMh/giphy.gif");
-insert into element (element_name, element_id, element_image) values ('Wind', 4, "https://media3.giphy.com/media/hnozaYTOpoAIWzl95k/giphy.gif");
+insert into element (element_name, element_id, element_image) values ('Wind', 4, "https://media1.giphy.com/media/hnozaYTOpoAIWzl95k/giphy.gif");
 
 insert into affinity (affinity_name, affinity_image, affinity_id) values ('Electric',"https://media1.giphy.com/media/IQt7inCtPsVi1buTEX/giphy.gif", 1);
 insert into affinity (affinity_name, affinity_image, affinity_id) values ('Liquid',"https://media3.giphy.com/media/POEvU1mhHWvpY5jvov/giphy.gif", 2);
