@@ -14,7 +14,7 @@ drop table if exists battle;
 
 create table element (
     element_id int primary key auto_increment,
-    element_image varchar(1636),
+    element_image varchar(100),
     element_name varchar(10) not null
     );
     

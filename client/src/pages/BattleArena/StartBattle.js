@@ -42,16 +42,6 @@ export default function StartBattle(props){
         .then((json) => {setPlayerEquipment(json) 
         localStorage.setItem("playerEquipment", JSON.stringify(json))})  
     }
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-        
-          gsap.fromTo(".h1",{ y: 5 },
-          { y: -5, repeat: -5, yoyo:true });
-        }, root); 
-    
-        return () => ctx.revert();
-      }, []);
-
     useEffect(setPlayerMonsterFetch, [playerMonsterInt])
     useEffect(setPlayerEquipmentFetch, [playerEquipmentInt])
 

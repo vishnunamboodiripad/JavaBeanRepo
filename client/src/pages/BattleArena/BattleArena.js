@@ -10,8 +10,12 @@ export default function BattleArena(props){
     const [computerMonster, setComputerMonster] = useState("");
     const [computerEquipment, setComputerEquipment] = useState("");   
     const [winnerReveal, setWinnerReveal] = useState("");
+    const [powerReveal, setPowerReveal] = useState("");
+    const [playerElement, setPlayerElement] = useState("");
+    const [enemyElement, setEnemyElement] = useState("");
+    const [playerAffinity, setPlayerAffinity] = useState("");
+    const [enemyAffinity, setEnemyAffinity] = useState("");
 
-    
     const playerMonsterRef = useRef(null)
     const computerMonsterRef = useRef(null)
 
@@ -25,6 +29,46 @@ export default function BattleArena(props){
     let playerElementId = playerMonster.elementId;
     let computerElementId = computerMonster.elementId;
     let computerAffinityId = computerEquipment.affinityId
+
+    const grabPlayerMonsterElement = (m) => {
+      let elementId = m.elementId;
+      fetch(`http://localhost:8080/api/element/${elementId}`, 
+      {method: "GET"})
+      .then((response) => {
+          return response.json()
+      })
+      .then((json) => {setPlayerElement(json)
+      })}
+
+    const grabComputerMonsterElement = (m) => {
+        let elementId = m.elementId;
+        fetch(`http://localhost:8080/api/element/${elementId}`, 
+        {method: "GET"})
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {setEnemyElement(json)
+        })}
+
+    const grabPlayerEquipmentAffinity = (e) => {
+          let affinityId = e.affinityId;
+          fetch(`http://localhost:8080/api/affinity/${affinityId}`, 
+          {method: "GET"})
+          .then((response) => {
+              return response.json()
+          })
+          .then((json) => {setPlayerAffinity(json)
+          })}
+    
+    const grabComputerEquipmentAffinity = (e) => {
+            let affinityId = e.affinityId;
+            fetch(`http://localhost:8080/api/affinity/${affinityId}`, 
+            {method: "GET"})
+            .then((response) => {
+                return response.json()
+            })
+            .then((json) => {setEnemyAffinity(json)
+            })}
 
     const grabWeather = (b) => {
       let weatherId = b.weatherId;
@@ -53,7 +97,11 @@ export default function BattleArena(props){
       .then((response) => {
           return response.json()
       })
-      .then((json) => {setComputerMonster(json)
+      .then((json) => {
+        setComputerMonster(json)
+        grabComputerMonsterElement(json)
+        grabPlayerMonsterElement(playerMonster)
+
     })}  
 
     const grabComputerEquipment = (b) => {
@@ -64,7 +112,11 @@ export default function BattleArena(props){
       .then((response) => {
           return response.json()
       })
-      .then((json) => {setComputerEquipment(json)
+      .then((json) => {
+        setComputerEquipment(json)
+        grabPlayerEquipmentAffinity(playerEquipment)
+        grabComputerEquipmentAffinity(json)
+
     })
   }
     const addBattle = (b) => {
@@ -115,6 +167,20 @@ export default function BattleArena(props){
             grabComputerEquipment(json)
             grabComputerMonster(json)
             setBattle(json)
+            gsap.to(
+              [computerMonsterRef.current],
+              4,
+              {x:-250,
+              y: 270}
+    
+            );
+            gsap.to(
+              [playerMonsterRef.current],
+              4,
+              { x:250,
+                y: 270},
+        
+            );
           })
         
     }
@@ -128,28 +194,57 @@ export default function BattleArena(props){
        
         if (battle.playerWin === true) {
           setWinnerReveal("You won! Congratulations you have slain the enemy")
+          gsap.to(
+            [playerMonsterRef.current],
+            2,
+            { x:900,
+              y: 270},
+      
+          );
+          gsap.to(
+            [computerMonsterRef.current],
+            2,
+            {x:-930,
+            y: 270}
+  
+          );
+          gsap.to(
+            [computerMonsterRef.current],
+            {rotation:-90, transformOrigin: "center", ease: "none", duration: 3}, ">"
+      
+          );
         }
         else {
           setWinnerReveal("The enemy has slain you. Try again")
-        }
           gsap.to(
-          [computerMonsterRef.current],
-          5,
-          {x:-800,
-          y: 400}
-
-        );
-        gsap.to(
-          [playerMonsterRef.current],
-          5,
-          { x: 1000},
-    
-        );
+            [computerMonsterRef.current],
+            2,
+            {x:-930,
+            y: 270}
+  
+          );
+          gsap.to(
+            [playerMonsterRef.current],
+            2,
+            { x:900,
+              y: 270},
+      
+          );
+          gsap.to(
+            [playerMonsterRef.current],
+            {rotation:90, transformOrigin: "center", ease: "none", duration: 3}, ">"
+      
+          );
+        }
+          
         if (battle.playerWin === true) {
-          setWinnerReveal("You won! Congratulations you have slayed the enemy")
+          setWinnerReveal("You won! Congratulations you have slayed the enemy.")
+          setPowerReveal(`Enemy battle power: ${battle.computerTotalPower}. Player battle power: ${battle.playerTotalPower}`)
+
         }
         else {
-          setWinnerReveal("The enemy has slayed you. Try again")
+          setWinnerReveal("The enemy has slain you. Try again.")
+          setPowerReveal(`Enemy battle power: ${battle.computerTotalPower}. Player battle power: ${battle.playerTotalPower}`)
         }
     }
 
@@ -160,65 +255,64 @@ export default function BattleArena(props){
       <div id = "#battle-arena">
            <h1>Welcome to the Arena!</h1>
      <div class = "wrapper" id = "arenaGrid">
-      <div id = "b1" class = "box a">
+      <div id = "b1" className = "box a">
       <p id = "player-monster-battle"> Your monster: {playerMonster.monsterName}</p>
            <img ref = {playerMonsterRef} id = "player-monster-battle" src = {playerMonster.monsterImage} height = "100" width = "100"></img>
       </div>
-      <div id = "b2" class = "box b">
+      <div id = "b2" className = "box b">
       <h3>Weather: {weather.weatherName}</h3>
       <img id = "weather-battle" src = {weather.weatherImage}
           height = "100" width = "200"></img>
       </div>
-      <div id = "b3" class = "box c">
+      <div id = "b3" className = "box c">
       <p id = "computer-monster-battle"> Enemy monster: {computerMonster.monsterName}</p>
       <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
       </div>
-      <div id = "b4" class = "box d">
+      <div id = "b4" className = "box d">
           <div>
              <p>Player monster element: {props.getElementName(playerElementId)}</p>
-             <p>Player equipment: {playerEquipment.equipmentName}</p>
+             <img src = {playerElement.elementImage} height = "50" width = "50"></img>
 
-            <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
+             <p>Player equipment: {playerEquipment.equipmentName}</p>
+             <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
              <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
-             <p>Player battle power: {battle.playerTotalPower}</p>
+             <img src = {playerAffinity.affinityImage} height = "50" width = "50"></img>
+
+             <p></p>
            </div>
       </div>
-      <div id = "b5" class = "box e">
-      <h4>location: {location.locationName} </h4>
+      <div id = "b5" className = "box e">
+      <h4>Location: {location.locationName} </h4>
 
       <img id = "location-battle" src = {location.locationImage}
       height = "200" width = "400" ></img>
       </div>
-  
-<div id = "b6" class = "box f">
+  <p>    </p>
+<div id = "b6" className = "box f">
       <div>
              <p>Enemy monster element: {props.getElementName(computerElementId)}</p>
-             <p>computer equipment: {computerEquipment.equipmentName}</p>
+             <img src = {enemyElement.elementImage} height = "50" width = "50"></img>
+             <p>Computer equipment: {computerEquipment.equipmentName}</p>
             <img src = {computerEquipment.equipmentImage} height = "50" width = "50"></img>
 
-               <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
-               <p>Enemy battle power: {computerMonster.power}</p>
-             </div>
-        </div>
-        </div>
-        <div id = "b7" class = "box g">
-        <button id = "start-battle-button" onClick = {displayWinner}>SEE WHO WON!</button>
+             <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
+             <img src = {enemyAffinity.affinityImage} height = "50" width = "50"></img>
 
-        
-        
- 
-
-        </div>
-
-
-        <div id = "b8" class = "box h">
-            <div class = "winner-reveal">
+           </div>
+      </div>
+      </div>
+      <div id = "b7" className = "box g">
+      <button id = "start-battle-button" onClick = {displayWinner}>SEE WHO WON!</button>
+ </div>
+      <div id = "b8" class = "box h">
+          <div className = "winner-reveal">
 
               <div>{winnerReveal}</div>
+              <div>{powerReveal}</div>
           </div>
       </div>
 
-      <div id = "b9" class = "box j">
+      <div id = "b9" className = "box j">
       <a className = "btn btn-secondary" href = "/battle" >Exit Arena</a>
 
       </div>
