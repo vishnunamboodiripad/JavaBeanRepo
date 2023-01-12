@@ -16,6 +16,7 @@ export default function BattleArena(props){
     const computerMonsterRef = useRef(null)
 
     const user = useContext(UserContext);
+    let userId = 1;
 
     const playerMonster = JSON.parse(localStorage.getItem("playerMonster"))
     const playerEquipment = JSON.parse(localStorage.getItem("playerEquipment"))
@@ -66,10 +67,23 @@ export default function BattleArena(props){
       .then((json) => {setComputerEquipment(json)
     })
   }
+    const addBattle = (b) => {
+      fetch("http://localhost:8080/api/add/battle", {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(b),
+      })
+    }
 
     const getBattle = () => {
           const playerEquipment = JSON.parse(localStorage.getItem("playerEquipment"))
-          const userId = parseInt(user.userData.userId);
+          if (user !== null) {
+            userId = parseInt(user.userData.userId);
+          }
+          
           const playerChoice = {
               chosenMonster: playerMonster,
               chosenEquipment: playerEquipment,
@@ -102,39 +116,44 @@ export default function BattleArena(props){
             grabComputerMonster(json)
             setBattle(json)
           })
+        
     }
-      
-
+  
+    
     useEffect(getBattle, [])   
 
     
     const displayWinner = () => {
+
+        addBattle(battle)
+        
+
         if (battle.playerWin === true) {
           setWinnerReveal("You won! Congratulations you have slain the enemy")
         }
         else {
           setWinnerReveal("The enemy has slain you. Try again")
         }
-    }
-
-    useEffect(() => {
-        gsap.to(
+          gsap.to(
           [computerMonsterRef.current],
           5,
           {x:-1000}
-         
         );
-      }, [winnerReveal]);
-
-      useEffect(() => {
         gsap.to(
           [playerMonsterRef.current],
           5,
           { x: 1000}
-     
-        
+    
         );
-      }, [winnerReveal]);
+        if (battle.playerWin === true) {
+          setWinnerReveal("You won! Congratulations you have slayed the enemy")
+        }
+        else {
+          setWinnerReveal("The enemy has slayed you. Try again")
+        }
+    }
+
+    
 
     return (
         <div id = "#battle-arena">
@@ -152,13 +171,12 @@ export default function BattleArena(props){
         <div id = "b3" class = "box c">
         <p id = "computer-monster-battle"> enemy monster:{computerMonster.monsterName}</p>
         <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
-
-
         </div>
         <div id = "b4" class = "box d">
             <div>
                <p>Player monster element: {props.getElementName(playerElementId)}</p>
                <p>Player equipment: {playerEquipment.equipmentName}</p>
+
               <img src = {playerEquipment.equipmentImage} height = "50" width = "50"></img>
                <p>Equipment affinity: {props.getAffinityName(playerAffinityId)}</p>
                <p>Player battle power: {playerMonster.power}</p>
@@ -174,6 +192,7 @@ export default function BattleArena(props){
                <p>Enemy monster element: {props.getElementName(computerElementId)}</p>
                <p>computer equipment: {computerEquipment.equipmentName}</p>
               <img src = {computerEquipment.equipmentImage} height = "50" width = "50"></img>
+
                <p>Equipment affinity: {props.getAffinityName(computerAffinityId)}</p>
                <p>Enemy battle power: {computerMonster.power}</p>
              </div>
@@ -183,6 +202,7 @@ export default function BattleArena(props){
         <button id = "start-battle-button" onClick = {displayWinner}>START BATTLE!</button>
         
         </div>
+
 
         <div id = "b8" class = "box h">
             <div class = "winner-reveal">

@@ -1,7 +1,6 @@
 package learn.monsterBash.models;
 
 public class Battle {
-
     private int battleId;
 
     private int playerMonsterId; //Monster playerMonster;
@@ -11,6 +10,10 @@ public class Battle {
     private int playerEquipmentId; // Equipment playerEquipment
 
     private int computerEquipmentId; // Equipment computerEquipment
+
+    private int playerTotalPower;
+
+    private int computerTotalPower;
 
     private int weatherId; //Weather weather
 
@@ -93,5 +96,21 @@ public class Battle {
 
     public void setLocationId(int locationId) {
         this.locationId = locationId;
+    }
+
+    public int getPlayerTotalPower() {
+        return playerTotalPower;
+    }
+
+    public void setPlayerTotalPower(int playerTotalPower) {
+        this.playerTotalPower = playerTotalPower;
+    }
+
+    public int getComputerTotalPower() {
+        return computerTotalPower;
+    }
+
+    public void setComputerTotalPower(int computerTotalPower) {
+        this.computerTotalPower = computerTotalPower;
     }
 }

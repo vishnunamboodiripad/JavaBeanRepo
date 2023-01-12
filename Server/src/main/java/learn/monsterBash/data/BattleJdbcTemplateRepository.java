@@ -90,10 +90,10 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         Monster computerMonster = getComputerMonster();
         Equipment computerEquipment = getComputerEquipment();
 
-        computerMonster.setPower(calcTotalMonsterPower(battleLocation, computerMonster, computerEquipment, battleWeather));
-        playerMonster.setPower(calcTotalMonsterPower(battleLocation, playerMonster, playerEquipment, battleWeather));
+        battle.setPlayerTotalPower(calcTotalMonsterPower(battleLocation, computerMonster, computerEquipment, battleWeather));
+        battle.setComputerTotalPower(calcTotalMonsterPower(battleLocation, playerMonster, playerEquipment, battleWeather));
 
-        if (computerMonster.getPower() > playerMonster.getPower())
+        if (battle.getPlayerTotalPower() > battle.getComputerTotalPower())
             battle.setPlayerWin(true);
         else battle.setPlayerWin(false);
 
@@ -128,7 +128,7 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
         final String sql = """
                 select battle_id, player_monster_id, computer_monster_id, player_equipment_id, computer_equipment_id, weather_id, location_id, app_user_id, player_win
                 from battle
-                where battle_id = ?;
+                where app_user_id = ?;
                 """;
 
         List<Battle> battles = jdbcTemplate.query(sql, new BattleMapper(), user_id);
@@ -162,6 +162,19 @@ public class BattleJdbcTemplateRepository implements BattleRepo {
 
         battle.setBattleId(keyHolder.getKey().intValue());
         return battle;
+    }
+    @Override
+    public UserHistory findRecord(int userId){
+        UserHistory userHistory = new UserHistory();
+        List<Battle> battles = findBattlesByUser(userId);
+
+        long winTotal = battles.stream().filter((b -> b.getPlayerWin() == true)).count();
+        long lossTotal = battles.stream().filter((b -> b.getPlayerWin() == false)).count();
+
+        userHistory.setUserLosses(lossTotal);
+        userHistory.setUserWins(winTotal);
+
+        return userHistory;
     }
 
 }

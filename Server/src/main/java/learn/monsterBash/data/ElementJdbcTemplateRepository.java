@@ -47,8 +47,8 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
 
 
         final String sql = """
-                insert into element (element_name,element_id, element_image)
-                 values (?,?,?);
+                insert into element (element_name, element_image)
+                 values (?,?);
                  """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -70,10 +70,12 @@ public class ElementJdbcTemplateRepository implements ElementRepo {
     @Override
     public boolean update(Element element) {
 
-        final String sql = "update element set "
-                + "element_name = ?"
-                + "element_image = ?"
-                + "where element_id = ?;";
+        final String sql = """
+                update element set 
+                element_name = ?,
+                element_image = ?
+                where element_id = ?;
+                """;
 
         return jdbcTemplate.update(sql,
                 element.getElementName(),
