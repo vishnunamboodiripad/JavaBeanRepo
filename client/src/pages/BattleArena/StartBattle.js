@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useRef, useEffect, useState, useLayoutEffect} from "react";
 import {gsap} from "gsap";
 
 export default function StartBattle(props){
@@ -8,7 +8,7 @@ export default function StartBattle(props){
     const [playerEquipment, setPlayerEquipment] = useState({playerEquipmentId: "", playerEquipmentImage: "", strength: 0, affinityId: 0})
     const [playerMonsterInt, setPlayerMonsterInt] = useState("");
     const [playerEquipmentInt, setPlayerEquipmentInt] = useState("");
-    
+    const root = useRef();
 
     useEffect(() => {
         gsap.fromTo(
@@ -42,6 +42,15 @@ export default function StartBattle(props){
         .then((json) => {setPlayerEquipment(json) 
         localStorage.setItem("playerEquipment", JSON.stringify(json))})  
     }
+    useLayoutEffect(() => {
+        let ctx = gsap.context(() => {
+        
+          gsap.fromTo(".h1",{ y: 5 },
+          { y: -5, repeat: -5, yoyo:true });
+        }, root); 
+    
+        return () => ctx.revert();
+      }, []);
 
     useEffect(setPlayerMonsterFetch, [playerMonsterInt])
     useEffect(setPlayerEquipmentFetch, [playerEquipmentInt])
@@ -49,8 +58,10 @@ export default function StartBattle(props){
 
     return(
         <div>
-            <div class = "header">
+            <div ref = {root} className ="StartBattle">
+            <div className="h1">
         <h1>Choose your fighter and weapon!</h1>
+         </div>
          </div>
         <div class = "flex-box"></div>
         <h2>{playerMonster.monsterId}</h2>
@@ -58,7 +69,7 @@ export default function StartBattle(props){
  
         
             <div>
-            <table class = "table table-dark">
+            <table className = "table table-dark">
             <thead key = "header">
                 <tr>
                     <td>Name</td>
