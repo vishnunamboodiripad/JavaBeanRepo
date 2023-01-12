@@ -211,3 +211,5 @@ Content-Type: application/json
     "playerWin": true
 }
 
+###
+GET http://localhost:8080/api/findRecord/2

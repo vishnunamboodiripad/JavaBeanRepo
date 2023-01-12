@@ -30,7 +30,8 @@ public class SecurityConfig {
 
         http.authorizeRequests().antMatchers(HttpMethod.GET, "api/monsters").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/security/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/monsters/viewAll").authenticated()
+                .antMatchers(HttpMethod.GET, "/api/monsters/viewAll").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/userRecord").authenticated()
                 .antMatchers(HttpMethod.POST, "/api/add**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/edit**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/delete**").hasRole("ADMIN")
