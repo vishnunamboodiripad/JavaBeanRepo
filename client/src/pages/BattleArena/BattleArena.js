@@ -119,7 +119,6 @@ export default function BattleArena(props){
         
     }
   
-    
     useEffect(getBattle, [])   
 
     
@@ -130,6 +129,7 @@ export default function BattleArena(props){
 
         if (battle.playerWin === true) {
           setWinnerReveal("You won! Congratulations you have slain the enemy")
+          
         }
         else {
           setWinnerReveal("The enemy has slain you. Try again")
@@ -137,13 +137,19 @@ export default function BattleArena(props){
           gsap.to(
           [computerMonsterRef.current],
           5,
-          {x:-1000}
+
+          {x:-1000},
+
         );
         gsap.to(
           [playerMonsterRef.current],
           5,
-          { x: 1000}
+
+          { x: 1000},
     
+     
+        
+
         );
         if (battle.playerWin === true) {
           setWinnerReveal("You won! Congratulations you have slayed the enemy")
@@ -169,7 +175,7 @@ export default function BattleArena(props){
             height = "100" width = "200"></img>
         </div>
         <div id = "b3" class = "box c">
-        <p id = "computer-monster-battle"> enemy monster:{computerMonster.monsterName}</p>
+        <p id = "computer-monster-battle"> enemy monster: {computerMonster.monsterName}</p>
         <img ref = {computerMonsterRef} id = "computer-monster-battle" src = {computerMonster.monsterImage} height = "100" width = "100"></img>
         </div>
         <div id = "b4" class = "box d">
@@ -184,6 +190,7 @@ export default function BattleArena(props){
         </div>
         <div id = "b5" class = "box e">
         <h4>location: {location.locationName} </h4>
+
         <img id = "location-battle" src = {location.locationImage}
         height = "200" width = "400" ></img>
         </div>
@@ -199,21 +206,26 @@ export default function BattleArena(props){
         </div>
         </div>
         <div id = "b7" class = "box g">
-        <button id = "start-battle-button" onClick = {displayWinner}>START BATTLE!</button>
+        <button id = "start-battle-button" onClick = {displayWinner}>SEE WHO WON!</button>
+
         
+        
+ 
+
         </div>
 
 
         <div id = "b8" class = "box h">
             <div class = "winner-reveal">
+
                 <div>{winnerReveal}</div>
             </div>
         </div>
-
-        <div id = "b9" class = "box j">
-        </div>
    
-        <div id = "b10" class = "box j">j</div>
+        <div id = "b9" class = "box j">
+        <a className = "btn btn-secondary" href = "/battle" >Exit Arena</a>
+
+        </div>
         </div>
         
 

@@ -28,6 +28,7 @@ export default function ViewAll(props){
                         <td>Name</td>
                         <td>Image</td>
                         <td>Element</td>
+                        <td>Power</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,7 @@ export default function ViewAll(props){
                                 <td>{monster.monsterName}</td>
                                 <td><img id = "monsterImage"src={monster.monsterImage} width="100" height="100"></img></td>
                                 <td>{getElementName(monster.elementId)}</td>
+                                <td>{monster.power}</td>
                             </tr>
                         )
                     })}
