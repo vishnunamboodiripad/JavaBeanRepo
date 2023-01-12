@@ -138,12 +138,7 @@ td {
     justify-content: center;
 
 }
-.flex-container {
-  display: flex;
-  background-color: DodgerBlue;
-  height: 500px;
-  align-items: center;
-}
+
 
 
 
