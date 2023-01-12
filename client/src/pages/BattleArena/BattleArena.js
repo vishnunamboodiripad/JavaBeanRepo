@@ -207,14 +207,7 @@ export default function BattleArena(props){
         </div>
         <div id = "b7" class = "box g">
         <button id = "start-battle-button" onClick = {displayWinner}>SEE WHO WON!</button>
-
-        
-        
- 
-
-        </div>
-
-
+   </div>
         <div id = "b8" class = "box h">
             <div class = "winner-reveal">
 
