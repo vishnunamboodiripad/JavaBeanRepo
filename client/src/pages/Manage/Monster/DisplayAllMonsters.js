@@ -36,7 +36,7 @@ export default function DisplayAllMonster(props){
                         <tr key = {monster.monsterId}>
                             <td>{monster.monsterName}</td>
 
-                            <td><img id = "monsterImage"src={monster.monsterImage}></img></td>
+                            <td><img id = "monsterImage"src={monster.monsterImage} height = "100" width = "100"></img></td>
                             <td>{props.getElementName(monster.elementId)}</td>
 
                             <td><Link to= {`/manage/monster/edit/${monster.monsterId}`}>Edit</Link></td>

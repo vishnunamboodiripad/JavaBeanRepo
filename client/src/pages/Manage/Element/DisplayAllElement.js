@@ -33,7 +33,7 @@ export default function DisplayAllElement(props){
                     return (
                         <tr key = {element.elementId}>
                             <td>{element.elementName}</td>
-                            <td><img id = "elementImage"src={element.elementImage}></img></td>
+                            <td><img id = "elementImage"src={element.elementImage} height = "100" width = "100"></img></td>
                             <td><Link to= {`/manage/element/edit/${element.elementId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(element.elementId)}}>Delete</button></td>
                         </tr>

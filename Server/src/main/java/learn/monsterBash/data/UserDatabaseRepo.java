@@ -25,13 +25,13 @@ public class UserDatabaseRepo implements UserRepo {
     }
 
     private List<String> loadRolesByUsername(String username) {
-        String sql = "select username from \n" +
+        String sql = "select role_name from \n" +
                 "App_User as u\n" +
                 "inner join App_Role_User as ur on u.user_id = ur.user_id\n" +
                 "inner join App_Role as r on r.role_id = ur.role_id\n" +
                 "where username = ?;";
 
-        List<String> roles = template.query(sql, (rs, rowNum) -> rs.getString("username"), username);
+        List<String> roles = template.query(sql, (rs, rowNum) -> rs.getString("role_name"), username);
 
         return roles;
 

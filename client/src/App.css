@@ -209,6 +209,20 @@ td {
   justify-content: center;
 }
 
+#spinning-monster{
+  margin: 10rem;
+}
+
+#userRecord-monster{
+  margin: .75rem;
+}
+
+#userRecord-monster1{
+  margin: .75rem;
+  margin-top: 5rem;
+}
+
+
 
 
 

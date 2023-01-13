@@ -34,7 +34,7 @@ export default function DisplayAllLocation(props){
                     return (
                         <tr key = {location.locationId}>
                             <td>{location.locationName}</td>
-                            <td><img id = "locationImage"src={location.locationImage}></img></td>
+                            <td><img id = "locationImage"src={location.locationImage} height = "100" width = "100"></img></td>
                             <td>{props.getElementName(location.elementId)}</td>
                             <td><Link to= {`/manage/location/edit/${location.locationId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(location.locationId)}}>Delete</button></td>

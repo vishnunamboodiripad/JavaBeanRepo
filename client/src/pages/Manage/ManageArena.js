@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useEffect, useContext} from "react";
+import UserContext from "../../context/AuthContext"
+
 
 export default function HomePage() {
+
     return (
         <div>
         <h1>Manage your Databases</h1>
