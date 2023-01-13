@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useRef, useEffect, useState, useLayoutEffect} from "react";
 import {gsap} from "gsap";
 
 export default function StartBattle(props){
@@ -43,19 +43,29 @@ export default function StartBattle(props){
         .then((json) => {setPlayerEquipment(json) 
         localStorage.setItem("playerEquipment", JSON.stringify(json))})  
     }
+
     useEffect(titleMovement, [])
+
     useEffect(setPlayerMonsterFetch, [playerMonsterInt])
     useEffect(setPlayerEquipmentFetch, [playerEquipmentInt])
 
 
     return(
         <div>
+
             <div class = "header">
         <h1 ref = {titleRef}>Choose your fighter and weapon!</h1>
+
+
          </div>
-        <div class = "flex-box"></div> 
+         </div>
+        <div class = "flex-box"></div>
+        <h2>{playerMonster.monsterId}</h2>
+        <h3>{playerEquipment.equipmentId}</h3>
+ 
+        
             <div>
-            <table class = "table table-dark">
+            <table className = "table table-dark">
             <thead key = "header">
                 <tr>
                     <td>Name</td>
@@ -84,6 +94,7 @@ export default function StartBattle(props){
                         
                     ))}
                 </select>
+                <img ref = {monster} className = "monster" src = "https://app.pixelencounter.com/api/basic/monsters/random" height = "200" width = "200"></img>  
             </div>
         
 

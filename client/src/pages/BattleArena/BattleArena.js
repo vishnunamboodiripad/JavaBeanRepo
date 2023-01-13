@@ -251,6 +251,7 @@ export default function BattleArena(props){
     
 
     return (
+        
       <div id = "#battle-arena">
            <h1>Welcome to the Arena!</h1>
      <div class = "wrapper" id = "arenaGrid">
