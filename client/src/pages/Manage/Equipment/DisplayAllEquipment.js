@@ -34,7 +34,7 @@ export default function DisplayAllEquipment(props){
                     return (
                         <tr key = {equipment.equipmentId}>
                             <td>{equipment.equipmentName}</td>
-                            <td><img id = "equipmentImage"src={equipment.equipmentImage}></img></td>
+                            <td><img id = "equipmentImage"src={equipment.equipmentImage} height = "100" width = "100"></img></td>
                             <td>{props.getAffinityName(equipment.affinityId)}</td>
                             <td><Link to= {`/manage/equipment/edit/${equipment.equipmentId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(equipment.equipmentId)}}>Delete</button></td>

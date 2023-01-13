@@ -44,7 +44,7 @@ public class JwtConverter {
                     .requireIssuer("MonsterBash")
                     .setSigningKey( signingKey)
                     .build()
-                    .parseClaimsJws( jwt);
+                    .parseClaimsJws( jwt );
 
             user = new AppUser();
 

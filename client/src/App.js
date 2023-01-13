@@ -171,7 +171,7 @@ function App() {
               <HomePage/>
             </Route>
             <Route exact path = "/login">
-              <LoginPage setLoggedInUserData = {setLoggedInUserData}/>
+              <LoginPage setErrors = {setErrors} setLoggedInUserData = {setLoggedInUserData}/>
             </Route>
             <Route exact path = "/userRecord">
               <UserRecord setErrors = {setErrors} />

@@ -1,12 +1,11 @@
 package learn.monsterBash.controller;
 
-import learn.monsterBash.domain.BattleService;
 import learn.monsterBash.domain.Result;
 import learn.monsterBash.domain.ResultType;
+import learn.monsterBash.domain.BattleService;
 import learn.monsterBash.models.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -56,6 +55,11 @@ public class BattleController {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
         return ErrorResponse.build(result);
+    }
+
+    @GetMapping("/manage")
+    public Battle manageArena(int battleId) {
+        return service.findById(battleId);
     }
 
 

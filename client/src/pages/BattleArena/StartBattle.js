@@ -2,14 +2,14 @@ import React, {useRef, useEffect, useState} from "react";
 import {gsap} from "gsap";
 
 export default function StartBattle(props){
-   const monster = useRef(null);
 
     const[playerMonster, setPlayerMonster] = useState({playerMonsterId: "", playerMonsterName: "", playerMonsterImage: "", power: 0, elementId: 0})
     const [playerEquipment, setPlayerEquipment] = useState({playerEquipmentId: "", playerEquipmentImage: "", strength: 0, affinityId: 0})
     const [playerMonsterInt, setPlayerMonsterInt] = useState("");
     const [playerEquipmentInt, setPlayerEquipmentInt] = useState("");
-    
 
+    const titleRef = useRef(null);
+    
     const setPlayerMonsterFetch = () => {
         localStorage.removeItem("playerMonster");
         fetch(`http://localhost:8080/api/monster/${playerMonsterInt}`, 
@@ -17,10 +17,20 @@ export default function StartBattle(props){
         .then((response) => {
             return response.json()
         })
-        .then((json) => {setPlayerMonster(json)
+        .then((json) => {
+        setPlayerMonster(json)
         localStorage.setItem("playerMonster", JSON.stringify(json))
+       
     })  
-    
+    }
+
+    const titleMovement = () => {
+        gsap.fromTo(
+            [titleRef.current],
+            1.5,
+            {y: 5, repeat: -1}, {y:-5, repeat: -1, yoyo: true}
+      
+          );
     }
 
     const setPlayerEquipmentFetch = () => {
@@ -33,7 +43,7 @@ export default function StartBattle(props){
         .then((json) => {setPlayerEquipment(json) 
         localStorage.setItem("playerEquipment", JSON.stringify(json))})  
     }
-
+    useEffect(titleMovement, [])
     useEffect(setPlayerMonsterFetch, [playerMonsterInt])
     useEffect(setPlayerEquipmentFetch, [playerEquipmentInt])
 
@@ -41,7 +51,7 @@ export default function StartBattle(props){
     return(
         <div>
             <div class = "header">
-        <h1>Choose your fighter and weapon!</h1>
+        <h1 ref = {titleRef}>Choose your fighter and weapon!</h1>
          </div>
         <div class = "flex-box"></div> 
             <div>

@@ -13,9 +13,12 @@ export default function NavBar({setLoggedInUserData}) {
         setLoggedInUserData(null);
         history.push("/")
     }
-
+    let isAdmin = false;
+    if (user) {
+    isAdmin = user.userData.roles.some(r => r.authority === "ROLE_admin");  
     
-
+    }
+    
     return (
     <nav id = "#nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="/">Homepage</a>
@@ -35,7 +38,7 @@ export default function NavBar({setLoggedInUserData}) {
 
                 </li>
                 <li className="nav-item">
-                     {user ? <a className="nav-link" href="/manage">Manage Arena  </a> : null}
+                     {isAdmin ? <a className="nav-link" href="/manage">Manage Arena  </a> : null}
 
                 </li>
                 

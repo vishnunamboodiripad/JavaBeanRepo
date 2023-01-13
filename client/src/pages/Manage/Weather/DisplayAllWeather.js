@@ -33,7 +33,7 @@ export default function DisplayAllWeather(props){
                     return (
                         <tr key = {weather.weatherId}>
                             <td>{weather.weatherName}</td>
-                            <td><img id = "weatherImage"src={weather.weatherImage}></img></td>
+                            <td><img id = "weatherImage"src={weather.weatherImage} height = "100" width = "100"></img></td>
                             <td>{props.getAffinityName(weather.affinityId)}</td>
                             <td><Link to= {`/manage/weather/edit/${weather.weatherId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(weather.weatherId)}}>Delete</button></td>

@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import jwtDecode from 'jwt-decode';
 import { useHistory } from 'react-router-dom';
+import {gsap} from "gsap";
 
-export default function LoginPage({setLoggedInUserData}) {
+
+export default function LoginPage({setLoggedInUserData, setErrors}) {
 
     const[loginData, setLoginData] = useState({username: "", password: ""});
 
     const history = useHistory();
-
+    const monsterRef = useRef(null);
 
     function handleSubmit(evt) {
         evt.preventDefault();
@@ -24,7 +26,7 @@ export default function LoginPage({setLoggedInUserData}) {
                 return response.json();
             }
             else if (response.status === 403) {
-                alert("Invalid username/password combo");
+                setErrors(["Invalid username and password"]);
             }
             else {
                 //errors happened. handle it later
@@ -34,6 +36,7 @@ export default function LoginPage({setLoggedInUserData}) {
             
         })
         .then((jwtContainer) => {
+            if (jwtContainer) {
             const jwt = jwtContainer.jwt;
             const decodedJwt = jwtDecode(jwt);
             console.log(decodedJwt);
@@ -46,6 +49,7 @@ export default function LoginPage({setLoggedInUserData}) {
             localStorage.setItem("userData", JSON.stringify(fullLoginData));
             setLoggedInUserData(fullLoginData);
             history.push("/");
+        }
         })
 
 
@@ -60,6 +64,19 @@ export default function LoginPage({setLoggedInUserData}) {
         setLoginData(loginDataCopy);
 
     }
+
+    const imageMovement = () => {
+            gsap.to(
+                [monsterRef.current],
+                {rotation:360, transformOrigin: "center", ease: "none", duration: 10, repeat: -1}
+          
+              );
+      
+          
+    }
+
+    useEffect(imageMovement, [])
+
     return (
         <div>
         <h1>Monster Bash Login page</h1>
@@ -71,6 +88,7 @@ export default function LoginPage({setLoggedInUserData}) {
                 <input type = "password" id = "password" value ={loginData.password} onChange ={handleInputChange}/>
             <button >Log in </button>
         </form>
+        <img id = "spinning-monster" ref = {monsterRef} src = "https://app.pixelencounter.com/api/basic/monsters/14" height = "200" width = "200"></img>
         </div>
     )
 }

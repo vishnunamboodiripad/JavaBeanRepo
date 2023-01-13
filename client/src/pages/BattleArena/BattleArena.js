@@ -189,7 +189,7 @@ export default function BattleArena(props){
 
     
     const displayWinner = () => {
-
+        console.log(battle)
         addBattle(battle)
        
         if (battle.playerWin === true) {

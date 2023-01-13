@@ -33,7 +33,7 @@ export default function DisplayAllAffinity(props){
                     return (
                         <tr key = {affinity.affinityId}>
                             <td>{affinity.affinityName}</td>
-                            <td><img id = "affinityImage"src={affinity.affinityImage}></img></td>
+                            <td><img id = "affinityImage"src={affinity.affinityImage} height = "100" width = "100"></img></td>
                             <td><Link to= {`/manage/affinity/edit/${affinity.affinityId}`}>Edit</Link></td>
                             <td><button onClick = {() => {doDelete(affinity.affinityId)}}>Delete</button></td>
                         </tr>
