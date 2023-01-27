@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/JavaBeanRepo/static/css/main.1058c167.css",
+    "main.js": "/JavaBeanRepo/static/js/main.b19fb55c.js",
+    "static/media/block.ttf": "/JavaBeanRepo/static/media/block.45efeb9f7f427835584c.ttf",
+    "static/media/blockPixels.ttf": "/JavaBeanRepo/static/media/blockPixels.3d655c9d1ba8c9866720.ttf",
+    "static/media/tips.png": "/JavaBeanRepo/static/media/tips.53af32b984418b4142f4.png",
+    "static/media/4.png": "/JavaBeanRepo/static/media/4.5f7713ea45de6e4e4dba.png",
+    "static/media/rules.gif": "/JavaBeanRepo/static/media/rules.a3d34af74d67ddc0f227.gif",
+    "static/media/MonsterBashLogo.gif": "/JavaBeanRepo/static/media/MonsterBashLogo.f4e671e0a8e1c0d0d15e.gif",
+    "static/media/2.png": "/JavaBeanRepo/static/media/2.afbd6000f393a8f7f2ef.png",
+    "static/media/3.png": "/JavaBeanRepo/static/media/3.5a888420e550d7a464b9.png",
+    "static/media/PrStart.ttf": "/JavaBeanRepo/static/media/PrStart.1c7d967259a602307d6d.ttf",
+    "static/media/prstartk.ttf": "/JavaBeanRepo/static/media/prstartk.e8438f0ad89e2d4cc347.ttf",
+    "static/media/1.png": "/JavaBeanRepo/static/media/1.dee5c1a54636d9b6048a.png",
+    "static/media/gothicPixels.ttf": "/JavaBeanRepo/static/media/gothicPixels.14cd1f850d7215948fff.ttf",
+    "static/media/comica1.png": "/JavaBeanRepo/static/media/comica1.18b7b8988adf986bb0a3.png",
+    "index.html": "/JavaBeanRepo/index.html",
+    "main.1058c167.css.map": "/JavaBeanRepo/static/css/main.1058c167.css.map",
+    "main.b19fb55c.js.map": "/JavaBeanRepo/static/js/main.b19fb55c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1058c167.css",
+    "static/js/main.b19fb55c.js"
+  ]
+}
